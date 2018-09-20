@@ -1,0 +1,24 @@
+
+@import "../variables";
+
+.MediaOverlay--mediaStrip {
+    grid-area: mediaStrip;
+    background-color: white;
+
+    @media (min-width: $screen-md-min) {
+        margin: 0 $overlay-gap $overlay-gap;
+    }
+
+    .slider {
+
+        @media (min-width: $screen-md-min) {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+
+    .slider-list {
+        cursor: auto !important;
+        width: auto !important;
+    }
+}

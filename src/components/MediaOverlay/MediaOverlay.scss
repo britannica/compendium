@@ -1,0 +1,61 @@
+
+@import "variables";
+
+.MediaOverlay {
+    font-size: 16px;
+    z-index: 100000;
+
+    &, &--background {
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+
+    &--main {
+        background-color: white;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        @media (max-width: $screen-xs-max) {
+            grid-template-rows: min-content 1fr;
+            grid-template-areas:
+                    'toolbar'
+                    'mediaViewer';
+        }
+
+        @media (min-width: $screen-sm-min) {
+            grid-template-rows: min-content 1fr min-content min-content;
+            grid-template-areas:
+                    'toolbar'
+                    'mediaViewer'
+                    'sidebar'
+                    'mediaStrip';
+        }
+
+        @media (min-width: $screen-md-min) {
+            grid-template-columns: 1fr min-content;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                    'toolbar toolbar'
+                    'mediaViewer sidebar'
+                    'mediaStrip sidebar';
+        }
+
+        @media (min-width: $screen-lg-min) {
+            border: 1px solid #ccc;
+            height: calc(100% - #{$overlay-margin * 2});
+            margin: $overlay-margin;
+        }
+    }
+
+    &--background {
+        background-color: rgba(white, 0.9);
+        z-index: -1;
+    }
+}

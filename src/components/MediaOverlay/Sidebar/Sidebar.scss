@@ -1,0 +1,62 @@
+
+@import "../variables";
+
+.MediaOverlay--sidebar {
+    grid-area: sidebar;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $screen-xs-max) {
+        bottom: 0;
+        left: 0;
+        max-height: 200px;
+        position: fixed;
+        width: 100%;
+    }
+
+    @media (max-width: $screen-sm-max) {
+        background-color: rgba(white, 0.9);
+    }
+
+    // todo: can we overlap this using grid?
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        $height: 200px;
+
+        height: $height;
+        margin-top: -$height;
+        position: relative;
+    }
+
+    @media (min-width: $screen-md-min) {
+        margin-right: $overlay-gap;
+        max-width: $sidebar-width;
+        width: $sidebar-width;
+    }
+
+    &.isCollapsed {
+        margin: 0;
+        max-width: 0;
+        width: 0;
+    }
+
+    .sidebar-content {
+        border: 0 solid $gray-200;
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+
+        @media (min-width: $screen-sm-min) {
+            margin-bottom: $overlay-gap;
+        }
+
+        @media (min-width: $screen-md-min) {
+            border-width: 0 1px 1px;
+        }
+    }
+
+    img {
+        margin-bottom: $overlay-gap;
+    }
+}

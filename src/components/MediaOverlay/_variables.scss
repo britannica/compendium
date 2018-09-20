@@ -1,0 +1,41 @@
+
+@import "../../../../mendel/css/shared/variables";
+@import "../../../../mendel/css/shared/colors";
+
+// Overlay
+
+$overlay-gap: 15px;
+$overlay-margin: 40px;
+
+
+// Sidebar
+
+$sidebar-width: 300px;
+$sidebar-border-width: 10px;
+
+
+// Toolbar
+
+$toolbar-margin: 5px;
+
+
+// Export to JS
+// todo: Use the bootstrap media query variables here
+
+@value screenXsMax #{$screen-xs-max};
+@value screenSmMin #{$screen-sm-min};
+@value screenSmMax #{$screen-sm-max};
+@value screenMdMin #{$screen-md-min};
+@value screenMdMax #{$screen-md-max};
+@value screenLgMin #{$screen-lg-min};
+
+
+// --- Mixins
+
+@mixin reset-button-appearance {
+    appearance: none;
+    background: inherit;
+    border: inherit;
+    font-size: inherit;
+    padding: inherit;
+}

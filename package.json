@@ -4,6 +4,8 @@
   "main": "dist/compendium.cjs.js",
   "module": "dist/compendium.esm.js",
   "browser": "dist/compendium.umd.js",
+  "repository": "https://github.com/britannica/compendium",
+  "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
     "shave": "^2.5.1"

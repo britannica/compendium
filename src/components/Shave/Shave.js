@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { Component, createRef } from 'react';
 import shave from 'shave';
-import ChildrenProp from '../../../../mendel/javascript/shared/react/prop-types/ChildrenProp';
+import ChildrenProp from '../../prop-types/ChildrenProp';
 
 class Shave extends Component {
   ref = createRef();

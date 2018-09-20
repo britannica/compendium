@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import ChildrenProp from '../../../../../mendel/javascript/shared/react/prop-types/ChildrenProp';
+import ChildrenProp from '../../../prop-types/ChildrenProp';
 
 const DEFAULT_STATE = {
   filters: [],

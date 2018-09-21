@@ -15,7 +15,13 @@ export default [
 
   {
     input: 'src/index.js',
-    external: ['prop-types', 'react'],
+    external: [
+      '@fortawesome/pro-*',
+      '@fortawesome/react-fontawesome',
+      'react-router-dom',
+      'prop-types',
+      'react',
+    ],
     output: [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'es' },

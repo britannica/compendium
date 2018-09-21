@@ -2,14 +2,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export const Swipe = {
-  UP: 'swipeUp',
-  DOWN: 'swipeDown',
-  LEFT: 'swipeLeft',
-  RIGHT: 'swipeRight',
-};
-
 class Taparoo extends Component {
+  static SwipeDirection = {
+    UP: 'swipeUp',
+    DOWN: 'swipeDown',
+    LEFT: 'swipeLeft',
+    RIGHT: 'swipeRight',
+  };
+
   constructor(props) {
     super(props);
 

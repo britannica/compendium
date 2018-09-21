@@ -7,6 +7,12 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
+    "date-fns": "^1.29.0",
+    "nuka-carousel": "^4.4.0",
+    "path-to-regexp": "^2.4.0",
+    "react-jw-player": "^1.18.3",
+    "react-photo-gallery": "^6.2.1",
+    "react-responsive": "^5.0.0",
     "shave": "^2.5.1"
   },
   "devDependencies": {

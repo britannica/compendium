@@ -1,8 +1,10 @@
 
 import LazyImage from './components/LazyImage/LazyImage';
+import MediaOverlay from './components/MediaOverlay';
 import Shave from './components/Shave/Shave';
-import Taparoo, { Swipe } from './components/Taparoo/Taparoo';
+import Taparoo from './components/Taparoo/Taparoo';
 
 export { LazyImage };
+export { MediaOverlay };
 export { Shave };
-export { Taparoo, Swipe };
+export { Taparoo };

@@ -63,11 +63,11 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
           sidebarTools={(
             <Fragment>
               <Responsive minWidth={ViewportWidth.MD_MIN}>
-                <button type="button" onClick={setSidebarPanel.bind(this, SidebarPanel.CAPTION)} className={classNames('panel-button', { active: activeSidebarPanel === SidebarPanel.CAPTION })}>
+                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames('panel-button', { active: activeSidebarPanel === SidebarPanel.CAPTION })}>
                   <FontAwesomeIcon icon={faInfoCircle} size="lg" />
                   Caption
                 </button>
-                <button type="button" onClick={setSidebarPanel.bind(this, SidebarPanel.CITE)} className={classNames('panel-button', { active: activeSidebarPanel === SidebarPanel.CITE })}>
+                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CITE)} className={classNames('panel-button', { active: activeSidebarPanel === SidebarPanel.CITE })}>
                   <FontAwesomeIcon icon={faCheckSquare} size="lg" />
                   Cite
                 </button>

@@ -6,22 +6,25 @@
     width: 100%;
 
     @include media-breakpoint-up(xl) {
-        .jwplayer {
-            position: inherit !important;
+        :global {
 
-            .jw-media {
-                background-color: black;
-            }
+            .jwplayer {
+                position: inherit !important;
 
-            .jw-aspect {
-                display: none !important;
-            }
+                .jw-media {
+                    background-color: black;
+                }
 
-            .jw-preview {
-                background-color: transparent;
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-size: cover contain;
+                .jw-aspect {
+                    display: none !important;
+                }
+
+                .jw-preview {
+                    background-color: transparent;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover contain;
+                }
             }
         }
     }

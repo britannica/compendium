@@ -10,6 +10,7 @@ import { MediaType, ViewportWidth } from '../constants';
 import { withGalleryContext } from '../Gallery/Gallery.context';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Toolbar from '../Toolbar/Toolbar';
+import styles from '../Toolbar/Toolbar.scss';
 
 const GalleryToolbar = ({ filters, selectedFilter, setSelectedFilter }) => (
   <MediaOverlayContext.Consumer>
@@ -18,7 +19,7 @@ const GalleryToolbar = ({ filters, selectedFilter, setSelectedFilter }) => (
         primaryTools={(
           <Fragment>
             {mediaStrip.length > 0 && (
-              <div className="mediaCount">
+              <div className={styles.mediaCount}>
                 {mediaStrip.length} item{mediaStrip.length === 1 ? '' : 's'}
               </div>
             )}

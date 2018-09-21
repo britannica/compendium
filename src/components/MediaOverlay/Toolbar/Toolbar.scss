@@ -50,8 +50,11 @@
         }
     }
 
-    svg, .fa-layers {
-        margin-right: 8px;
+    :global {
+
+        svg, .fa-layers {
+            margin-right: 8px;
+        }
     }
 
 

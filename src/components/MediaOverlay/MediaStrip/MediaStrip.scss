@@ -11,16 +11,19 @@
 
     // These are nuka-carousel class names, and don't get mangled by CSS modules
 
-    .slider {
+    :global {
 
-        @include media-breakpoint-up(lg) {
-            padding-left: 30px;
-            padding-right: 30px;
+        .slider {
+
+            @include media-breakpoint-up(lg) {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
         }
-    }
 
-    .slider-list {
-        cursor: auto !important;
-        width: auto !important;
+        .slider-list {
+            cursor: auto !important;
+            width: auto !important;
+        }
     }
 }

@@ -10,7 +10,7 @@
     min-height: 56px;
     padding-left: 15px;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(md) {
         border-bottom: 1px solid #ccc;
         box-shadow: 0 3px 5px rgba(black, 0.05);
         margin: 0;
@@ -41,7 +41,7 @@
             padding: 10px;
         }
 
-        @media (max-width: $screen-sm-max) {
+        @include media-breakpoint-down(md) {
             align-items: center;
             display: inline-flex;
             height: 48px;
@@ -79,7 +79,7 @@
     .additionalTools {
         flex: 0 1 auto;
 
-        @media (min-width: $screen-md-min) {
+        @include media-breakpoint-up(lg) {
             padding-right: 15px;
         }
     }
@@ -90,11 +90,11 @@
     .sidebarTools {
         display: flex;
 
-        @media (min-width: $screen-sm-min) {
+        @include media-breakpoint-up(md) {
             flex-basis: auto;
         }
 
-        @media (min-width: $screen-md-min) {
+        @include media-breakpoint-up(lg) {
             border-bottom: $sidebar-border-width solid $blue-dark;
             flex: 0 1 $sidebar-width;
             margin-right: $overlay-gap - $toolbar-margin;
@@ -108,7 +108,7 @@
                 border-radius: 0;
             }
 
-            @media (min-width: $screen-md-min) {
+            @include media-breakpoint-up(lg) {
                 flex: 1 0 0;
                 padding-left: 0;
                 padding-right: 0;
@@ -123,7 +123,7 @@
             margin: 0;
         }
 
-        @media (min-width: $screen-lg-min) {
+        @include media-breakpoint-up(xl) {
             padding: 0.85em;
             position: fixed;
             right: 0;

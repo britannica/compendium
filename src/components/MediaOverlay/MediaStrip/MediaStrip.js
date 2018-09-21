@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import Carousel from 'nuka-carousel';
-import Responsive from 'react-responsive';
+import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import './MediaStrip.scss';
@@ -25,7 +25,7 @@ const MediaStrip = () => (
 
       return (
         <div className="MediaOverlay--mediaStrip">
-          <Responsive minWidth={ViewportWidth.SM_MIN}>
+          <MediaQuery minWidth={ViewportWidth.SM_MIN}>
             <Carousel
               slideIndex={carouselPageIndex}
               slidesToShow={slidesToShow}
@@ -47,7 +47,7 @@ const MediaStrip = () => (
                 />
               ))}
             </Carousel>
-          </Responsive>
+          </MediaQuery>
         </div>
       );
     }}

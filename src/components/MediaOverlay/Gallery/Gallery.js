@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import PhotoGallery from 'react-photo-gallery';
-import Responsive from 'react-responsive';
+import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../constants';
 import Thumbnail from '../Thumbnail/Thumbnail';
 import { withGalleryContext } from './Gallery.context';
@@ -23,12 +23,12 @@ const Gallery = ({ photos, onMediaClick }) => {
 
   return (
     <div className="Gallery">
-      <Responsive minWidth={ViewportWidth.SM_MIN}>
+      <MediaQuery minWidth={ViewportWidth.SM_MIN}>
         {renderPhotoGallery(5)}
-      </Responsive>
-      <Responsive maxWidth={ViewportWidth.XS_MAX}>
+      </MediaQuery>
+      <MediaQuery maxWidth={ViewportWidth.XS_MAX}>
         {renderPhotoGallery(2)}
-      </Responsive>
+      </MediaQuery>
     </div>
   );
 };

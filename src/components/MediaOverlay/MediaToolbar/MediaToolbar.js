@@ -3,7 +3,7 @@ import { faCheckSquare, faInfoCircle, faPrint, faSearchPlus, faTh } from '@forta
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import React, { Fragment } from 'react';
-import Responsive from 'react-responsive';
+import MediaQuery from 'react-responsive';
 import { withRouter } from 'react-router-dom';
 import { MediaType, SidebarPanel, ViewportWidth } from '../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
@@ -62,7 +62,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
 
           sidebarTools={(
             <Fragment>
-              <Responsive minWidth={ViewportWidth.MD_MIN}>
+              <MediaQuery minWidth={ViewportWidth.MD_MIN}>
                 <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames('panel-button', { active: activeSidebarPanel === SidebarPanel.CAPTION })}>
                   <FontAwesomeIcon icon={faInfoCircle} size="lg" />
                   Caption
@@ -71,7 +71,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
                   <FontAwesomeIcon icon={faCheckSquare} size="lg" />
                   Cite
                 </button>
-              </Responsive>
+              </MediaQuery>
             </Fragment>
           )}
         />

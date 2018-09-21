@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import Responsive from 'react-responsive';
+import MediaQuery from 'react-responsive';
 import { MediaType, ViewportWidth } from '../constants';
 import { withGalleryContext } from '../Gallery/Gallery.context';
 import MediaOverlayContext from '../MediaOverlay.context';
@@ -34,7 +34,7 @@ const GalleryToolbar = ({ filters, selectedFilter, setSelectedFilter }) => (
         )}
 
         secondaryTools={(
-          <Responsive minWidth={ViewportWidth.SM_MIN}>
+          <MediaQuery minWidth={ViewportWidth.SM_MIN}>
             {filters.length > 1 && (
               <Fragment>
                 <button type="button" className={classNames({ active: selectedFilter === null })} onClick={() => setSelectedFilter(null)}>
@@ -67,7 +67,7 @@ const GalleryToolbar = ({ filters, selectedFilter, setSelectedFilter }) => (
                 )}
               </Fragment>
             )}
-          </Responsive>
+          </MediaQuery>
         )}
       />
     )}

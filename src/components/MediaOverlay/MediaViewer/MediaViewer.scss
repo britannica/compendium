@@ -17,7 +17,7 @@ $hover-opacity: 0.6;
         opacity: $hover-opacity;
     }
 
-    @media (min-width: $screen-md-min) {
+    @include media-breakpoint-up(lg) {
         margin: $overlay-gap;
     }
 
@@ -48,7 +48,7 @@ $hover-opacity: 0.6;
             right: 0;
         }
 
-        @media (max-width: $screen-sm-max) {
+        @include media-breakpoint-down(md) {
             opacity: $hover-opacity;
         }
     }

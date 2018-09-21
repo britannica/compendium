@@ -22,14 +22,14 @@
         display: grid;
         grid-template-columns: 1fr;
 
-        @media (max-width: $screen-xs-max) {
+        @include media-breakpoint-down(sm) {
             grid-template-rows: min-content 1fr;
             grid-template-areas:
                     'toolbar'
                     'mediaViewer';
         }
 
-        @media (min-width: $screen-sm-min) {
+        @include media-breakpoint-up(md) {
             grid-template-rows: min-content 1fr min-content min-content;
             grid-template-areas:
                     'toolbar'
@@ -38,7 +38,7 @@
                     'mediaStrip';
         }
 
-        @media (min-width: $screen-md-min) {
+        @include media-breakpoint-up(lg) {
             grid-template-columns: 1fr min-content;
             grid-template-rows: auto 1fr auto;
             grid-template-areas:
@@ -47,7 +47,7 @@
                     'mediaStrip sidebar';
         }
 
-        @media (min-width: $screen-lg-min) {
+        @include media-breakpoint-up(xl) {
             border: 1px solid #ccc;
             height: calc(100% - #{$overlay-margin * 2});
             margin: $overlay-margin;

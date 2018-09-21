@@ -1,7 +1,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import Responsive from 'react-responsive';
+import MediaQuery from 'react-responsive';
 import { SidebarPanel, ViewportWidth } from '../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import './Sidebar.scss';
@@ -38,23 +38,23 @@ const Sidebar = () => (
           <div className="sidebar-content">
             {/* Show all panels when in sm-lg */}
 
-            <Responsive minWidth={ViewportWidth.MD_MIN}>
+            <MediaQuery minWidth={ViewportWidth.MD_MIN}>
               {getSidebarPanel(activeSidebarPanel, { media })}
-            </Responsive>
+            </MediaQuery>
 
             {/* Always show the Caption panel when on xs */}
 
-            <Responsive maxWidth={ViewportWidth.SM_MAX}>
+            <MediaQuery maxWidth={ViewportWidth.SM_MAX}>
               <CaptionPanel media={media} />
-            </Responsive>
+            </MediaQuery>
           </div>
 
           {/* Show ads if they're enabled, and if we're on md-lg */}
 
           {hasAds && (
-            <Responsive minWidth={ViewportWidth.MD_MIN}>
+            <MediaQuery minWidth={ViewportWidth.MD_MIN}>
               <Ad previousMediaId={previousMediaId} />
-            </Responsive>
+            </MediaQuery>
           )}
         </div>
       );

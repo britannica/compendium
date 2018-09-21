@@ -6,6 +6,7 @@
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "^4.1.3",
     "classnames": "^2.2.6",
     "date-fns": "^1.29.0",
     "nuka-carousel": "^4.4.0",

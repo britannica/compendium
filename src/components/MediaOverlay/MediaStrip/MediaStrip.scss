@@ -5,13 +5,13 @@
     grid-area: mediaStrip;
     background-color: white;
 
-    @media (min-width: $screen-md-min) {
+    @include media-breakpoint-up(lg) {
         margin: 0 $overlay-gap $overlay-gap;
     }
 
     .slider {
 
-        @media (min-width: $screen-md-min) {
+        @include media-breakpoint-up(lg) {
             padding-left: 30px;
             padding-right: 30px;
         }

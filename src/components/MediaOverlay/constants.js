@@ -1,5 +1,5 @@
 
-import css from './_variables.scss';
+import css from '../../_variables.scss';
 
 export const MediaQuery = {
   BETWEEN: '(min-width: :min) and (max-width: :max)',

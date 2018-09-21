@@ -15,7 +15,7 @@ import ReactDOM from 'react-dom';
 import { MediaOverlay } from '@britannica/compendium';
 
 ReactDOM.render(
-  <MediaOverlay {...configurationProps},
+  <MediaOverlay {...configurationProps} />,
   document.body,
 );
 ```

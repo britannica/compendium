@@ -27,6 +27,9 @@ import MediaOverlayContext from './MediaOverlay.context';
 import MediaService from './services/media-service';
 
 class MediaOverlayContainer extends Component {
+  static Type = OverlayType;
+
+
   // --- Constructor
 
   constructor(props) {

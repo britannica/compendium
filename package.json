@@ -1,6 +1,6 @@
 {
   "name": "@britannica/compendium",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "main": "./dist/compendium.cjs.js",
   "module": "./dist/compendium.esm.js",
   "repository": "https://github.com/britannica/compendium",

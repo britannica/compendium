@@ -20,6 +20,10 @@ ReactDOM.render(
 );
 ```
 
+### Notes
+
+- Requires FontAwesome 5 Pro subscription. This must be configured at the project level. [Read more](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro)
+
 
 ## License
 

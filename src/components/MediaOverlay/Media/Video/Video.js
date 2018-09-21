@@ -2,10 +2,10 @@
 import React from 'react';
 import ReactJWPlayer from 'react-jw-player';
 import PropTypes from 'prop-types';
-import './Video.scss';
+import styles from './Video.scss';
 
 const Video = ({ media: { posterUrl, playlistUrl }, onPlay, onPause, playerId }) => (
-  <div className="VideoMedia">
+  <div className={styles.VideoMedia}>
     <ReactJWPlayer
       className="wrapper"
       onPlay={onPlay}

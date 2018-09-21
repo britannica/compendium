@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import MediaQuery from 'react-responsive';
 import { SidebarPanel, ViewportWidth } from '../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
-import './Sidebar.scss';
 import Ad from './Ad/Ad';
 import CaptionPanel from './CaptionPanel/CaptionPanel';
 import CitePanel from './CitePanel/CitePanel';
+import styles from './Sidebar.scss';
 
 function getSidebarPanel(panel, { media }) {
   switch (panel) {
@@ -34,8 +34,8 @@ const Sidebar = () => (
       // Sidebar render
 
       return (
-        <div className={classNames('MediaOverlay--sidebar', { isCollapsed: !isSidebarVisible })}>
-          <div className="sidebar-content">
+        <div className={classNames(styles.Sidebar, { [styles.isCollapsed]: !isSidebarVisible })}>
+          <div className={styles.sidebarContent}>
             {/* Show all panels when in sm-lg */}
 
             <MediaQuery minWidth={ViewportWidth.MD_MIN}>

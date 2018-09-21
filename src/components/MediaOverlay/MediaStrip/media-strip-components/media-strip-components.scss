@@ -1,7 +1,7 @@
 
 @import "../../variables";
 
-.MediaStrip--arrow {
+.arrow {
     @include reset-button-appearance;
     cursor: pointer;
     outline: none;

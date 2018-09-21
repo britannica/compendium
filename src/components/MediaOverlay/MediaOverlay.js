@@ -9,14 +9,14 @@ import MediaStrip from './MediaStrip/MediaStrip';
 import MediaToolbar from './MediaToolbar/MediaToolbar';
 import MediaViewer from './MediaViewer/MediaViewer';
 import Sidebar from './Sidebar/Sidebar';
-import './MediaOverlay.scss';
+import styles from './MediaOverlay.scss';
 
 const MediaOverlay = () => (
   <MediaOverlayContext.Consumer>
     {({ hideOverlay, handleKeyUp, enableMediaView, overlayState: { mediaStrip, mode } }) => (
-      <div className="MediaOverlay">
-        <div role="button" tabIndex="0" className="MediaOverlay--background" onClick={hideOverlay} onKeyUp={handleKeyUp} />
-        <div className="MediaOverlay--main">
+      <div className={styles.MediaOverlay}>
+        <div role="button" tabIndex="0" className={styles.background} onClick={hideOverlay} onKeyUp={handleKeyUp} />
+        <div className={styles.main}>
           {mode === OverlayMode.MEDIA_VIEW && (
             <Fragment>
               <MediaToolbar />

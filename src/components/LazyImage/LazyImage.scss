@@ -1,8 +1,9 @@
 
 .LazyImage {
+    opacity: 0;
     transition: opacity 0.2s;
+}
 
-    &:not(.isLoaded) {
-        opacity: 0.01;
-    }
+.isLoaded {
+    opacity: 1;
 }

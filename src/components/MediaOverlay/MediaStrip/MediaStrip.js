@@ -5,9 +5,9 @@ import Carousel from 'nuka-carousel';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
-import './MediaStrip.scss';
 import Thumbnail from '../Thumbnail/Thumbnail';
 import { MediaStripNextArrow, MediaStripPreviousArrow } from './media-strip-components/media-strip-components';
+import styles from './MediaStrip.scss';
 
 const MediaStrip = () => (
   <MediaOverlayContext.Consumer>
@@ -24,7 +24,7 @@ const MediaStrip = () => (
       const hasArrows = mediaStrip.length > slidesToShow;
 
       return (
-        <div className="MediaOverlay--mediaStrip">
+        <div className={styles.MediaStrip}>
           <MediaQuery minWidth={ViewportWidth.SM_MIN}>
             <Carousel
               slideIndex={carouselPageIndex}
@@ -39,7 +39,7 @@ const MediaStrip = () => (
               {mediaStrip.map((thumbnail, i) => (
                 <Thumbnail
                   key={thumbnail.mediaId}
-                  container=".MediaOverlay--mediaStrip"
+                  container={styles.MediaStrip}
                   className={classNames({ selected: i === mediaIndex })}
                   {...thumbnail}
                   height={75}

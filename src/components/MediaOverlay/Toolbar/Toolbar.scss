@@ -1,7 +1,7 @@
 
 @import "../variables";
 
-.MediaOverlay--toolbar {
+.Toolbar {
     grid-area: toolbar;
     background-color: #eee;
     align-items: center;
@@ -101,7 +101,7 @@
             padding-top: $sidebar-border-width;
         }
 
-        .panel-button {
+        .panelButton {
             margin: 0; // fix for safari display
 
             &.active {

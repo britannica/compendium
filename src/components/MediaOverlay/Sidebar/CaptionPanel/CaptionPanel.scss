@@ -2,17 +2,21 @@
 .CaptionPanel {
     line-height: 1.5;
 
-    &--title {
+    &.title {
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 10px;
     }
 
-    &--credit {
+    &.caption {
+
+    }
+
+    &.credit {
         color: #999;
     }
 
-    &--credit, &--license {
+    &.credit, &.license {
         font-size: 11px;
         font-style: italic;
         margin-top: 10px;

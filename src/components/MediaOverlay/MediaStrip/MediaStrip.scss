@@ -1,13 +1,15 @@
 
 @import "../variables";
 
-.MediaOverlay--mediaStrip {
+.MediaStrip {
     grid-area: mediaStrip;
     background-color: white;
 
     @include media-breakpoint-up(lg) {
         margin: 0 $overlay-gap $overlay-gap;
     }
+
+    // These are nuka-carousel class names, and don't get mangled by CSS modules
 
     .slider {
 

@@ -29,7 +29,9 @@ export default [
       { file: pkg.module, format: 'es' },
     ],
     plugins: [
-      postcss(),
+      postcss({
+        modules: true,
+      }),
       babel({
         exclude: ['node_modules/**'],
         presets: ['@babel/preset-react'],

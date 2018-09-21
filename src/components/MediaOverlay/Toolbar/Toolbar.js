@@ -1,32 +1,33 @@
 
 import React from 'react';
+import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import { Link } from 'react-router-dom';
 import ChildrenProp from '../../../prop-types/ChildrenProp';
 import MediaOverlayContext from '../MediaOverlay.context';
-import './Toolbar.scss';
+import styles from './Toolbar.scss';
 
 const Toolbar = ({ primaryTools, secondaryTools, sidebarTools }) => (
   <MediaOverlayContext.Consumer>
     {({ overlayProps: { baseHref } }) => (
-      <div className="MediaOverlay--toolbar">
-        <div className="overlayTools">
+      <div className={styles.Toolbar}>
+        <div className={styles.overlayTools}>
           {primaryTools}
         </div>
-        <div className="additionalTools">
+        <div className={styles.additionalTools}>
           {secondaryTools}
         </div>
         {sidebarTools && (
-          <div className="sidebarTools">
+          <div className={styles.sidebarTools}>
             {sidebarTools}
-            <Link to={baseHref} className="close" title="Close">
+            <Link to={baseHref} className={styles.close} title="Close">
               <FontAwesomeIcon icon={faTimes} size="2x" />
             </Link>
           </div>
         )}
         {!sidebarTools && (
-          <Link to={baseHref} className="close mr-10" title="Close">
+          <Link to={baseHref} className={classNames(styles.close, 'mr-10 mr-2')} title="Close">
             <FontAwesomeIcon icon={faTimes} size="2x" />
           </Link>
         )}

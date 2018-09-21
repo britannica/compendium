@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import StringUtils from '../../../../../../mendel/javascript/shared/utils/string-utils';
-import './Ad.scss';
+import styles from './Ad.scss';
 
 class Ad extends Component {
   shouldComponentUpdate(nextProps) {
@@ -15,7 +15,7 @@ class Ad extends Component {
 
   render() {
     return (
-      <div className="Ad">
+      <div className={styles.Ad}>
         <iframe src={`/GPTIframe/ajax/async/NEW_MEDIA_OVERLAY?${StringUtils.uuid()}`} title="advertisement" height="100%" width="100%" />
       </div>
     );

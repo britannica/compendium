@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MediaQuery from 'react-responsive';
-import './media-strip-components.scss';
 import { ViewportWidth } from '../../constants';
+import styles from './media-strip-components.scss';
 
 
 /**
@@ -20,7 +20,7 @@ import { ViewportWidth } from '../../constants';
 
 const MediaStripArrow = ({ icon, disabled, onClick }) => (
   <MediaQuery minWidth={ViewportWidth.MD_MIN}>
-    <button type="button" className="MediaStrip--arrow" onClick={onClick} disabled={disabled}>
+    <button type="button" className={styles.arrow} onClick={onClick} disabled={disabled}>
       <FontAwesomeIcon icon={icon} size="2x" />
     </button>
   </MediaQuery>

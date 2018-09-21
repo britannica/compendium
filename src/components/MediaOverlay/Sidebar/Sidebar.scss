@@ -1,7 +1,7 @@
 
 @import "../variables";
 
-.MediaOverlay--sidebar {
+.Sidebar {
     grid-area: sidebar;
     background-color: white;
     display: flex;
@@ -41,7 +41,7 @@
         width: 0;
     }
 
-    .sidebar-content {
+    .sidebarContent {
         border: 0 solid $gray-200;
         flex: 1;
         overflow-y: auto;

@@ -6,7 +6,7 @@ import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../constants';
 import Thumbnail from '../Thumbnail/Thumbnail';
 import { withGalleryContext } from './Gallery.context';
-import './Gallery.scss';
+import styles from './Gallery.scss';
 
 const Gallery = ({ photos, onMediaClick }) => {
   function renderPhotoGallery(columns) {
@@ -22,7 +22,7 @@ const Gallery = ({ photos, onMediaClick }) => {
   }
 
   return (
-    <div className="Gallery">
+    <div className={styles.Gallery}>
       <MediaQuery minWidth={ViewportWidth.SM_MIN}>
         {renderPhotoGallery(5)}
       </MediaQuery>

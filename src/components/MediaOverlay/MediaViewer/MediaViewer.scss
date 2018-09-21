@@ -3,7 +3,7 @@
 
 $hover-opacity: 0.6;
 
-.MediaOverlay--mediaViewer {
+.MediaViewer {
     grid-area: mediaViewer;
     background-color: white;
     align-items: center;
@@ -40,11 +40,11 @@ $hover-opacity: 0.6;
             opacity: 1;
         }
 
-        &--prev {
+        &.prev {
             left: 0;
         }
 
-        &--next {
+        &.next {
             right: 0;
         }
 

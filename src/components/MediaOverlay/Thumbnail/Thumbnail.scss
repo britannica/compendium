@@ -53,7 +53,7 @@ $thumbnail-border-width: 2px;
             max-height: 100%;
         }
 
-        &--title {
+        &.audioTitle {
             hyphens: auto;
         }
     }
@@ -62,7 +62,7 @@ $thumbnail-border-width: 2px;
 
         &:hover {
 
-            .Video--caption {
+            .videoCaption {
                 opacity: 1;
             }
         }
@@ -84,7 +84,7 @@ $thumbnail-border-width: 2px;
             position: relative;
         }
 
-        .Video--caption {
+        .videoCaption {
             bottom: 0;
             left: 0;
             opacity: 0;
@@ -96,7 +96,7 @@ $thumbnail-border-width: 2px;
 
     &.Image {
 
-        .Image--caption {
+        .imageCaption {
             background: linear-gradient(transparent, rgba(black, 0.8));
             bottom: 0;
             left: 0;
@@ -108,7 +108,7 @@ $thumbnail-border-width: 2px;
 
         &:hover {
 
-            .Image--caption {
+            .imageCaption {
                 opacity: 1;
             }
         }
@@ -131,5 +131,9 @@ $thumbnail-border-width: 2px;
     img {
         object-fit: cover;
         width: 100%;
+    }
+
+    .hoverCaption {
+
     }
 }

@@ -5,7 +5,7 @@
     font-size: 16px;
     z-index: 100000;
 
-    &, &--background {
+    &, &.background {
         bottom: 0;
         left: 0;
         position: fixed;
@@ -13,7 +13,7 @@
         top: 0;
     }
 
-    &--main {
+    &.main {
         background-color: white;
         height: 100%;
         overflow: hidden;
@@ -54,7 +54,7 @@
         }
     }
 
-    &--background {
+    &.background {
         background-color: rgba(white, 0.9);
         z-index: -1;
     }

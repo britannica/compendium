@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './LazyImage.scss';
+import styles from './LazyImage.scss';
 
 class LazyImage extends Component {
   ref = React.createRef();
@@ -84,7 +84,7 @@ class LazyImage extends Component {
         alt={alt}
         height={height}
         width={width}
-        className={classNames(['LazyImage', { isVisible, isLoading, isLoaded }])}
+        className={classNames([styles.LazyImage, { [styles.isLoaded]: isLoaded }])}
       />
     );
   }

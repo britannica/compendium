@@ -2,11 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import './CitePanel.scss';
 import Media from '../../Media/Media';
+import styles from './CitePanel.scss';
 
 const CitePanel = ({ media }) => (
-  <div className="CitePanel">
+  <div className={styles.CitePanel}>
     <ul>
       {media.title && (
         <li>

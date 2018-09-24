@@ -57,5 +57,5 @@ export const determineSlidesToShow = () => {
  */
 
 export const areControlsToggleable = () => (
-  window.matchMedia(maxWidth(ViewportWidth.SM_MAX)).matches
+  window.matchMedia(maxWidth(ViewportWidth.MD_MAX)).matches
 );

@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { MediaType, SidebarPanel, ViewportWidth } from '../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Toolbar from '../Toolbar/Toolbar';
+import styles from '../Toolbar/Toolbar.scss';
 
 const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
   <MediaOverlayContext.Consumer>
@@ -63,11 +64,11 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
           sidebarTools={(
             <Fragment>
               <MediaQuery minWidth={ViewportWidth.MD_MIN}>
-                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames('panel-button', { active: activeSidebarPanel === SidebarPanel.CAPTION })}>
+                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION })}>
                   <FontAwesomeIcon icon={faInfoCircle} size="lg" />
                   Caption
                 </button>
-                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CITE)} className={classNames('panel-button', { active: activeSidebarPanel === SidebarPanel.CITE })}>
+                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CITE)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CITE })}>
                   <FontAwesomeIcon icon={faCheckSquare} size="lg" />
                   Cite
                 </button>

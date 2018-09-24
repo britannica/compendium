@@ -16,6 +16,7 @@ export default [
   {
     input: 'src/index.js',
     external: [
+      '@fortawesome/fontawesome-svg-core',
       '@fortawesome/pro-light-svg-icons',
       '@fortawesome/pro-regular-svg-icons',
       '@fortawesome/pro-solid-svg-icons',

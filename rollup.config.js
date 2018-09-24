@@ -35,7 +35,12 @@ export default [
       }),
       babel({
         exclude: ['node_modules/**'],
-        presets: ['@babel/preset-react'],
+        presets: [
+          '@babel/preset-react',
+          ['@babel/preset-env', {
+            modules: false,
+          }],
+        ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
           '@babel/plugin-proposal-object-rest-spread',

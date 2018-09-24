@@ -25,7 +25,7 @@ const MediaStrip = () => (
 
       return (
         <div className={styles.MediaStrip}>
-          <MediaQuery minWidth={ViewportWidth.SM_MIN}>
+          <MediaQuery minWidth={ViewportWidth.MD_MIN}>
             <Carousel
               slideIndex={carouselPageIndex}
               slidesToShow={slidesToShow}

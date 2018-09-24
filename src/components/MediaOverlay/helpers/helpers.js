@@ -38,11 +38,11 @@ export const getCarouselIndex = (index, slidesToShow) => (
 export const determineSlidesToShow = () => {
   const screenWidth = document.body.clientWidth;
 
-  if (screenWidth >= parseInt(ViewportWidth.LG_MIN)) {
+  if (screenWidth >= parseInt(ViewportWidth.XL_MIN)) {
     return 7;
   }
 
-  if (screenWidth >= parseInt(ViewportWidth.MD_MIN) && screenWidth <= parseInt(ViewportWidth.MD_MAX)) {
+  if (screenWidth >= parseInt(ViewportWidth.LG_MIN) && screenWidth <= parseInt(ViewportWidth.LG_MAX)) {
     return 6;
   }
 

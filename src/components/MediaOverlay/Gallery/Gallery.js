@@ -23,10 +23,10 @@ const Gallery = ({ photos, onMediaClick }) => {
 
   return (
     <div className={styles.Gallery}>
-      <MediaQuery minWidth={ViewportWidth.SM_MIN}>
+      <MediaQuery minWidth={ViewportWidth.MD_MIN}>
         {renderPhotoGallery(5)}
       </MediaQuery>
-      <MediaQuery maxWidth={ViewportWidth.XS_MAX}>
+      <MediaQuery maxWidth={ViewportWidth.SM_MAX}>
         {renderPhotoGallery(2)}
       </MediaQuery>
     </div>

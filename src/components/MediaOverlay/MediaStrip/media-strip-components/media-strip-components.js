@@ -19,7 +19,7 @@ import styles from './media-strip-components.scss';
  */
 
 const MediaStripArrow = ({ icon, disabled, onClick }) => (
-  <MediaQuery minWidth={ViewportWidth.MD_MIN}>
+  <MediaQuery minWidth={ViewportWidth.LG_MIN}>
     <button type="button" className={styles.arrow} onClick={onClick} disabled={disabled}>
       <FontAwesomeIcon icon={icon} size="2x" />
     </button>

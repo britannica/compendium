@@ -35,33 +35,33 @@ const GalleryToolbar = ({ filters, selectedFilter, setSelectedFilter }) => (
         )}
 
         secondaryTools={(
-          <MediaQuery minWidth={ViewportWidth.SM_MIN}>
+          <MediaQuery minWidth={ViewportWidth.MD_MIN}>
             {filters.length > 1 && (
               <Fragment>
-                <button type="button" className={classNames({ active: selectedFilter === null })} onClick={() => setSelectedFilter(null)}>
+                <button type="button" className={classNames({ [styles.active]: selectedFilter === null })} onClick={() => setSelectedFilter(null)}>
                   <FontAwesomeIcon icon={faImages} size="lg" />
                   All
                 </button>
                 {filters.includes(MediaType.IMAGE) && (
-                  <button type="button" className={classNames({ active: selectedFilter === MediaType.IMAGE })} onClick={() => setSelectedFilter(MediaType.IMAGE)}>
+                  <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.IMAGE })} onClick={() => setSelectedFilter(MediaType.IMAGE)}>
                     <FontAwesomeIcon icon={faImage} size="lg" />
                     Images
                   </button>
                 )}
                 {filters.includes(MediaType.VIDEO) && (
-                  <button type="button" className={classNames({ active: selectedFilter === MediaType.VIDEO })} onClick={() => setSelectedFilter(MediaType.VIDEO)}>
+                  <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.VIDEO })} onClick={() => setSelectedFilter(MediaType.VIDEO)}>
                     <FontAwesomeIcon icon={faPlayCircle} size="lg" />
                     Videos
                   </button>
                 )}
                 {filters.includes(MediaType.AUDIO) && (
-                  <button type="button" className={classNames({ active: selectedFilter === MediaType.AUDIO })} onClick={() => setSelectedFilter(MediaType.AUDIO)}>
+                  <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.AUDIO })} onClick={() => setSelectedFilter(MediaType.AUDIO)}>
                     <FontAwesomeIcon icon={faVolume} size="lg" />
                     Audio
                   </button>
                 )}
                 {filters.includes(MediaType.INTERACTIVE) && (
-                  <button type="button" className={classNames({ active: selectedFilter === MediaType.INTERACTIVE })} onClick={() => setSelectedFilter(MediaType.INTERACTIVE)}>
+                  <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.INTERACTIVE })} onClick={() => setSelectedFilter(MediaType.INTERACTIVE)}>
                     <FontAwesomeIcon icon={faBullseyePointer} size="lg" />
                     Interactives
                   </button>

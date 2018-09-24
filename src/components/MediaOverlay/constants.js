@@ -36,4 +36,6 @@ export const ViewportWidth = {
   MD_MIN: css.screenMdMin,
   MD_MAX: css.screenMdMax,
   LG_MIN: css.screenLgMin,
+  LG_MAX: css.screenLgMax,
+  XL_MIN: css.screenXlMin,
 };

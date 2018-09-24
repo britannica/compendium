@@ -21,7 +21,7 @@
 
     // todo: can we overlap this using grid?
 
-    @include media-breakpoint-between(md, lg) {
+    @include media-breakpoint-between(md, md) {
         $height: 200px;
 
         height: $height;

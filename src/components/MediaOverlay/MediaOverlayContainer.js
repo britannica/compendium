@@ -362,12 +362,12 @@ class MediaOverlayContainer extends Component {
     document.addEventListener('keyup', this.handleKeyUp);
 
     onMediaQueriesMatch([
-      minWidth(ViewportWidth.LG_MIN),
+      minWidth(ViewportWidth.XL_MIN),
+      betweenWidths(ViewportWidth.LG_MIN, ViewportWidth.LG_MAX),
       betweenWidths(ViewportWidth.MD_MIN, ViewportWidth.MD_MAX),
-      betweenWidths(ViewportWidth.SM_MIN, ViewportWidth.SM_MAX),
     ], this.handleBreakpoints);
 
-    onMinWidth(ViewportWidth.MD_MIN, () => this.showSidebarAndControls(true));
+    onMinWidth(ViewportWidth.LG_MIN, () => this.showSidebarAndControls(true));
   }
 
   removeEventListeners() {

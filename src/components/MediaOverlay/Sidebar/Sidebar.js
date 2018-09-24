@@ -38,13 +38,13 @@ const Sidebar = () => (
           <div className={styles.sidebarContent}>
             {/* Show all panels when in sm-lg */}
 
-            <MediaQuery minWidth={ViewportWidth.MD_MIN}>
+            <MediaQuery minWidth={ViewportWidth.LG_MIN}>
               {getSidebarPanel(activeSidebarPanel, { media })}
             </MediaQuery>
 
             {/* Always show the Caption panel when on xs */}
 
-            <MediaQuery maxWidth={ViewportWidth.SM_MAX}>
+            <MediaQuery maxWidth={ViewportWidth.MD_MAX}>
               <CaptionPanel media={media} />
             </MediaQuery>
           </div>
@@ -52,7 +52,7 @@ const Sidebar = () => (
           {/* Show ads if they're enabled, and if we're on md-lg */}
 
           {hasAds && (
-            <MediaQuery minWidth={ViewportWidth.MD_MIN}>
+            <MediaQuery minWidth={ViewportWidth.LG_MIN}>
               <Ad previousMediaId={previousMediaId} />
             </MediaQuery>
           )}

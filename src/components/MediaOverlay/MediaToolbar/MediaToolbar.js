@@ -62,18 +62,16 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
           )}
 
           sidebarTools={(
-            <Fragment>
-              <MediaQuery minWidth={ViewportWidth.MD_MIN}>
-                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION })}>
-                  <FontAwesomeIcon icon={faInfoCircle} size="lg" />
-                  Caption
-                </button>
-                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CITE)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CITE })}>
-                  <FontAwesomeIcon icon={faCheckSquare} size="lg" />
-                  Cite
-                </button>
-              </MediaQuery>
-            </Fragment>
+            <MediaQuery minWidth={ViewportWidth.LG_MIN}>
+              <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION })}>
+                <FontAwesomeIcon icon={faInfoCircle} size="lg" />
+                Caption
+              </button>
+              <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CITE)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CITE })}>
+                <FontAwesomeIcon icon={faCheckSquare} size="lg" />
+                Cite
+              </button>
+            </MediaQuery>
           )}
         />
       );

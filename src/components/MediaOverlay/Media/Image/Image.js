@@ -6,10 +6,10 @@ import { ViewportWidth } from '../../constants';
 
 const Image = ({ imageUrl, expandedImageUrl, alt }) => (
   <Fragment>
-    <MediaQuery maxWidth={ViewportWidth.XS_MAX}>
+    <MediaQuery maxWidth={ViewportWidth.SM_MAX}>
       <img src={imageUrl} alt={alt} />
     </MediaQuery>
-    <MediaQuery minWidth={ViewportWidth.SM_MIN}>
+    <MediaQuery minWidth={ViewportWidth.MD_MIN}>
       <img src={expandedImageUrl || imageUrl} alt={alt} />
     </MediaQuery>
   </Fragment>

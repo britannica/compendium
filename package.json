@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@britannica/eslint-config": "^1.2.0",
+    "babel-plugin-transform-imports": "^1.5.1",
     "eslint": "^5.6.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",

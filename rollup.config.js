@@ -44,6 +44,11 @@ export default [
         plugins: [
           '@babel/plugin-proposal-class-properties',
           '@babel/plugin-proposal-object-rest-spread',
+          ['transform-imports', {
+            'date-fns': {
+              transform: 'date-fns/${member}',
+            },
+          }],
         ],
       }),
       resolve(),

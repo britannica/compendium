@@ -3,6 +3,7 @@
   "version": "1.0.0-beta.17",
   "main": "./dist/compendium.cjs.js",
   "module": "./dist/compendium.es.js",
+  "sideEffects": false,
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
   "dependencies": {

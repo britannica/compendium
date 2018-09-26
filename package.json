@@ -2,7 +2,7 @@
   "name": "@britannica/compendium",
   "version": "1.0.0-beta.16",
   "main": "./dist/compendium.cjs.js",
-  "module": "./dist/compendium.esm.js",
+  "module": "./dist/compendium.es.js",
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
   "dependencies": {

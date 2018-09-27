@@ -1,6 +1,5 @@
 
 import React from 'react';
-import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,7 @@ const Toolbar = ({ primaryTools, secondaryTools, sidebarTools }) => (
           </div>
         )}
         {!sidebarTools && (
-          <Link to={baseHref} className={classNames(styles.close, 'mr-10 mr-2')} title="Close">
+          <Link to={baseHref} className={styles.close} title="Close">
             <FontAwesomeIcon icon={faTimes} size="2x" />
           </Link>
         )}

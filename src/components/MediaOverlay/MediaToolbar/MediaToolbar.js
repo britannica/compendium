@@ -47,12 +47,12 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
               {media.type === MediaType.IMAGE && (
                 <Fragment>
                   {media.expandable && (
-                    <a href={`/media/full/${type}/${stripId}/${mediaId}`} className="hidden-xs" target="_blank" rel="noopener noreferrer">
+                    <a data-analytics="MediaOverlay--fullButton" href={`/media/full/${type}/${stripId}/${mediaId}`} className="hidden-xs" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faSearchPlus} size="lg" />
                       View Full-Size
                     </a>
                   )}
-                  <a href={`/media/print/${type}/${stripId}/${mediaId}`} className="hidden-xs" target="_blank" rel="noopener noreferrer">
+                  <a data-analytics="MediaOverlay--printButton" href={`/media/print/${type}/${stripId}/${mediaId}`} className="hidden-xs" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faPrint} size="lg" />
                     Print
                   </a>

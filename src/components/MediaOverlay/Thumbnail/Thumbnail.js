@@ -13,7 +13,6 @@ import styles from './Thumbnail.scss';
 
 /**
  * Helper function; renders the specific type of thumbnail media
- * todo: remove mendel spacing utility classes after we get mendel on bootstrap's spacing utility system
  *
  * @param type
  * @param thumbnailUrl

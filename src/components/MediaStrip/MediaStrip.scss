@@ -1,5 +1,5 @@
 
-@import "../variables";
+@import "../MediaOverlay/variables";
 
 .MediaStrip {
     grid-area: mediaStrip;
@@ -9,7 +9,7 @@
         margin: 0 $overlay-gap $overlay-gap;
     }
 
-    // These are nuka-carousel class names, and don't get mangled by CSS modules
+    // These are nuka-carousel class names, don't mangle them with CSS modules
 
     :global {
 

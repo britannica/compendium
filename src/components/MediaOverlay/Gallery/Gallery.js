@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import PhotoGallery from 'react-photo-gallery';
 import MediaQuery from 'react-responsive';
-import { ViewportWidth } from '../constants';
-import Thumbnail from '../Thumbnail/Thumbnail';
+import { ViewportWidth } from '../../../constants';
+import Thumbnail from '../../Thumbnail/Thumbnail';
+import MediaLink from '../MediaLink/MediaLink';
 import { withGalleryContext } from './Gallery.context';
 import styles from './Gallery.scss';
 
@@ -15,7 +16,7 @@ const Gallery = ({ photos, onMediaClick }) => {
         photos={photos}
         columns={columns}
         ImageComponent={({ photo }) => (
-          <Thumbnail {...photo} onClick={onMediaClick} size="2x" hoverCaption opaque />
+          <Thumbnail {...photo} onClick={onMediaClick} size="2x" hoverCaption opaque ThumbnailComponent={MediaLink} />
         )}
       />
     );

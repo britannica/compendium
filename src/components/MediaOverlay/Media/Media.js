@@ -3,7 +3,7 @@ import { faSpinnerThird } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { MediaType } from '../constants';
+import { MediaType } from '../../../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Audio from './Audio/Audio';
 import Image from './Image/Image';

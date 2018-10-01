@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 import pathToRegexp from 'path-to-regexp';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { OverlayMode, OverlayType, SidebarPanel, ViewportWidth } from './constants';
+import { ViewportWidth } from '../../constants';
+import { OverlayMode, OverlayType, SidebarPanel } from './constants';
 import {
   findCurrentMediaIndex,
   getCarouselIndex,
@@ -71,6 +72,7 @@ class MediaOverlayContainer extends Component {
       media: {},
       mode: OverlayMode.MEDIA_VIEW,
       mediaStrip: [],
+      overlayTitle: '',
       previousMediaId: null,
       slidesToShow: determineSlidesToShow(),
     };
@@ -139,12 +141,15 @@ class MediaOverlayContainer extends Component {
     try {
       const { type, history, match: { params: { mediaId, stripId } } } = this.props;
       const { slidesToShow } = this.state;
-      let { mediaStrip } = this.state;
+      let { mediaStrip, overlayTitle } = this.state;
 
       // Fetch the media strip if it hasn't been already
 
       if (mediaStrip.length === 0) {
-        mediaStrip = await MediaService.fetchMediaStrip(stripId, type);
+        const { thumbnails, title } = await MediaService.fetchMediaStrip(stripId, type);
+
+        mediaStrip = thumbnails;
+        overlayTitle = title;
       }
 
       // If we're coming in on a route without a media id, redirect to a route that has a media id
@@ -160,6 +165,8 @@ class MediaOverlayContainer extends Component {
       return this.setState({
         mediaIndex,
         mediaStrip,
+        overlayTitle,
+        title,
         carouselPageIndex: getCarouselIndex(mediaIndex, slidesToShow),
         media: await MediaService.fetchMedia(nextMediaId),
         previousMediaId: mediaId,

@@ -1,5 +1,5 @@
 
-import { ViewportWidth } from '../constants';
+import { ViewportWidth } from '../../../constants';
 import { maxWidth } from './responsive-helpers';
 
 /**

@@ -90,3 +90,14 @@ $colors: map-merge(
 @value screenLgMin #{map-get($grid-breakpoints, lg)};
 @value screenLgMax #{map-get($grid-breakpoints, xl) - 1};
 @value screenXlMin #{map-get($grid-breakpoints, xl)};
+
+
+// --- Mixins
+
+@mixin reset-button-appearance {
+  appearance: none;
+  background: inherit;
+  border: inherit;
+  font-size: inherit;
+  padding: inherit;
+}

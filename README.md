@@ -25,6 +25,16 @@ ReactDOM.render(
 - Requires FontAwesome 5 Pro subscription. This must be configured at the project level. [Read more](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro)
 
 
+### Components
+
+- LazyImage
+- MediaOverlay
+- MediaStrip
+- Shave
+- Taparoo
+- Thumbnail
+
+
 ## License
 
 [MIT](LICENSE).

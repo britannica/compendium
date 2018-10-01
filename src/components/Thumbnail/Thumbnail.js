@@ -4,12 +4,17 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faVolume } from '@fortawesome/pro-solid-svg-icons';
-import LazyImage from '../../LazyImage/LazyImage';
-import Shave from '../../Shave/Shave';
-import { MediaType } from '../constants';
-import MediaLink from '../MediaLink/MediaLink';
+import LazyImage from '../LazyImage/LazyImage';
+import Shave from '../Shave/Shave';
+import { MediaType } from '../../constants';
 import styles from './Thumbnail.scss';
 
+
+// Render the Thumbnail in a div by default
+
+function DefaultThumbnailComponent({ children }) {
+  return <div>{children}</div>;
+}
 
 /**
  * Helper function; renders the specific type of thumbnail media
@@ -72,10 +77,21 @@ function renderThumbnailType({ type, thumbnailUrl, altText, height, size, width,
  */
 
 const Thumbnail = (props) => {
-  const { mediaId, type, className, height, hoverCaption, size, width, onClick, opaque } = props;
+  const {
+    ThumbnailComponent,
+    mediaId,
+    type,
+    className,
+    height,
+    hoverCaption,
+    size,
+    width,
+    onClick,
+    opaque,
+  } = props;
 
   return (
-    <MediaLink
+    <ThumbnailComponent
       mediaId={mediaId}
       className={classNames(
         styles.Thumbnail,
@@ -89,7 +105,7 @@ const Thumbnail = (props) => {
       onClick={onClick}
     >
       {renderThumbnailType(props)}
-    </MediaLink>
+    </ThumbnailComponent>
   );
 };
 
@@ -100,6 +116,7 @@ Thumbnail.propTypes = {
   type: PropTypes.oneOf(Object.values(MediaType)).isRequired,
   title: PropTypes.string.isRequired,
 
+  ThumbnailComponent: PropTypes.func,
   className: PropTypes.string,
   container: PropTypes.string,
   height: PropTypes.number,
@@ -111,6 +128,7 @@ Thumbnail.propTypes = {
 };
 
 Thumbnail.defaultProps = {
+  ThumbnailComponent: DefaultThumbnailComponent,
   className: '',
   container: null,
   height: 75,

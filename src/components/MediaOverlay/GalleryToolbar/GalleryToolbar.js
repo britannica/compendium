@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import MediaQuery from 'react-responsive';
-import { MediaType, ViewportWidth } from '../constants';
+import { MediaType, ViewportWidth } from '../../../constants';
 import { withGalleryContext } from '../Gallery/Gallery.context';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Toolbar from '../Toolbar/Toolbar';

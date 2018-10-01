@@ -2,7 +2,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import MediaQuery from 'react-responsive';
-import { SidebarPanel, ViewportWidth } from '../constants';
+import { ViewportWidth } from '../../../constants';
+import { SidebarPanel } from '../constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Ad from './Ad/Ad';
 import CaptionPanel from './CaptionPanel/CaptionPanel';

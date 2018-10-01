@@ -1,7 +1,7 @@
 
 // --- Media Queries
 
-import { MediaQuery } from '../constants';
+import { MediaQuery } from '../../../constants';
 
 const matchedMedia = [];
 

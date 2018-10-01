@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MediaQuery from 'react-responsive';
-import { ViewportWidth } from '../../constants';
+import { ViewportWidth } from '../../../constants';
 import styles from './media-strip-components.scss';
 
 

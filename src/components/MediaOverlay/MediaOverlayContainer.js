@@ -166,7 +166,6 @@ class MediaOverlayContainer extends Component {
         mediaIndex,
         mediaStrip,
         overlayTitle,
-        title,
         carouselPageIndex: getCarouselIndex(mediaIndex, slidesToShow),
         media: await MediaService.fetchMedia(nextMediaId),
         previousMediaId: mediaId,
@@ -177,6 +176,8 @@ class MediaOverlayContainer extends Component {
     // Otherwise we have an error
 
     catch (error) {
+      console.error(error);
+
       return this.setState({
         hasError: true,
       });

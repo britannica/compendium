@@ -7,7 +7,7 @@ import Thumbnail from '../Thumbnail/Thumbnail';
 import { MediaStripNextArrow, MediaStripPreviousArrow } from './media-strip-components/media-strip-components';
 import styles from './MediaStrip.scss';
 
-const MediaStrip = ({ handleCarouselPagination, mediaIndex, mediaStrip, slideIndex, slidesToShow }) => {
+const MediaStrip = ({ handleCarouselPagination, mediaIndex, mediaStrip, slideIndex, slidesToShow, ThumbnailComponent }) => {
   const hasArrows = mediaStrip.length > slidesToShow;
 
   return (
@@ -17,6 +17,8 @@ const MediaStrip = ({ handleCarouselPagination, mediaIndex, mediaStrip, slideInd
         slidesToShow={slidesToShow}
         slidesToScroll={slidesToShow}
         cellSpacing={5}
+        heightMode="first"
+        initialSlideHeight={75}
         renderBottomCenterControls={null}
         renderCenterLeftControls={hasArrows ? MediaStripPreviousArrow : null}
         renderCenterRightControls={hasArrows ? MediaStripNextArrow : null}
@@ -30,6 +32,7 @@ const MediaStrip = ({ handleCarouselPagination, mediaIndex, mediaStrip, slideInd
             {...thumbnail}
             height={75}
             width={null}
+            ThumbnailComponent={ThumbnailComponent}
           />
         ))}
       </Carousel>
@@ -43,11 +46,13 @@ MediaStrip.propTypes = {
   mediaStrip: PropTypes.arrayOf(PropTypes.shape(Thumbnail.propTypes)).isRequired,
   slideIndex: PropTypes.number,
   slidesToShow: PropTypes.number.isRequired,
+  ThumbnailComponent: Thumbnail.propTypes.ThumbnailComponent,
 };
 
 MediaStrip.defaultProps = {
   mediaIndex: 0,
   slideIndex: 0,
+  ThumbnailComponent: Thumbnail.defaultProps.ThumbnailComponent,
 };
 
 export default MediaStrip;

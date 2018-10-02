@@ -6,6 +6,7 @@ import { OverlayMode } from './constants';
 import { GalleryProvider } from './Gallery/Gallery.context';
 import GalleryContainer from './Gallery/GalleryContainer';
 import GalleryToolbar from './GalleryToolbar/GalleryToolbar';
+import MediaLink from './MediaLink/MediaLink';
 import MediaOverlayContext from './MediaOverlay.context';
 import MediaStrip from '../MediaStrip/MediaStrip';
 import MediaToolbar from './MediaToolbar/MediaToolbar';
@@ -46,6 +47,7 @@ const MediaOverlay = () => (
                     mediaStrip={mediaStrip}
                     slidesToShow={slidesToShow}
                     handleCarouselPagination={handleCarouselPagination}
+                    ThumbnailComponent={MediaLink}
                   />
                 </MediaQuery>
               )}

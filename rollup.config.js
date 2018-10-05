@@ -16,14 +16,8 @@ export default [
   {
     input: 'src/index.js',
     external: [
-      '@fortawesome/fontawesome-svg-core',
-      '@fortawesome/pro-light-svg-icons',
-      '@fortawesome/pro-regular-svg-icons',
-      '@fortawesome/pro-solid-svg-icons',
-      '@fortawesome/react-fontawesome',
-      'react-router-dom',
-      'prop-types',
-      'react',
+      ...Object.keys(pkg.dependencies),
+      ...Object.keys(pkg.peerDependencies),
     ],
     output: [
       { file: pkg.main, format: 'cjs' },
@@ -44,11 +38,6 @@ export default [
         plugins: [
           '@babel/plugin-proposal-class-properties',
           '@babel/plugin-proposal-object-rest-spread',
-          ['transform-imports', {
-            'date-fns': {
-              transform: 'date-fns/${member}',
-            },
-          }],
         ],
       }),
       resolve(),

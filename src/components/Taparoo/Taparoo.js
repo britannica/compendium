@@ -73,13 +73,13 @@ class Taparoo extends Component {
     // Horizontal swipe
 
     if (deltaX > swipeThreshold) {
-      swipes.push(Swipe.LEFT);
+      swipes.push(Taparoo.SwipeDirection.LEFT);
 
       onSwipeLeft(event);
     }
 
     else if (deltaX < -swipeThreshold) {
-      swipes.push(Swipe.RIGHT);
+      swipes.push(Taparoo.SwipeDirection.RIGHT);
 
       onSwipeRight(event);
     }
@@ -88,13 +88,13 @@ class Taparoo extends Component {
     // Vertical swipe
 
     if (deltaY > swipeThreshold) {
-      swipes.push(Swipe.UP);
+      swipes.push(Taparoo.SwipeDirection.UP);
 
       onSwipeUp(event);
     }
 
     else if (deltaY < -swipeThreshold) {
-      swipes.push(Swipe.DOWN);
+      swipes.push(Taparoo.SwipeDirection.DOWN);
 
       onSwipeDown(event);
     }

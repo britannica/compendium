@@ -94,7 +94,7 @@ $thumbnail-border-width: 2px;
         }
     }
 
-    &.Image {
+    &.Image, &.Interactive {
 
         .imageCaption {
             background: linear-gradient(transparent, rgba(black, 0.8));

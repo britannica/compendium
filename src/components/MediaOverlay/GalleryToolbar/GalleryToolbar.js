@@ -12,15 +12,15 @@ import MediaOverlayContext from '../MediaOverlay.context';
 import Toolbar from '../Toolbar/Toolbar';
 import styles from '../Toolbar/Toolbar.scss';
 
-const GalleryToolbar = ({ filters, selectedFilter, setSelectedFilter }) => (
+const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFilter }) => (
   <MediaOverlayContext.Consumer>
-    {({ enableMediaView, overlayState: { mediaStrip } }) => (
+    {({ enableMediaView }) => (
       <Toolbar
         primaryTools={(
           <Fragment>
-            {mediaStrip.length > 0 && (
+            {filteredPhotos.length > 0 && (
               <div className={styles.mediaCount}>
-                {mediaStrip.length} item{mediaStrip.length === 1 ? '' : 's'}
+                {filteredPhotos.length} item{filteredPhotos.length === 1 ? '' : 's'}
               </div>
             )}
             <button type="button" onClick={enableMediaView} style={{ display: 'inline-flex' }}>
@@ -76,12 +76,14 @@ const GalleryToolbar = ({ filters, selectedFilter, setSelectedFilter }) => (
 );
 
 GalleryToolbar.propTypes = {
+  filteredPhotos: PropTypes.arrayOf(PropTypes.shape()),
   filters: PropTypes.arrayOf(PropTypes.oneOf(Object.values(MediaType))),
   selectedFilter: PropTypes.string,
   setSelectedFilter: PropTypes.func,
 };
 
 GalleryToolbar.defaultProps = {
+  filteredPhotos: [],
   filters: [],
   selectedFilter: null,
   setSelectedFilter: null,

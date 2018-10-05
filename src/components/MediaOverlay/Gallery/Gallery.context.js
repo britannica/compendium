@@ -1,9 +1,12 @@
 
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ChildrenProp from '../../../prop-types/ChildrenProp';
 
 const DEFAULT_STATE = {
+  filteredPhotos: [],
   filters: [],
+  photos: [],
   selectedFilter: null,
 };
 
@@ -16,23 +19,62 @@ export class GalleryProvider extends Component {
   constructor(props) {
     super(props);
 
-    this.setFilters = this.setFilters.bind(this);
     this.setSelectedFilter = this.setSelectedFilter.bind(this);
   }
 
   state = DEFAULT_STATE;
 
-  setFilters(filters) {
+
+  // --- Lifecycle methods
+
+  componentDidMount() {
+    // Map `mediaStrip` to a `photos` object which used by react-photo-gallery
+
+    const { mediaStrip } = this.props;
+
+    const photos = mediaStrip.map(media => ({
+      ...media,
+      key: media.mediaId,
+      src: media.thumbnailUrl || '',
+      width: media.width || 16,
+      height: media.height || 9,
+    }));
+
+
+    // Determine the initial set of filters
+
+    const filters = new Set();
+
+    photos.forEach(photo => filters.add(photo.type));
+
+
+    // Set state
+
     this.setState({
-      filters,
+      photos,
+      filteredPhotos: photos,
+      filters: [...filters],
     });
   }
 
+
+  // --- Custom methods
+
   setSelectedFilter(filter) {
+    const { photos } = this.state;
+
+    const filteredPhotos = photos.filter(photo => (
+      photo.type === filter || filter === null
+    ));
+
     this.setState({
+      filteredPhotos,
       selectedFilter: filter,
     });
   }
+
+
+  // --- Render
 
   render() {
     const { children } = this.props;
@@ -53,6 +95,7 @@ export class GalleryProvider extends Component {
 
 GalleryProvider.propTypes = {
   children: ChildrenProp,
+  mediaStrip: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 GalleryProvider.defaultProps = {

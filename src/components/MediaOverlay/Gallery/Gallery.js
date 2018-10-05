@@ -9,11 +9,11 @@ import MediaLink from '../MediaLink/MediaLink';
 import { withGalleryContext } from './Gallery.context';
 import styles from './Gallery.scss';
 
-const Gallery = ({ photos, onMediaClick }) => {
+const Gallery = ({ filteredPhotos, onMediaClick }) => {
   function renderPhotoGallery(columns) {
     return (
       <PhotoGallery
-        photos={photos}
+        photos={filteredPhotos}
         columns={columns}
         ImageComponent={({ photo }) => (
           <Thumbnail {...photo} onClick={onMediaClick} size="2x" hoverCaption opaque ThumbnailComponent={MediaLink} />
@@ -36,7 +36,7 @@ const Gallery = ({ photos, onMediaClick }) => {
 
 Gallery.propTypes = {
   onMediaClick: PropTypes.func,
-  photos: PropTypes.arrayOf(PropTypes.shape({
+  filteredPhotos: PropTypes.arrayOf(PropTypes.shape({
     src: PropTypes.string,
     height: PropTypes.number,
     width: PropTypes.number,

@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
 import { OverlayMode } from './constants';
+import Gallery from './Gallery/Gallery';
 import { GalleryProvider } from './Gallery/Gallery.context';
-import GalleryContainer from './Gallery/GalleryContainer';
 import GalleryToolbar from './GalleryToolbar/GalleryToolbar';
 import MediaLink from './MediaLink/MediaLink';
 import MediaOverlayContext from './MediaOverlay.context';
@@ -55,9 +55,9 @@ const MediaOverlay = () => (
             </Fragment>
           )}
           {mode === OverlayMode.GALLERY_VIEW && (
-            <GalleryProvider>
+            <GalleryProvider mediaStrip={mediaStrip}>
               <GalleryToolbar />
-              <GalleryContainer mediaStrip={mediaStrip} onMediaClick={enableMediaView} />
+              <Gallery onMediaClick={enableMediaView} />
             </GalleryProvider>
           )}
         </div>

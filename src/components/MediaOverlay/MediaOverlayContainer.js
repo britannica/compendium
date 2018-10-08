@@ -26,6 +26,7 @@ import {
 import MediaOverlay from './MediaOverlay';
 import MediaOverlayContext from './MediaOverlay.context';
 import MediaService from './services/media-service';
+import mediaViewerStyles from './MediaViewer/MediaViewer.scss';
 
 class MediaOverlayContainer extends Component {
   static Type = OverlayType;
@@ -282,7 +283,7 @@ class MediaOverlayContainer extends Component {
    */
 
   handleTap(event) {
-    if (!event.target.closest('.mediaArrow')) {
+    if (!event.target.closest(`.${mediaViewerStyles.mediaArrow}`)) {
       this.toggleSidebarAndControls();
     }
   }

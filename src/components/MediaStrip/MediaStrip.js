@@ -41,7 +41,7 @@ const MediaStrip = ({ handleCarouselPagination, mediaIndex, mediaStrip, slideInd
 };
 
 MediaStrip.propTypes = {
-  handleCarouselPagination: PropTypes.func.isRequired,
+  handleCarouselPagination: PropTypes.func,
   mediaIndex: PropTypes.number,
   mediaStrip: PropTypes.arrayOf(PropTypes.shape(Thumbnail.propTypes)).isRequired,
   slideIndex: PropTypes.number,
@@ -50,6 +50,7 @@ MediaStrip.propTypes = {
 };
 
 MediaStrip.defaultProps = {
+  handleCarouselPagination: () => {},
   mediaIndex: 0,
   slideIndex: 0,
   ThumbnailComponent: Thumbnail.defaultProps.ThumbnailComponent,

@@ -25,10 +25,10 @@ class Shave extends Component {
   }
 
   render() {
-    const { children, className } = this.props;
+    const { children, className, maxHeight, maxHeightPercentage, ...rest } = this.props;
 
     return (
-      <div className={`ReactShave ${className}`} ref={this.ref}>
+      <div className={`ReactShave ${className}`} ref={this.ref} {...rest}>
         {children}
       </div>
     );

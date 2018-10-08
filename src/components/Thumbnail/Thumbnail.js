@@ -116,7 +116,7 @@ Thumbnail.propTypes = {
   type: PropTypes.oneOf(Object.values(MediaType)).isRequired,
   title: PropTypes.string.isRequired,
 
-  ThumbnailComponent: PropTypes.func,
+  ThumbnailComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   container: PropTypes.string,
   height: PropTypes.number,

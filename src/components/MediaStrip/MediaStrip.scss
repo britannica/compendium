@@ -28,3 +28,15 @@
         }
     }
 }
+
+.captions {
+
+    :global {
+
+        // todo: This should be removed after the following is resolved: https://github.com/FormidableLabs/nuka-carousel/issues/417
+
+        .slider-list {
+            height: 125px !important;
+        }
+    }
+}

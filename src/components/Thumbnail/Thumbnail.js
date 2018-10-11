@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -79,6 +79,8 @@ function renderThumbnailType({ type, thumbnailUrl, altText, height, size, width,
 const Thumbnail = (props) => {
   const {
     ThumbnailComponent,
+    altText,
+    caption,
     mediaId,
     type,
     className,
@@ -91,21 +93,26 @@ const Thumbnail = (props) => {
   } = props;
 
   return (
-    <ThumbnailComponent
-      mediaId={mediaId}
-      className={classNames(
-        styles.Thumbnail,
-        styles[className],
-        styles[type],
-        styles[`size-${size}`],
-        { [styles.opaque]: opaque },
-        { [styles.hoverCaption]: hoverCaption },
+    <Fragment>
+      <ThumbnailComponent
+        mediaId={mediaId}
+        className={classNames(
+          styles.Thumbnail,
+          styles[className],
+          styles[type],
+          styles[`size-${size}`],
+          { [styles.opaque]: opaque },
+          { [styles.hoverCaption]: hoverCaption },
+        )}
+        style={{ height, width }}
+        onClick={onClick}
+      >
+        {renderThumbnailType(props)}
+      </ThumbnailComponent>
+      {caption && (
+        <Shave className={styles.caption} maxHeight={50}>{altText}</Shave>
       )}
-      style={{ height, width }}
-      onClick={onClick}
-    >
-      {renderThumbnailType(props)}
-    </ThumbnailComponent>
+    </Fragment>
   );
 };
 
@@ -117,6 +124,7 @@ Thumbnail.propTypes = {
   title: PropTypes.string.isRequired,
 
   ThumbnailComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  caption: PropTypes.bool,
   className: PropTypes.string,
   container: PropTypes.string,
   height: PropTypes.number,
@@ -129,6 +137,7 @@ Thumbnail.propTypes = {
 
 Thumbnail.defaultProps = {
   ThumbnailComponent: DefaultThumbnailComponent,
+  caption: false,
   className: '',
   container: null,
   height: 75,

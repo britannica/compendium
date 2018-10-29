@@ -9,6 +9,11 @@ const CaptionPanel = ({ media: { title, caption, credit, licenseUrl, licenseTitl
     <div className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
     <div className={styles.caption} dangerouslySetInnerHTML={{ __html: caption }} />
     <div className={styles.credit} dangerouslySetInnerHTML={{ __html: credit }} />
+    {!title && !caption && !credit && (
+      <div className={styles.credit}>
+        Encyclop&aelig;dia Britannica, Inc.
+      </div>
+    )}
     {licenseUrl && (
       <a href={licenseUrl} className={styles.license} dangerouslySetInnerHTML={{ __html: licenseTitle }} />
     )}

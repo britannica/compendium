@@ -39,7 +39,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
               {mediaStrip.length > 7 && (
                 <button type="button" onClick={enableGalleryView}>
                   <FontAwesomeIcon icon={faTh} size="lg" />
-                  View Gallery
+                  View All
                 </button>
               )}
             </Fragment>

@@ -23,16 +23,18 @@
         grid-template-columns: 1fr;
 
         @include media-breakpoint-down(sm) {
-            grid-template-rows: min-content 1fr;
+            grid-template-rows: min-content min-content 1fr;
             grid-template-areas:
                     'toolbar'
+                    'overlayTitle'
                     'mediaViewer';
         }
 
         @include media-breakpoint-up(md) {
-            grid-template-rows: min-content 1fr min-content min-content;
+            grid-template-rows: min-content min-content 1fr min-content min-content;
             grid-template-areas:
                     'toolbar'
+                    'overlayTitle'
                     'mediaViewer'
                     'sidebar'
                     'mediaStrip';
@@ -40,9 +42,10 @@
 
         @include media-breakpoint-up(lg) {
             grid-template-columns: 1fr min-content;
-            grid-template-rows: auto 1fr auto;
+            grid-template-rows: auto auto 1fr auto;
             grid-template-areas:
                     'toolbar toolbar'
+                    'overlayTitle sidebar'
                     'mediaViewer sidebar'
                     'mediaStrip sidebar';
         }

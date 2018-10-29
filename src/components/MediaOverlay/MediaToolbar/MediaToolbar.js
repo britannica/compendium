@@ -19,6 +19,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
         media,
         mediaIndex,
         mediaStrip,
+        overlayTitle,
       } = overlayState;
 
       const {
@@ -27,6 +28,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
 
       return (
         <Toolbar
+          title={overlayTitle}
           primaryTools={(
             <Fragment>
               {mediaStrip.length > 0 && (

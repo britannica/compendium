@@ -11,6 +11,7 @@ import MediaOverlayContext from './MediaOverlay.context';
 import MediaStrip from '../MediaStrip/MediaStrip';
 import MediaToolbar from './MediaToolbar/MediaToolbar';
 import MediaViewer from './MediaViewer/MediaViewer';
+import OverlayTitle from './OverlayTitle/OverlayTitle';
 import Sidebar from './Sidebar/Sidebar';
 import styles from './MediaOverlay.scss';
 
@@ -26,6 +27,7 @@ const MediaOverlay = () => (
         mediaIndex,
         mediaStrip,
         mode,
+        overlayTitle,
         slidesToShow,
       },
       overlayProps: {
@@ -38,6 +40,7 @@ const MediaOverlay = () => (
           {mode === OverlayMode.MEDIA_VIEW && (
             <Fragment>
               <MediaToolbar />
+              <OverlayTitle overlayTitle={overlayTitle} />
               <MediaViewer />
               {hasMediaStrip && (
                 <MediaQuery minWidth={ViewportWidth.MD_MIN}>

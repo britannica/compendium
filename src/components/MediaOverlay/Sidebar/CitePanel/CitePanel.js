@@ -34,7 +34,7 @@ const CitePanel = ({ media }) => (
       </li>
       <li>
         <strong>Access Date</strong>
-        {format(new Date(), 'MMMM D, YYYY')}
+        {format(new Date(), 'MMMM d, yyyy')}
       </li>
     </ul>
   </div>

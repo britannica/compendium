@@ -6,7 +6,7 @@ import React, { Fragment } from 'react';
 import MediaQuery from 'react-responsive';
 import { withRouter } from 'react-router-dom';
 import { MediaType, ViewportWidth } from '../../../constants';
-import { SidebarPanel } from '../constants';
+import { SidebarPanel } from '../overlay-constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Toolbar from '../Toolbar/Toolbar';
 import styles from '../Toolbar/Toolbar.scss';

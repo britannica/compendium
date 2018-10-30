@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
-import { OverlayMode } from './constants';
+import { OverlayMode } from './overlay-constants';
 import Gallery from './Gallery/Gallery';
 import { GalleryProvider } from './Gallery/Gallery.context';
 import GalleryToolbar from './GalleryToolbar/GalleryToolbar';

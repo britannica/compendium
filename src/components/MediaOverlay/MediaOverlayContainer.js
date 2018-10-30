@@ -9,7 +9,7 @@ import pathToRegexp from 'path-to-regexp';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { ViewportWidth } from '../../constants';
-import { OverlayMode, OverlayType, SidebarPanel } from './constants';
+import { OverlayMode, OverlayType, SidebarPanel } from './overlay-constants';
 import {
   findCurrentMediaIndex,
   getCarouselIndex,

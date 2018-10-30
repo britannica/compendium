@@ -27,7 +27,9 @@ export const Locale = {
 
 
 /**
- * Return a Locale object from either a string or an object
+ * Return a Locale object from either a string or an object.
+ *
+ * Defaults to 'en-us' if something goes wrong.
  *
  * @param {string|object} locale  A string representing a locale type (e.g. 'en-us') or an object that conforms to the Locale properties
  * @returns {object}

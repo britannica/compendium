@@ -9,6 +9,7 @@ import pathToRegexp from 'path-to-regexp';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { ViewportWidth } from '../../constants';
+import { getLocale, Locale } from './l10n';
 import { OverlayMode, OverlayType, SidebarPanel } from './overlay-constants';
 import {
   findCurrentMediaIndex,
@@ -58,7 +59,7 @@ class MediaOverlayContainer extends Component {
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.toggleSidebarAndControls = this.toggleSidebarAndControls.bind(this);
 
-    const { match: { path } } = this.props;
+    const { match: { path }, locale } = this.props;
 
     // State
 
@@ -66,13 +67,14 @@ class MediaOverlayContainer extends Component {
       path,
       activeSidebarPanel: SidebarPanel.CAPTION,
       carouselPageIndex: 0,
-      mediaIndex: 0,
       controlsHidden: false,
       hasError: false,
       isSidebarVisible: true,
+      localeLabels: getLocale(locale),
       media: {},
-      mode: OverlayMode.MEDIA_VIEW,
+      mediaIndex: 0,
       mediaStrip: [],
+      mode: OverlayMode.MEDIA_VIEW,
       overlayTitle: '',
       previousMediaId: null,
       slidesToShow: determineSlidesToShow(),
@@ -424,6 +426,7 @@ MediaOverlayContainer.propTypes = {
   hasMediaStrip: PropTypes.bool,
   collapsibleSidebar: PropTypes.bool,
   hasAds: PropTypes.bool,
+  locale: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string]),
   type: PropTypes.string,
   videoPlayerId: PropTypes.string,
 
@@ -438,6 +441,7 @@ MediaOverlayContainer.defaultProps = {
   hasMediaStrip: false,
   collapsibleSidebar: false,
   hasAds: false,
+  locale: Locale['en-us'],
   type: OverlayType.TOPIC,
   videoPlayerId: '',
 };

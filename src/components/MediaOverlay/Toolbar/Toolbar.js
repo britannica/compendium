@@ -9,7 +9,7 @@ import styles from './Toolbar.scss';
 
 const Toolbar = ({ primaryTools, secondaryTools, sidebarTools }) => (
   <MediaOverlayContext.Consumer>
-    {({ overlayProps: { baseHref } }) => (
+    {({ overlayProps: { baseHref }, overlayState: { localeLabels } }) => (
       <div className={styles.Toolbar}>
         <div className={styles.overlayTools}>
           {primaryTools}
@@ -20,13 +20,13 @@ const Toolbar = ({ primaryTools, secondaryTools, sidebarTools }) => (
         {sidebarTools && (
           <div className={styles.sidebarTools}>
             {sidebarTools}
-            <Link to={baseHref} className={styles.close} title="Close">
+            <Link to={baseHref} className={styles.close} title={localeLabels.CLOSE}>
               <FontAwesomeIcon icon={faTimes} size="2x" />
             </Link>
           </div>
         )}
         {!sidebarTools && (
-          <Link to={baseHref} className={styles.close} title="Close">
+          <Link to={baseHref} className={styles.close} title={localeLabels.CLOSE}>
             <FontAwesomeIcon icon={faTimes} size="2x" />
           </Link>
         )}

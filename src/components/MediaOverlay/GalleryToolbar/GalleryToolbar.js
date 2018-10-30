@@ -14,13 +14,13 @@ import styles from '../Toolbar/Toolbar.scss';
 
 const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFilter }) => (
   <MediaOverlayContext.Consumer>
-    {({ enableMediaView }) => (
+    {({ enableMediaView, overlayState: { localeLabels } }) => (
       <Toolbar
         primaryTools={(
           <Fragment>
             {filteredPhotos.length > 0 && (
               <div className={styles.mediaCount}>
-                {filteredPhotos.length} item{filteredPhotos.length === 1 ? '' : 's'}
+                {filteredPhotos.length} {filteredPhotos.length === 1 ? localeLabels.ITEM_SINGULAR : localeLabels.ITEM_PLURAL}
               </div>
             )}
             <button type="button" onClick={enableMediaView} style={{ display: 'inline-flex' }}>
@@ -29,7 +29,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                 <FontAwesomeIcon icon={faRectanglePortrait} style={{ border: '1px solid #eee', zIndex: 1 }} />
                 <FontAwesomeIcon icon={faRectanglePortrait} transform="shrink-7 right-7" />
               </span>
-              View Carousel
+              {localeLabels.VIEW_CAROUSEL}
             </button>
           </Fragment>
         )}
@@ -40,30 +40,30 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
               <Fragment>
                 <button type="button" className={classNames({ [styles.active]: selectedFilter === null })} onClick={() => setSelectedFilter(null)}>
                   <FontAwesomeIcon icon={faImages} size="lg" />
-                  All
+                  {localeLabels.FILTER_ALL}
                 </button>
                 {filters.includes(MediaType.IMAGE) && (
                   <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.IMAGE })} onClick={() => setSelectedFilter(MediaType.IMAGE)}>
                     <FontAwesomeIcon icon={faImage} size="lg" />
-                    Images
+                    {localeLabels.FILTER_IMAGES}
                   </button>
                 )}
                 {filters.includes(MediaType.VIDEO) && (
                   <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.VIDEO })} onClick={() => setSelectedFilter(MediaType.VIDEO)}>
                     <FontAwesomeIcon icon={faPlayCircle} size="lg" />
-                    Videos
+                    {localeLabels.FILTER_VIDEOS}
                   </button>
                 )}
                 {filters.includes(MediaType.AUDIO) && (
                   <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.AUDIO })} onClick={() => setSelectedFilter(MediaType.AUDIO)}>
                     <FontAwesomeIcon icon={faVolume} size="lg" />
-                    Audio
+                    {localeLabels.FILTER_AUDIO}
                   </button>
                 )}
                 {filters.includes(MediaType.INTERACTIVE) && (
                   <button type="button" className={classNames({ [styles.active]: selectedFilter === MediaType.INTERACTIVE })} onClick={() => setSelectedFilter(MediaType.INTERACTIVE)}>
                     <FontAwesomeIcon icon={faBullseyePointer} size="lg" />
-                    Interactives
+                    {localeLabels.FILTER_INTERACTIVES}
                   </button>
                 )}
               </Fragment>

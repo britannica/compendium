@@ -10,10 +10,10 @@ import CaptionPanel from './CaptionPanel/CaptionPanel';
 import CitePanel from './CitePanel/CitePanel';
 import styles from './Sidebar.scss';
 
-function getSidebarPanel(panel, { media }) {
+function getSidebarPanel(panel, media, localeLabels) {
   switch (panel) {
     case SidebarPanel.CITE:
-      return <CitePanel media={media} />;
+      return <CitePanel media={media} localeLabels={localeLabels} />;
 
     case SidebarPanel.CAPTION:
     default:
@@ -24,7 +24,14 @@ function getSidebarPanel(panel, { media }) {
 const Sidebar = () => (
   <MediaOverlayContext.Consumer>
     {({ overlayProps, overlayState }) => {
-      const { isSidebarVisible, activeSidebarPanel, media, previousMediaId } = overlayState;
+      const {
+        activeSidebarPanel,
+        isSidebarVisible,
+        localeLabels,
+        media,
+        previousMediaId,
+      } = overlayState;
+
       const { hasAds } = overlayProps;
 
       if (!isSidebarVisible) {
@@ -40,7 +47,7 @@ const Sidebar = () => (
             {/* Show all panels when in sm-lg */}
 
             <MediaQuery minWidth={ViewportWidth.LG_MIN}>
-              {getSidebarPanel(activeSidebarPanel, { media })}
+              {getSidebarPanel(activeSidebarPanel, media, localeLabels)}
             </MediaQuery>
 
             {/* Always show the Caption panel when on xs */}

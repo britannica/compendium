@@ -5,35 +5,35 @@ import { format } from 'date-fns';
 import Media from '../../Media/Media';
 import styles from './CitePanel.scss';
 
-const CitePanel = ({ media }) => (
+const CitePanel = ({ media, localeLabels }) => (
   <div className={styles.CitePanel}>
     <ul>
       {media.title && (
         <li>
-          <strong>Media Title</strong>
+          <strong>{localeLabels.CITE_MEDIA_TITLE}</strong>
           <div dangerouslySetInnerHTML={{ __html: media.title }} />
         </li>
       )}
       <li>
-        <strong>Media Type</strong>
+        <strong>{localeLabels.CITE_MEDIA_TYPE}</strong>
         <div dangerouslySetInnerHTML={{ __html: media.type }} />
       </li>
       <li>
-        <strong>Website Name</strong>
+        <strong>{localeLabels.CITE_WEBSITE_NAME}</strong>
         Encyclop&aelig;dia Britannica
       </li>
       <li>
-        <strong>Publisher</strong>
+        <strong>{localeLabels.CITE_PUBLISHER}</strong>
         Encyclop&aelig;dia Britannica
       </li>
       <li>
-        <strong>URL</strong>
+        <strong>{localeLabels.CITE_URL}</strong>
         <a href={window.location.href}>
           {window.location.href}
         </a>
       </li>
       <li>
-        <strong>Access Date</strong>
+        <strong>{localeLabels.CITE_ACCESS_DATE}</strong>
         {format(new Date(), 'MMMM d, yyyy')}
       </li>
     </ul>
@@ -41,6 +41,7 @@ const CitePanel = ({ media }) => (
 );
 
 CitePanel.propTypes = {
+  localeLabels: PropTypes.shape().isRequired,
   media: PropTypes.shape({
     ...Media.propTypes,
   }).isRequired,

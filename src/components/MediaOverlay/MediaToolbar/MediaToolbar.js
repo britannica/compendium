@@ -16,6 +16,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
     {({ overlayState, overlayProps, enableGalleryView, setSidebarPanel }) => {
       const {
         activeSidebarPanel,
+        localeLabels,
         media,
         mediaIndex,
         mediaStrip,
@@ -39,7 +40,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
               {mediaStrip.length > 7 && (
                 <button type="button" onClick={enableGalleryView}>
                   <FontAwesomeIcon icon={faTh} size="lg" />
-                  View All
+                  {localeLabels.VIEW_GALLERY}
                 </button>
               )}
             </Fragment>
@@ -52,12 +53,12 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
                   {media.expandable && (
                     <a data-analytics="MediaOverlay--fullButton" href={`/media/full/${type}/${stripId}/${mediaId}`} className="hidden-xs" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon icon={faSearchPlus} size="lg" />
-                      View Full-Size
+                      {localeLabels.VIEW_FULL_SIZE}
                     </a>
                   )}
                   <a data-analytics="MediaOverlay--printButton" href={`/media/print/${type}/${stripId}/${mediaId}`} className="hidden-xs" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faPrint} size="lg" />
-                    Print
+                    {localeLabels.PRINT}
                   </a>
                 </Fragment>
               )}
@@ -68,11 +69,11 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
             <MediaQuery minWidth={ViewportWidth.LG_MIN}>
               <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION })}>
                 <FontAwesomeIcon icon={faInfoCircle} size="lg" />
-                Caption
+                {localeLabels.CAPTION_PANEL}
               </button>
               <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CITE)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CITE })}>
                 <FontAwesomeIcon icon={faCheckSquare} size="lg" />
-                Cite
+                {localeLabels.CITE_PANEL}
               </button>
             </MediaQuery>
           )}

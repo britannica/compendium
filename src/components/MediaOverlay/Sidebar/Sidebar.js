@@ -32,7 +32,7 @@ const Sidebar = () => (
         previousMediaId,
       } = overlayState;
 
-      const { hasAds } = overlayProps;
+      const { hasAds, SidebarTools } = overlayProps;
 
       if (!isSidebarVisible) {
         return null;
@@ -56,6 +56,12 @@ const Sidebar = () => (
               <CaptionPanel media={media} />
             </MediaQuery>
           </div>
+
+          {SidebarTools && (
+            <div className={styles.SidebarTools}>
+              <SidebarTools {...overlayState} />
+            </div>
+          )}
 
           {/* Show ads if they're enabled, and if we're on md-lg */}
 

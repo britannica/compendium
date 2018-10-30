@@ -24,6 +24,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
       } = overlayState;
 
       const {
+        CustomTools,
         type,
       } = overlayProps;
 
@@ -65,7 +66,9 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
             </Fragment>
           )}
 
-          sidebarTools={(
+          customTools={<CustomTools {...overlayState} />}
+
+          sidebarPanels={(
             <MediaQuery minWidth={ViewportWidth.LG_MIN}>
               <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.CAPTION)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION })}>
                 <FontAwesomeIcon icon={faInfoCircle} size="lg" />

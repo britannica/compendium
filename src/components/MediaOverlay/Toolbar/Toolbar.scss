@@ -79,8 +79,11 @@
 
     // --- Additional tools
 
-    .additionalTools {
+    .additionalTools, .customTools {
         flex: 0 1 auto;
+    }
+
+    .customTools {
 
         @include media-breakpoint-up(lg) {
             padding-right: 15px;
@@ -90,7 +93,7 @@
 
     // --- Sidebar tools
 
-    .sidebarTools {
+    .sidebarPanels {
         display: flex;
 
         @include media-breakpoint-up(md) {

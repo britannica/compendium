@@ -421,12 +421,16 @@ class MediaOverlayContainer extends Component {
 
 // --- Props
 
+const noOp = () => [];
+
 MediaOverlayContainer.propTypes = {
   baseHref: PropTypes.string,
   hasMediaStrip: PropTypes.bool,
   collapsibleSidebar: PropTypes.bool,
+  CustomTools: PropTypes.func,
   hasAds: PropTypes.bool,
   locale: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string]),
+  SidebarTools: PropTypes.func,
   type: PropTypes.string,
   videoPlayerId: PropTypes.string,
 
@@ -440,8 +444,10 @@ MediaOverlayContainer.defaultProps = {
   baseHref: '/',
   hasMediaStrip: false,
   collapsibleSidebar: false,
+  CustomTools: noOp,
   hasAds: false,
   locale: Locale['en-us'],
+  SidebarTools: noOp,
   type: OverlayType.TOPIC,
   videoPlayerId: '',
 };

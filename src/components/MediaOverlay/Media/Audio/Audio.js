@@ -1,6 +1,4 @@
 
-import { faVolume } from '@fortawesome/pro-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Audio.scss';

@@ -16,7 +16,7 @@ function getSidebarPanel(panel, media, localeLabels, EmailPanel) {
       return <CitePanel media={media} localeLabels={localeLabels} />;
 
     case SidebarPanel.EMAIL:
-      return <EmailPanel />
+      return <EmailPanel />;
 
     case SidebarPanel.CAPTION:
     default:

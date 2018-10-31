@@ -1,5 +1,5 @@
 
-import { faCheckSquare, faInfoCircle, faPrint, faSearchPlus, faTh } from '@fortawesome/pro-solid-svg-icons';
+import { faCheckSquare, faEnvelope, faInfoCircle, faPrint, faSearchPlus, faTh } from '@fortawesome/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import React, { Fragment } from 'react';
@@ -25,6 +25,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
 
       const {
         CustomTools,
+        EmailPanel,
         type,
       } = overlayProps;
 
@@ -66,7 +67,7 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
             </Fragment>
           )}
 
-          customTools={<CustomTools {...overlayState} />}
+          customTools={CustomTools && <CustomTools {...overlayState} />}
 
           sidebarPanels={(
             <MediaQuery minWidth={ViewportWidth.LG_MIN}>
@@ -78,6 +79,12 @@ const MediaToolbar = ({ match: { params: { stripId, mediaId } } }) => (
                 <FontAwesomeIcon icon={faCheckSquare} size="lg" />
                 {localeLabels.CITE_PANEL}
               </button>
+              {EmailPanel && (
+                <button type="button" onClick={setSidebarPanel.bind(null, SidebarPanel.EMAIL)} className={classNames(styles.panelButton, { [styles.active]: activeSidebarPanel === SidebarPanel.EMAIL })}>
+                  <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                  {localeLabels.EMAIL_PANEL}
+                </button>
+              )}
             </MediaQuery>
           )}
         />

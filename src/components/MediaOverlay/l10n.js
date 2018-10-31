@@ -10,7 +10,7 @@ export const Locale = {
     CITE_URL: 'Url',
     CITE_WEBSITE_NAME: 'Website Name',
     CLOSE: 'Close',
-    EMAIL: 'Email',
+    EMAIL_PANEL: 'Email',
     FILTER_ALL: 'All',
     FILTER_AUDIO: 'Audio',
     FILTER_IMAGES: 'Images',

@@ -12,4 +12,5 @@ export const OverlayType = {
 export const SidebarPanel = {
   CAPTION: 'caption',
   CITE: 'cite',
+  EMAIL: 'email',
 };

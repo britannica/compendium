@@ -15,7 +15,11 @@ const OverlayTitle = ({ overlayTitle }) => (
 );
 
 OverlayTitle.propTypes = {
-  overlayTitle: PropTypes.string.isRequired,
+  overlayTitle: PropTypes.string,
+};
+
+OverlayTitle.defaultProps = {
+  overlayTitle: null,
 };
 
 export default OverlayTitle;

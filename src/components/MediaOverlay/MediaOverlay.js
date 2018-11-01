@@ -1,4 +1,5 @@
 
+import classNames from 'classnames';
 import React, { Fragment } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
@@ -36,7 +37,7 @@ const MediaOverlay = () => (
     }) => (
       <div className={styles.MediaOverlay}>
         <div role="button" tabIndex="0" className={styles.background} onClick={hideOverlay} onKeyUp={handleKeyUp} />
-        <div className={styles.main}>
+        <div className={classNames(styles.main, styles[mode])}>
           {mode === OverlayMode.MEDIA_VIEW && (
             <Fragment>
               <MediaToolbar />

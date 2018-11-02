@@ -1,8 +1,7 @@
 {
   "name": "@britannica/compendium",
   "version": "1.5.1",
-  "main": "./dist/compendium.cjs.js",
-  "module": "./dist/compendium.es.js",
+  "module": "./dist/src/index.js",
   "sideEffects": false,
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
@@ -38,7 +37,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-router-dom": "^4.3.1",
-    "rollup": "^0.66.6",
+    "rollup": "github:rollup/rollup#master",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
@@ -58,7 +57,7 @@
     "dev": "rollup -c -w",
     "test": "node test/test.js",
     "pretest": "npm run build",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "browserslist": [
     "last 2 chrome versions",

@@ -29,6 +29,8 @@ import MediaOverlayContext from './MediaOverlay.context';
 import MediaService from './services/media-service';
 import mediaViewerStyles from './MediaViewer/MediaViewer.scss';
 
+console.log('255')
+
 class MediaOverlayContainer extends Component {
   static Type = OverlayType;
 

@@ -15,13 +15,15 @@ export default [
 
   {
     input: 'src/index.js',
+    experimentalCodeSplitting: true,
+    experimentalPreserveModules: true,
     external: [
       ...Object.keys(pkg.dependencies),
       ...Object.keys(pkg.peerDependencies),
     ],
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' },
+      /*{ file: pkg.main, format: 'cjs' },*/
+      { dir: 'dist', format: 'es' },
     ],
     plugins: [
       postcss({

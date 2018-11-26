@@ -11,7 +11,7 @@ import styles from './MediaViewer.scss';
 
 const MediaViewer = () => (
   <MediaOverlayContext.Consumer>
-    {({ overlayState: { hasError, mediaStrip, mediaIndex, controlsHidden }, handleTap, navigateNextMedia, navigatePreviousMedia }) => (
+    {({ overlayState: { hasError, localeLabels, mediaStrip, mediaIndex, controlsHidden }, handleTap, navigateNextMedia, navigatePreviousMedia }) => (
       <Taparoo
         onTap={handleTap}
         onSwipeLeft={navigateNextMedia}
@@ -19,7 +19,7 @@ const MediaViewer = () => (
         className={classNames(styles.MediaViewer, { controlsHidden })}
       >
         {hasError ? (
-          <Fragment>Unable to load media.</Fragment>
+          <Fragment>{localeLabels.ERROR}</Fragment>
         ) : (
           <Media />
         )}

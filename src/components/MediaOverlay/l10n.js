@@ -22,6 +22,7 @@ export const Locale = {
     VIEW_CAROUSEL: 'View Carousel',
     VIEW_FULL_SIZE: 'View Full-Size',
     VIEW_GALLERY: 'View All',
+    ERROR: 'Unable to load media.',
   },
 };
 

@@ -15,6 +15,7 @@ const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip
   return (
     <div className={classNames(styles.MediaStrip, { [styles.captions]: captions })}>
       <Carousel
+        disableKeyboardControls
         slideIndex={slideIndex}
         slidesToShow={slidesToShow}
         slidesToScroll={slidesToShow}

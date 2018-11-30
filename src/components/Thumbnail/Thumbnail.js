@@ -12,9 +12,10 @@ import styles from './Thumbnail.scss';
 
 // Render the Thumbnail in a div by default
 
-function DefaultThumbnailComponent({ children }) {
-  return <div>{children}</div>;
+function DefaultThumbnailComponent({ children, ...rest }) {
+  return <div {...rest}>{children}</div>;
 }
+
 
 /**
  * Helper function; renders the specific type of thumbnail media

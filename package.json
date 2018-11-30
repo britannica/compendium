@@ -1,6 +1,6 @@
 {
   "name": "@britannica/compendium",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "main": "./dist/compendium.cjs.js",
   "module": "./dist/compendium.es.js",
   "sideEffects": false,

@@ -4,7 +4,7 @@ import ReactJWPlayer from 'react-jw-player';
 import PropTypes from 'prop-types';
 import styles from './Video.scss';
 
-const Video = ({ media: { posterUrl, playlistUrl }, onPlay, onPause, playerId }) => (
+const Video = ({ media: { closedCaptionUrl, posterUrl, playlistUrl }, onPlay, onPause, playerId }) => (
   <div className={styles.VideoMedia}>
     <ReactJWPlayer
       className="wrapper"
@@ -20,6 +20,10 @@ const Video = ({ media: { posterUrl, playlistUrl }, onPlay, onPause, playerId })
           label: '0',
           preload: 'metadata',
           type: 'hls',
+        }],
+        tracks: [{
+          file: closedCaptionUrl,
+          label: 'English',
         }],
       }]}
     />

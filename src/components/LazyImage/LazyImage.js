@@ -48,7 +48,7 @@ class LazyImage extends Component {
   // --- Other methods
 
   handleIntersection(entry) {
-    if (entry.isIntersecting) {
+    if (entry.intersectionRatio > 0) {
       this.setState({
         isVisible: true,
         isLoading: true,

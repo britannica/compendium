@@ -21,7 +21,7 @@ const MediaViewer = () => (
         {hasError ? (
           <Fragment>{localeLabels.ERROR}</Fragment>
         ) : (
-          <Media />
+          <Media lazyContainer={document.querySelector(`.${styles.MediaViewer}`)} />
         )}
         {mediaStrip.length > 1 && !controlsHidden && (
           <Fragment>

@@ -32,7 +32,7 @@ const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip
             {...thumbnail}
             caption={captions}
             className={classNames({ selected: i === mediaIndex })}
-            container={styles.MediaStrip}
+            lazyContainer={document.querySelector(`.${styles.MediaStrip}`)}
             height={DEFAULT_THUMBNAIL_HEIGHT}
             key={thumbnail.mediaId}
             opaque={opaque}

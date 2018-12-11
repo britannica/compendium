@@ -11,7 +11,7 @@ import Interactive from './Interactive/Interactive';
 import VideoContainer from './Video/VideoContainer';
 import './Media.scss';
 
-function renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSidebarAndControls, previousMediaId) {
+function renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer) {
   switch (media.type) {
     case MediaType.INTERACTIVE:
       return <Interactive {...media} />;
@@ -32,41 +32,27 @@ function renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSideb
       return <Audio audioSrc={media.audioSrc} />;
 
     case MediaType.IMAGE:
-      return <Image {...media} />;
+      return <Image {...media} lazyContainer={lazyContainer} />;
 
     default:
       return <FontAwesomeIcon icon={faSpinnerThird} size="2x" spin />;
   }
 }
 
-const Media = () => (
+const Media = ({ lazyContainer }) => (
   <MediaOverlayContext.Consumer>
     {({ overlayState: { media, previousMediaId }, overlayProps: { videoPlayerId }, hideSidebarAndControls, showSidebarAndControls }) => (
-      renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSidebarAndControls, previousMediaId)
+      renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer)
     )}
   </MediaOverlayContext.Consumer>
 );
 
 Media.propTypes = {
-  mediaId: PropTypes.number,
-  type: PropTypes.oneOf(Object.values(MediaType)),
-  expandable: PropTypes.bool,
-  title: PropTypes.string,
-  caption: PropTypes.string,
-  credit: PropTypes.string,
-  licenseTitle: PropTypes.string,
-  licenseUrl: PropTypes.string,
+  lazyContainer: PropTypes.instanceOf(Element),
 };
 
 Media.defaultProps = {
-  mediaId: null,
-  type: null,
-  expandable: false,
-  title: '',
-  caption: '',
-  credit: '',
-  licenseTitle: '',
-  licenseUrl: '',
+  lazyContainer: null,
 };
 
 export default Media;

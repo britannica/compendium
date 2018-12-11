@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './LazyImage.scss';
 
+// todo: after Edge uses Chromium, see if we can remove the `root` prop. This prop fixes MENDEL-5282 specifically.
+
 class LazyImage extends Component {
   ref = React.createRef();
   image = null;
@@ -26,8 +28,7 @@ class LazyImage extends Component {
   // --- Lifecycle methods
 
   componentDidMount() {
-    const { container } = this.props;
-    const root = document.querySelector(container);
+    const { root } = this.props;
 
     this.image = this.ref.current;
     this.observer = new IntersectionObserver(entries => entries.forEach(this.handleIntersection), {
@@ -48,7 +49,7 @@ class LazyImage extends Component {
   // --- Other methods
 
   handleIntersection(entry) {
-    if (entry.intersectionRatio > 0) {
+    if (entry.isIntersecting) {
       this.setState({
         isVisible: true,
         isLoading: true,
@@ -93,13 +94,13 @@ class LazyImage extends Component {
 LazyImage.propTypes = {
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
-  container: PropTypes.string,
+  root: PropTypes.instanceOf(Element),
   height: PropTypes.number,
   width: PropTypes.number,
 };
 
 LazyImage.defaultProps = {
-  container: null,
+  root: null,
   height: null,
   width: null,
 };

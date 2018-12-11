@@ -26,12 +26,12 @@ function DefaultThumbnailComponent({ children, ...rest }) {
  * @param height
  * @param size
  * @param width
- * @param container
+ * @param lazyContainer
  * @param hoverCaption
  * @returns {*}
  */
 
-function renderThumbnailType({ type, thumbnailUrl, altText, height, size, width, container, hoverCaption }) {
+function renderThumbnailType({ type, thumbnailUrl, altText, height, size, width, lazyContainer, hoverCaption }) {
   switch (type) {
     case MediaType.AUDIO:
       return (
@@ -45,7 +45,7 @@ function renderThumbnailType({ type, thumbnailUrl, altText, height, size, width,
     case MediaType.INTERACTIVE:
       return (
         <div className={styles.wrapper}>
-          <LazyImage src={thumbnailUrl} alt={altText} height={height} width={width} container={container} />
+          <LazyImage src={thumbnailUrl} alt={altText} height={height} width={width} root={lazyContainer} />
           {hoverCaption && (
             <Shave className={classNames(styles.imageCaption, 'pt-40 p-10 pt-4 p-2')} maxHeightPercentage={0.75}>{altText}</Shave>
           )}
@@ -55,7 +55,7 @@ function renderThumbnailType({ type, thumbnailUrl, altText, height, size, width,
     case MediaType.VIDEO:
       return (
         <div className={styles.wrapper}>
-          <LazyImage src={thumbnailUrl} alt={altText} height={height} width={width} container={container} />
+          <LazyImage src={thumbnailUrl} alt={altText} height={height} width={width} root={lazyContainer} />
           <FontAwesomeIcon icon={faPlay} size={size} />
           {hoverCaption && (
             <Shave className={classNames(styles.videoCaption, 'p-10 p-2')} maxHeightPercentage={0.4}>{altText}</Shave>
@@ -127,7 +127,7 @@ Thumbnail.propTypes = {
   ThumbnailComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   caption: PropTypes.bool,
   className: PropTypes.string,
-  container: PropTypes.string,
+  lazyContainer: PropTypes.instanceOf(Element),
   height: PropTypes.number,
   hoverCaption: PropTypes.bool,
   onClick: PropTypes.func,
@@ -140,7 +140,7 @@ Thumbnail.defaultProps = {
   ThumbnailComponent: DefaultThumbnailComponent,
   caption: false,
   className: '',
-  container: null,
+  lazyContainer: null,
   height: 75,
   hoverCaption: false,
   onClick: null,

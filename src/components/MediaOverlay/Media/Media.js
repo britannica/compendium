@@ -12,7 +12,6 @@ import VideoContainer from './Video/VideoContainer';
 import './Media.scss';
 
 function renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer) {
-  console.log(lazyContainer);
   switch (media.type) {
     case MediaType.INTERACTIVE:
       return <Interactive {...media} />;

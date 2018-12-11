@@ -16,8 +16,6 @@ import OverlayTitle from './OverlayTitle/OverlayTitle';
 import Sidebar from './Sidebar/Sidebar';
 import styles from './MediaOverlay.scss';
 
-const viewerRef = createRef();
-
 const MediaOverlay = () => (
   <MediaOverlayContext.Consumer>
     {({
@@ -44,7 +42,7 @@ const MediaOverlay = () => (
             <Fragment>
               <MediaToolbar />
               <OverlayTitle overlayTitle={overlayTitle} />
-              <MediaViewer ref={viewerRef} />
+              <MediaViewer />
               {hasMediaStrip && (
                 <MediaQuery minWidth={ViewportWidth.MD_MIN}>
                   <MediaStrip

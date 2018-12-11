@@ -1,6 +1,6 @@
 
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { createRef } from 'react';
 import PhotoGallery from 'react-photo-gallery';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../../constants';
@@ -9,21 +9,23 @@ import MediaLink from '../MediaLink/MediaLink';
 import { withGalleryContext } from './Gallery.context';
 import styles from './Gallery.scss';
 
+const galleryRef = createRef();
+
 const Gallery = ({ filteredPhotos, onMediaClick }) => {
   function renderPhotoGallery(columns) {
     return (
       <PhotoGallery
         photos={filteredPhotos}
         columns={columns}
-        ImageComponent={({ photo }) => (
-          <Thumbnail {...photo} onClick={onMediaClick} size="2x" hoverCaption opaque ThumbnailComponent={MediaLink} />
+        ImageComponent={props => (
+          <Thumbnail {...props.photo} onClick={onMediaClick} size="2x" hoverCaption opaque ThumbnailComponent={MediaLink} lazyContainer={galleryRef.current} />
         )}
       />
     );
   }
 
   return (
-    <div className={styles.Gallery}>
+    <div className={styles.Gallery} ref={galleryRef}>
       <MediaQuery minWidth={ViewportWidth.MD_MIN}>
         {renderPhotoGallery(5)}
       </MediaQuery>

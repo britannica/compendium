@@ -1,6 +1,6 @@
 
 import classNames from 'classnames';
-import React, { Fragment } from 'react';
+import React, { createRef, Fragment } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
 import { OverlayMode } from './overlay-constants';
@@ -15,6 +15,8 @@ import MediaViewer from './MediaViewer/MediaViewer';
 import OverlayTitle from './OverlayTitle/OverlayTitle';
 import Sidebar from './Sidebar/Sidebar';
 import styles from './MediaOverlay.scss';
+
+const viewerRef = createRef();
 
 const MediaOverlay = () => (
   <MediaOverlayContext.Consumer>
@@ -42,7 +44,7 @@ const MediaOverlay = () => (
             <Fragment>
               <MediaToolbar />
               <OverlayTitle overlayTitle={overlayTitle} />
-              <MediaViewer />
+              <MediaViewer ref={viewerRef} />
               {hasMediaStrip && (
                 <MediaQuery minWidth={ViewportWidth.MD_MIN}>
                   <MediaStrip

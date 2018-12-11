@@ -1,5 +1,5 @@
 
-import React, { Fragment } from 'react';
+import React, { forwardRef, Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import classNames from 'classnames';
@@ -9,7 +9,7 @@ import MediaLink from '../MediaLink/MediaLink';
 import MediaOverlayContext from '../MediaOverlay.context';
 import styles from './MediaViewer.scss';
 
-const MediaViewer = () => (
+const MediaViewer = forwardRef((props, viewerRef) => (
   <MediaOverlayContext.Consumer>
     {({ overlayState: { hasError, localeLabels, mediaStrip, mediaIndex, controlsHidden }, handleTap, navigateNextMedia, navigatePreviousMedia }) => (
       <Taparoo
@@ -21,7 +21,7 @@ const MediaViewer = () => (
         {hasError ? (
           <Fragment>{localeLabels.ERROR}</Fragment>
         ) : (
-          <Media lazyContainer={document.querySelector(`.${styles.MediaViewer}`)} />
+          <Media lazyContainer={viewerRef.current} />
         )}
         {mediaStrip.length > 1 && !controlsHidden && (
           <Fragment>
@@ -40,6 +40,6 @@ const MediaViewer = () => (
       </Taparoo>
     )}
   </MediaOverlayContext.Consumer>
-);
+));
 
 export default MediaViewer;

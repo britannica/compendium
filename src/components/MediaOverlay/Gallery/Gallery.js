@@ -1,6 +1,6 @@
 
 import PropTypes from 'prop-types';
-import React, { createRef } from 'react';
+import React from 'react';
 import PhotoGallery from 'react-photo-gallery';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../../constants';
@@ -9,23 +9,21 @@ import MediaLink from '../MediaLink/MediaLink';
 import { withGalleryContext } from './Gallery.context';
 import styles from './Gallery.scss';
 
-const galleryRef = createRef();
-
-const Gallery = ({ filteredPhotos, onMediaClick }) => {
+const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
   function renderPhotoGallery(columns) {
     return (
       <PhotoGallery
         photos={filteredPhotos}
         columns={columns}
         ImageComponent={props => (
-          <Thumbnail {...props.photo} onClick={onMediaClick} size="2x" hoverCaption opaque ThumbnailComponent={MediaLink} lazyContainer={galleryRef.current} />
+          <Thumbnail {...props.photo} onClick={onMediaClick} size="2x" hoverCaption opaque ThumbnailComponent={MediaLink} lazyContainer={lazyContainer} />
         )}
       />
     );
   }
 
   return (
-    <div className={styles.Gallery} ref={galleryRef}>
+    <div className={styles.Gallery}>
       <MediaQuery minWidth={ViewportWidth.MD_MIN}>
         {renderPhotoGallery(5)}
       </MediaQuery>
@@ -37,6 +35,7 @@ const Gallery = ({ filteredPhotos, onMediaClick }) => {
 };
 
 Gallery.propTypes = {
+  lazyContainer: PropTypes.instanceOf(Element),
   onMediaClick: PropTypes.func,
   filteredPhotos: PropTypes.arrayOf(PropTypes.shape({
     src: PropTypes.string,
@@ -46,6 +45,7 @@ Gallery.propTypes = {
 };
 
 Gallery.defaultProps = {
+  lazyContainer: null,
   onMediaClick: null,
 };
 

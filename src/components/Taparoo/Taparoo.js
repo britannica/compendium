@@ -108,10 +108,10 @@ class Taparoo extends Component {
   }
 
   render() {
-    const { children, className, forwardedRef } = this.props;
+    const { children, className } = this.props;
 
     return (
-      <div onTouchStart={this.handleTouchStart} onTouchMove={this.handleTouchMove} onTouchEnd={this.handleTouchEnd} className={className} ref={forwardedRef}>
+      <div onTouchStart={this.handleTouchStart} onTouchMove={this.handleTouchMove} onTouchEnd={this.handleTouchEnd} className={className}>
         {children}
       </div>
     );

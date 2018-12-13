@@ -4,7 +4,7 @@
 // todo: look into more ideal way to show video controls
 // todo: only fetch media strip when it's visible
 
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import pathToRegexp from 'path-to-regexp';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -31,6 +31,8 @@ import mediaViewerStyles from './MediaViewer/MediaViewer.scss';
 
 class MediaOverlayContainer extends Component {
   static Type = OverlayType;
+
+  overlayRef = createRef();
 
 
   // --- Constructor
@@ -405,6 +407,7 @@ class MediaOverlayContainer extends Component {
           handleTap: this.handleTap,
           hideOverlay: this.hideOverlay,
           hideSidebarAndControls: this.hideSidebarAndControls,
+          overlayRef: this.overlayRef,
           showSidebarAndControls: this.showSidebarAndControls,
           navigateNextMedia: this.navigateNextMedia,
           navigatePreviousMedia: this.navigatePreviousMedia,
@@ -412,7 +415,7 @@ class MediaOverlayContainer extends Component {
           toggleSidebar: this.toggleSidebar,
         }}
       >
-        <MediaOverlay />
+        <MediaOverlay ref={this.overlayRef} />
       </MediaOverlayContext.Provider>
     );
   }

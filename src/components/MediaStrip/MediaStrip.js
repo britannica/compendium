@@ -1,20 +1,19 @@
 
 import classNames from 'classnames';
-import React, { createRef } from 'react';
+import React from 'react';
 import Carousel from 'nuka-carousel';
 import PropTypes from 'prop-types';
 import Thumbnail from '../Thumbnail/Thumbnail';
 import { MediaStripNextArrow, MediaStripPreviousArrow } from './media-strip-components/media-strip-components';
 import styles from './MediaStrip.scss';
 
-const mediaStripRef = createRef();
 const DEFAULT_THUMBNAIL_HEIGHT = 75;
 
-const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip, opaque, slideIndex, slidesToShow, ThumbnailComponent }) => {
+const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip, opaque, lazyContainer, slideIndex, slidesToShow, ThumbnailComponent }) => {
   const hasArrows = mediaStrip.length > slidesToShow;
 
   return (
-    <div ref={mediaStripRef} className={classNames(styles.MediaStrip, { [styles.captions]: captions })}>
+    <div className={classNames(styles.MediaStrip, { [styles.captions]: captions })}>
       <Carousel
         disableKeyboardControls
         slideIndex={slideIndex}
@@ -33,7 +32,7 @@ const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip
             {...thumbnail}
             caption={captions}
             className={classNames({ selected: i === mediaIndex })}
-            lazyContainer={mediaStripRef.current}
+            lazyContainer={lazyContainer}
             height={DEFAULT_THUMBNAIL_HEIGHT}
             key={thumbnail.mediaId}
             opaque={opaque}
@@ -49,6 +48,7 @@ const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip
 MediaStrip.propTypes = {
   captions: PropTypes.bool,
   handleCarouselPagination: PropTypes.func,
+  lazyContainer: PropTypes.instanceOf(Element),
   mediaIndex: PropTypes.number,
   mediaStrip: PropTypes.arrayOf(PropTypes.shape(Thumbnail.propTypes)).isRequired,
   opaque: PropTypes.bool,

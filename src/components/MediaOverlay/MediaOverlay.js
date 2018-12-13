@@ -1,6 +1,6 @@
 
 import classNames from 'classnames';
-import React, { createRef, Fragment } from 'react';
+import React, { forwardRef, Fragment } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
 import { OverlayMode } from './overlay-constants';
@@ -16,7 +16,7 @@ import OverlayTitle from './OverlayTitle/OverlayTitle';
 import Sidebar from './Sidebar/Sidebar';
 import styles from './MediaOverlay.scss';
 
-const MediaOverlay = () => (
+const MediaOverlay = forwardRef((props, overlayRef) => (
   <MediaOverlayContext.Consumer>
     {({
       enableMediaView,
@@ -35,7 +35,7 @@ const MediaOverlay = () => (
         hasMediaStrip,
       },
     }) => (
-      <div className={styles.MediaOverlay}>
+      <div className={styles.MediaOverlay} ref={overlayRef}>
         <div role="button" tabIndex="0" className={styles.background} onClick={hideOverlay} onKeyUp={handleKeyUp} />
         <div className={classNames(styles.main, styles[mode])}>
           {mode === OverlayMode.MEDIA_VIEW && (
@@ -49,6 +49,7 @@ const MediaOverlay = () => (
                     slideIndex={carouselPageIndex}
                     mediaIndex={mediaIndex}
                     mediaStrip={mediaStrip}
+                    lazyContainer={overlayRef.current}
                     slidesToShow={slidesToShow}
                     handleCarouselPagination={handleCarouselPagination}
                     ThumbnailComponent={MediaLink}
@@ -61,13 +62,13 @@ const MediaOverlay = () => (
           {mode === OverlayMode.GALLERY_VIEW && (
             <GalleryProvider mediaStrip={mediaStrip}>
               <GalleryToolbar />
-              <Gallery onMediaClick={enableMediaView} />
+              <Gallery onMediaClick={enableMediaView} lazyContainer={overlayRef.current} />
             </GalleryProvider>
           )}
         </div>
       </div>
     )}
   </MediaOverlayContext.Consumer>
-);
+));
 
 export default MediaOverlay;

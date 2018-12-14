@@ -1,0 +1,32 @@
+
+.SnapSlider {
+  border: 10px solid red;
+  position: relative;
+}
+
+.slides {
+  overflow-y: scroll;
+  scroll-snap-type: x mandatory;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  img {
+    scroll-snap-align: start;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
+
+.control {
+  position: absolute;
+
+  &.prev {
+    left: 0;
+  }
+
+  &.next {
+    right: 0;
+  }
+}

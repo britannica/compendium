@@ -1,7 +1,14 @@
+import {MediaType} from "../../../constants";
 
 class MediaService {
-  static async fetchMedia(mediaId) {
-    return fetch(`/ajax/media-overlay/mediaInfo?id=${mediaId}`).then(response => response.json());
+  static async fetchMedia(mediaId, videoInfo) {
+    return fetch(`/ajax/media-overlay/mediaInfo?id=${mediaId}`)
+        .then(function( response ) { return response.json(); } )
+        .then(function( json ) {
+          let f = () => new Promise(resolve => { resolve( json ); } );
+          if ( json.type == MediaType.VIDEO && videoInfo.beforeLoadCallback ) { return videoInfo.beforeLoadCallback().then( f ); }
+          else { return f(); }
+        });
   }
 
   static async fetchMediaStrip(stripId, type) {

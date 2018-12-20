@@ -4,14 +4,16 @@ import ReactJWPlayer from 'react-jw-player';
 import PropTypes from 'prop-types';
 import styles from './Video.scss';
 
-const Video = ({ media: { closedCaptionUrl, posterUrl, playlistUrl }, onPlay, onPause, playerId }) => (
+const Video = ({ media: { closedCaptionUrl, posterUrl, playlistUrl }, onPlay, onPause, onLoad, playerId, adInfo }) => (
   <div className={styles.VideoMedia}>
-    <ReactJWPlayer
+     <ReactJWPlayer
       className="wrapper"
       onPlay={onPlay}
       onPause={onPause}
+      onLoad={onLoad}
       playerId="bmo-video-player"
       playerScript={`https://content.jwplatform.com/libraries/${playerId}.js`}
+      customProps={adInfo}
       playlist={[{
         image: posterUrl,
         sources: [{
@@ -38,12 +40,16 @@ Video.propTypes = {
   }),
   onPlay: PropTypes.func,
   onPause: PropTypes.func,
+  onLoad: PropTypes.func,
+  adInfo: PropTypes.object,
 };
 
 Video.defaultProps = {
   media: null,
+  adInfo: null,
   onPlay: () => {},
   onPause: () => {},
+  onLoad: () => {},
 };
 
 export default Video;

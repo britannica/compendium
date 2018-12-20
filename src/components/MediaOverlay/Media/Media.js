@@ -11,22 +11,25 @@ import Interactive from './Interactive/Interactive';
 import VideoContainer from './Video/VideoContainer';
 import './Media.scss';
 
-function renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer) {
+function renderMediaType(media, videoInfo, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer) {
   switch (media.type) {
     case MediaType.INTERACTIVE:
       return <Interactive {...media} />;
 
     case MediaType.VIDEO:
-      return (
-        <VideoContainer
-          previousMediaId={previousMediaId}
-          media={media}
-          playerId={videoPlayerId}
-          onPlay={hideSidebarAndControls}
-          onPause={showSidebarAndControls}
-          onDisplayClick={hideSidebarAndControls}
-        />
-      );
+
+        return (
+          <VideoContainer
+            previousMediaId={previousMediaId}
+            media={media}
+            playerId={videoInfo.playerId}
+            onPlay={hideSidebarAndControls}
+            onPause={showSidebarAndControls}
+            onDisplayClick={hideSidebarAndControls}
+            onLoad={videoInfo.onLoadCallback}
+            adInfo={videoInfo.adInfo}
+          />
+        );
 
     case MediaType.AUDIO:
       return <Audio audioSrc={media.audioSrc} />;
@@ -41,8 +44,8 @@ function renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSideb
 
 const Media = ({ lazyContainer }) => (
   <MediaOverlayContext.Consumer>
-    {({ overlayState: { media, previousMediaId }, overlayProps: { videoPlayerId }, hideSidebarAndControls, showSidebarAndControls }) => (
-      renderMediaType(media, videoPlayerId, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer)
+    {({ overlayState: { media, previousMediaId }, overlayProps: { videoInfo }, hideSidebarAndControls, showSidebarAndControls }) => (
+      renderMediaType(media, videoInfo, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer)
     )}
   </MediaOverlayContext.Consumer>
 );

@@ -24,7 +24,7 @@ MediaOverlay.propTypes = {
   // Type of media strip to fetch. Accepts: 'topic', 'gallery'
   type: PropTypes.string,
   
-  // JW Player player id
-  videoPlayerId: PropTypes.string, 
+  // Video ad info
+  videoInfo: PropTypes.object,
 }
 ```

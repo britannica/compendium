@@ -48,7 +48,7 @@ class MediaOverlayContainer extends Component {
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleBreakpoints = this.handleBreakpoints.bind(this);
     this.handleTap = this.handleTap.bind(this);
-    this.handleMediaChange = this.handleMediaChange.bind(this);
+   // this.handleMediaChange = this.handleMediaChange.bind(this);
     this.hideOverlay = this.hideOverlay.bind(this);
     this.hideSidebarAndControls = this.hideSidebarAndControls.bind(this);
     this.navigateToMedia = this.navigateToMedia.bind(this);
@@ -172,7 +172,7 @@ class MediaOverlayContainer extends Component {
         mediaStrip,
         overlayTitle,
         carouselPageIndex: getCarouselIndex(mediaIndex, slidesToShow),
-        media: await MediaService.fetchMedia(nextMediaId),
+        media: await MediaService.fetchMedia(nextMediaId, this.props.videoInfo),
         previousMediaId: mediaId,
       });
     }
@@ -434,7 +434,7 @@ MediaOverlayContainer.propTypes = {
   locale: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string]),
   SidebarTools: PropTypes.func,
   type: PropTypes.string,
-  videoPlayerId: PropTypes.string,
+  videoInfo: PropTypes.object,
 
   // withRouter props
 
@@ -452,7 +452,7 @@ MediaOverlayContainer.defaultProps = {
   hasAds: false,
   locale: Locale['en-us'],
   type: OverlayType.TOPIC,
-  videoPlayerId: '',
+  videoInfo: null
 };
 
 export default withRouter(MediaOverlayContainer);

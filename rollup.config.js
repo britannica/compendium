@@ -13,6 +13,10 @@ export default [
   // an array for the `output` option, where we can specify
   // `file` and `format` for each target)
 
+  // Instructions for publishing a beta version:
+  // npm version pre<major|minor|patch> --preid=beta (e.g. npm version preminor --preid=beta)
+  // npm publish --tag=beta --otp=000000
+
   {
     input: 'src/index.js',
     external: [

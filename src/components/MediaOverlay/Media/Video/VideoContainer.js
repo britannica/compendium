@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Video from './Video';
 
 class VideoContainer extends Component {
+
   shouldComponentUpdate(nextProps) {
     const { previousMediaId } = this.props;
     const nextMediaId = nextProps.match.params.mediaId;

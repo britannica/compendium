@@ -26,8 +26,7 @@ function renderMediaType(media, videoInfo, hideSidebarAndControls, showSidebarAn
             onPlay={hideSidebarAndControls}
             onPause={showSidebarAndControls}
             onDisplayClick={hideSidebarAndControls}
-            onLoad={videoInfo.onLoadCallback}
-            adInfo={videoInfo.adInfo}
+            adInfoProvider={videoInfo.adInfoProvider}
           />
         );
 

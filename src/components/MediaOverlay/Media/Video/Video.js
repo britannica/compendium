@@ -6,12 +6,7 @@ import styles from './Video.scss';
 
 const Video = ({ media: { closedCaptionUrl, posterUrl, playlistUrl }, onPlay, onPause, playerId, adInfoProvider }) => (
     <div className={styles.VideoMedia}>
-        {console.log('------------------------------------------------------')}
-        {console.log('------------------------------------------------------')}
-        {console.log(adInfoProvider())}
-        {console.log('------------------------------------------------------')}
-        {console.log('------------------------------------------------------')}
-     <ReactJWPlayer
+      <ReactJWPlayer
       className="wrapper"
       onPlay={onPlay}
       onPause={onPause}

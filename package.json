@@ -1,8 +1,8 @@
 {
   "name": "@britannica/compendium",
   "version": "1.5.13",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/compendium.cjs.js",
+  "module": "./dist/compendium.es.js",
   "sideEffects": false,
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",

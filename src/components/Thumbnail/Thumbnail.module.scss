@@ -1,4 +1,4 @@
-@import "../../variables";
+@import '../../variables';
 
 $thumbnail-border-width: 2px;
 
@@ -11,8 +11,15 @@ $thumbnail-border-width: 2px;
   padding: $thumbnail-border-width;
   transition: 0.2s;
 
-  &:hover, &.selected, &.opaque {
+  &.selected,
+  &.opaque {
     opacity: 1;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+    }
   }
 
   &.selected {
@@ -27,7 +34,8 @@ $thumbnail-border-width: 2px;
     font-size: 14px;
   }
 
-  &.Audio, &.Video {
+  &.audio,
+  &.video {
     align-items: center;
     display: flex;
     height: 100%;
@@ -37,7 +45,7 @@ $thumbnail-border-width: 2px;
     width: 100%;
   }
 
-  &.Audio {
+  &.audio {
     text-align: center;
 
     &.size-lg .wrapper {
@@ -56,15 +64,16 @@ $thumbnail-border-width: 2px;
 
     &.audioTitle {
       hyphens: auto;
+      pointer-events: none; // EMF-456: tapping on the title doesn't navigate to the thumbnail
     }
   }
 
-  &.Video {
-
-    &:hover {
-
-      .videoCaption {
-        opacity: 1;
+  &.video {
+    @media (hover: hover) {
+      &:hover {
+        .videoCaption {
+          opacity: 1;
+        }
       }
     }
 
@@ -95,8 +104,8 @@ $thumbnail-border-width: 2px;
     }
   }
 
-  &.Image, &.Interactive {
-
+  &.image,
+  &.interactive {
     .imageCaption {
       background: linear-gradient(transparent, rgba(black, 0.8));
       bottom: 0;
@@ -107,16 +116,16 @@ $thumbnail-border-width: 2px;
       width: 100%;
     }
 
-    &:hover {
-
-      .imageCaption {
-        opacity: 1;
+    @media (hover: hover) {
+      &:hover {
+        .imageCaption {
+          opacity: 1;
+        }
       }
     }
   }
 
-  &.Interactive {
-
+  &.interactive {
   }
 
   .wrapper {
@@ -125,6 +134,7 @@ $thumbnail-border-width: 2px;
     display: flex;
     height: 100%;
     justify-content: center;
+    overflow: hidden;
     position: relative;
     width: 100%;
   }
@@ -136,7 +146,6 @@ $thumbnail-border-width: 2px;
 }
 
 .hoverCaption {
-
 }
 
 .caption {

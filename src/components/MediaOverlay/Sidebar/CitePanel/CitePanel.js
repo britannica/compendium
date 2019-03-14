@@ -1,22 +1,21 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import Media from '../../Media/Media';
-import styles from './CitePanel.scss';
+import AssemblyProp from '../../../../prop-types/AssemblyProp';
+import styles from './CitePanel.module.scss';
 
-const CitePanel = ({ media, localeLabels }) => (
+const CitePanel = ({ assembly, localeLabels, CitePanelAddons }) => (
   <div className={styles.CitePanel}>
     <ul>
-      {media.title && (
+      {assembly.title && (
         <li>
           <strong>{localeLabels.CITE_MEDIA_TITLE}</strong>
-          <div dangerouslySetInnerHTML={{ __html: media.title }} />
+          <div dangerouslySetInnerHTML={{ __html: assembly.title }} />
         </li>
       )}
       <li>
         <strong>{localeLabels.CITE_MEDIA_TYPE}</strong>
-        <div dangerouslySetInnerHTML={{ __html: media.type }} />
+        <div dangerouslySetInnerHTML={{ __html: assembly.type }} />
       </li>
       <li>
         <strong>{localeLabels.CITE_WEBSITE_NAME}</strong>
@@ -37,14 +36,20 @@ const CitePanel = ({ media, localeLabels }) => (
         {format(new Date(), 'MMMM d, yyyy')}
       </li>
     </ul>
+    {CitePanelAddons && (
+      <CitePanelAddons assembly={assembly} />
+    )}
   </div>
 );
 
 CitePanel.propTypes = {
+  CitePanelAddons: PropTypes.func,
+  assembly: AssemblyProp.isRequired,
   localeLabels: PropTypes.shape().isRequired,
-  media: PropTypes.shape({
-    ...Media.propTypes,
-  }).isRequired,
+};
+
+CitePanel.defaultProps = {
+  CitePanelAddons: null,
 };
 
 export default CitePanel;

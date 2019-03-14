@@ -1,8 +1,9 @@
-@import "../variables";
+@import '../../../variables';
+@import '../variables';
 
 .Toolbar {
   grid-area: toolbar;
-  background-color: #eee;
+  background-color: $gray-200;
   align-items: center;
   display: flex;
   margin: $toolbar-margin $toolbar-margin 0;
@@ -17,7 +18,8 @@
     z-index: 1;
   }
 
-  button, a {
+  button,
+  a {
     appearance: none;
     background: none;
     border: none;
@@ -27,10 +29,13 @@
     font-size: 12px;
     outline: none;
     padding: 5px 10px;
+    text-decoration: none;
     text-transform: uppercase;
 
-    &:hover {
-      color: $blue;
+    @media (hover: hover) {
+      &:hover {
+        color: $blue;
+      }
     }
 
     &.active {
@@ -50,12 +55,11 @@
   }
 
   :global {
-
-    svg, .fa-layers {
+    svg,
+    .fa-layers {
       margin-right: 8px;
     }
   }
-
 
   // --- Overlay tools
 
@@ -75,20 +79,18 @@
     padding: 5px 15px;
   }
 
-
   // --- Additional tools
 
-  .additionalTools, .customTools {
+  .additionalTools,
+  .customTools {
     flex: 0 1 auto;
   }
 
   .customTools {
-
     @include media-breakpoint-up(lg) {
       padding-right: 15px;
     }
   }
-
 
   // --- Sidebar tools
 
@@ -110,7 +112,8 @@
       margin: 0; // fix for safari display
 
       &.active {
-        border-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
       }
 
       @include media-breakpoint-up(lg) {

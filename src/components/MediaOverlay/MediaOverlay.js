@@ -1,8 +1,5 @@
-
 import classNames from 'classnames';
 import React, { forwardRef, Fragment } from 'react';
-import MediaQuery from 'react-responsive';
-import { ViewportWidth } from '../../constants';
 import { OverlayMode } from './overlay-constants';
 import Gallery from './Gallery/Gallery';
 import { GalleryProvider } from './Gallery/Gallery.context';
@@ -14,7 +11,7 @@ import MediaToolbar from './MediaToolbar/MediaToolbar';
 import MediaViewer from './MediaViewer/MediaViewer';
 import OverlayTitle from './OverlayTitle/OverlayTitle';
 import Sidebar from './Sidebar/Sidebar';
-import styles from './MediaOverlay.scss';
+import styles from './MediaOverlay.module.scss';
 
 const MediaOverlay = forwardRef((props, overlayRef) => (
   <MediaOverlayContext.Consumer>
@@ -23,17 +20,9 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
       handleCarouselPagination,
       handleKeyUp,
       hideOverlay,
-      overlayState: {
-        carouselPageIndex,
-        mediaIndex,
-        mediaStrip,
-        mode,
-        overlayTitle,
-        slidesToShow,
-      },
-      overlayProps: {
-        hasMediaStrip,
-      },
+      onCarouselResize,
+      overlayState: { assembly, carouselPageIndex, assemblies, mode, overlayTitle, slidesToShow },
+      overlayProps: { cdn, hasMediaStrip },
     }) => (
       <div className={styles.MediaOverlay} ref={overlayRef}>
         <div role="button" tabIndex="0" className={styles.background} onClick={hideOverlay} onKeyUp={handleKeyUp} />
@@ -44,23 +33,22 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
               <OverlayTitle overlayTitle={overlayTitle} />
               <MediaViewer />
               {hasMediaStrip && (
-                <MediaQuery minWidth={ViewportWidth.MD_MIN}>
-                  <MediaStrip
-                    slideIndex={carouselPageIndex}
-                    mediaIndex={mediaIndex}
-                    mediaStrip={mediaStrip}
-                    lazyContainer={overlayRef.current}
-                    slidesToShow={slidesToShow}
-                    handleCarouselPagination={handleCarouselPagination}
-                    ThumbnailComponent={MediaLink}
-                  />
-                </MediaQuery>
+                <MediaStrip
+                  cdn={cdn}
+                  slideIndex={carouselPageIndex}
+                  assemblies={assemblies}
+                  slidesToShow={slidesToShow}
+                  handleCarouselPagination={handleCarouselPagination}
+                  lazyContainer={overlayRef.current}
+                  ThumbnailComponent={MediaLink}
+                  onCarouselResize={onCarouselResize}
+                />
               )}
               <Sidebar />
             </Fragment>
           )}
           {mode === OverlayMode.GALLERY_VIEW && (
-            <GalleryProvider mediaStrip={mediaStrip}>
+            <GalleryProvider assemblies={assemblies} cdn={cdn}>
               <GalleryToolbar />
               <Gallery onMediaClick={enableMediaView} lazyContainer={overlayRef.current} />
             </GalleryProvider>

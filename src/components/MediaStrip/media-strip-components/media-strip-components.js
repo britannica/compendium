@@ -1,12 +1,10 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../../constants';
-import styles from './media-strip-components.scss';
-
+import styles from './media-strip-components.module.scss';
 
 /**
  * Generic media strip arrow
@@ -27,15 +25,10 @@ const MediaStripArrow = ({ icon, disabled, onClick }) => (
 );
 
 MediaStripArrow.propTypes = {
-  icon: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array,
-    PropTypes.string,
-  ]).isRequired,
+  icon: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]).isRequired,
   disabled: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };
-
 
 /**
  * Previous arrow
@@ -59,7 +52,6 @@ MediaStripPreviousArrow.propTypes = {
   currentSlide: PropTypes.number.isRequired,
   slideCount: PropTypes.number.isRequired,
 };
-
 
 /**
  * Next arrow

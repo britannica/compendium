@@ -1,10 +1,9 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Interactive.scss';
+import styles from './Interactive.module.scss';
 
 const Interactive = ({ iframeSrc, height, width, titleText }) => (
-  <div className={styles.InteractiveMedia} style={{ paddingBottom: `${height / width * 100}%` }}>
+  <div className={styles.InteractiveMedia} style={{ paddingBottom: `${(height / width) * 100}%` }}>
     <iframe src={iframeSrc} title={titleText} />
   </div>
 );

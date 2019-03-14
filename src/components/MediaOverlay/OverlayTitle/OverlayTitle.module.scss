@@ -1,0 +1,10 @@
+@import '../variables';
+
+.OverlayTitle {
+  grid-area: overlayTitle;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: $toolbar-margin;
+  margin-right: $toolbar-margin;
+  padding: 15px;
+}

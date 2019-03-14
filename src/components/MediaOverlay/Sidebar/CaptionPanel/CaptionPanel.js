@@ -1,27 +1,31 @@
-
+import classNames from 'classnames';
 import React from 'react';
-import PropTypes from 'prop-types';
-import Media from '../../Media/Media';
-import styles from './CaptionPanel.scss';
+import AssemblyProp from '../../../../prop-types/AssemblyProp';
+import styles from './CaptionPanel.module.scss';
 
-const CaptionPanel = ({ media: { title, caption, credit, licenseUrl, licenseTitle } }) => (
-  <div className={styles.CaptionPanel}>
-    <div className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
-    <div className={styles.caption} dangerouslySetInnerHTML={{ __html: caption }} />
-    <div className={styles.credit} dangerouslySetInnerHTML={{ __html: credit }} />
-    {!title && !caption && !credit && (
-      <div className={styles.credit}>
-        Encyclop&aelig;dia Britannica, Inc.
-      </div>
-    )}
-    {licenseUrl && (
-      <a href={licenseUrl} className={styles.license} dangerouslySetInnerHTML={{ __html: licenseTitle }} />
-    )}
-  </div>
-);
+const CaptionPanel = ({ assembly: { title, caption, image, video, audio } }) => {
+  const { license, credit } = image || video || audio;
+
+  return (
+    <div className={classNames(styles.CaptionPanel, 'd-print-none')}>
+      <div className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
+      <div className={styles.caption} dangerouslySetInnerHTML={{ __html: caption }} />
+      {credit && <div className={styles.credit} dangerouslySetInnerHTML={{ __html: credit }} />}
+      {license && (
+        <a
+          href={license.url}
+          className={styles.license}
+          dangerouslySetInnerHTML={{ __html: license.title }}
+          target="_blank"
+          rel="noopener noreferrer"
+        />
+      )}
+    </div>
+  );
+};
 
 CaptionPanel.propTypes = {
-  media: PropTypes.shape(Media.propTypes).isRequired,
+  assembly: AssemblyProp.isRequired,
 };
 
 export default CaptionPanel;

@@ -1,4 +1,4 @@
-@import "../MediaOverlay/variables";
+@import '../MediaOverlay/variables';
 
 .MediaStrip {
   grid-area: mediaStrip;
@@ -11,9 +11,7 @@
   // These are nuka-carousel class names, don't mangle them with CSS modules
 
   :global {
-
     .slider {
-
       @include media-breakpoint-up(lg) {
         padding-left: 30px;
         padding-right: 30px;
@@ -29,9 +27,7 @@
 }
 
 .captions {
-
   :global {
-
     // todo: This should be removed after the following is resolved: https://github.com/FormidableLabs/nuka-carousel/issues/417
 
     .slider-list {

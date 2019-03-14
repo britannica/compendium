@@ -2,7 +2,8 @@ import { faSpinnerThird } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import React, { lazy, Suspense } from 'react';
-import styles from './MediaOverlay.scss';
+import styles from './MediaOverlay.module.scss';
+import 'animate.css';
 
 const LazyMediaOverlay = lazy(() => import('./MediaOverlayContainer'));
 

@@ -1,0 +1,12 @@
+@import '../../MediaOverlay/variables';
+
+.arrow {
+  @include reset-button-appearance;
+  cursor: pointer;
+  outline: none;
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

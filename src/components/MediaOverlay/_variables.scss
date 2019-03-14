@@ -1,18 +1,25 @@
-
-@import "../../variables";
+@import '../../variables';
 
 // Overlay
 
 $overlay-gap: 15px;
 $overlay-margin: 40px;
 
-
 // Sidebar
 
 $sidebar-width: 300px;
 $sidebar-border-width: 10px;
 
-
 // Toolbar
 
 $toolbar-margin: 5px;
+
+// Mixins
+
+@mixin reset-button-appearance {
+  appearance: none;
+  background: inherit;
+  border: inherit;
+  font-size: inherit;
+  padding: inherit;
+}

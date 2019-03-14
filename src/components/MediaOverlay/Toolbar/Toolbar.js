@@ -1,11 +1,11 @@
-
+import classNames from 'classnames';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import { Link } from 'react-router-dom';
 import ChildrenProp from '../../../prop-types/ChildrenProp';
 import MediaOverlayContext from '../MediaOverlay.context';
-import styles from './Toolbar.scss';
+import styles from './Toolbar.module.scss';
 
 const Toolbar = ({ primaryTools, secondaryTools, customTools, sidebarPanels }) => (
   <MediaOverlayContext.Consumer>
@@ -14,16 +14,10 @@ const Toolbar = ({ primaryTools, secondaryTools, customTools, sidebarPanels }) =
       const { baseHref } = overlayProps;
 
       return (
-        <div className={styles.Toolbar}>
-          <div className={styles.overlayTools}>
-            {primaryTools}
-          </div>
-          <div className={styles.additionalTools}>
-            {secondaryTools}
-          </div>
-          <div className={styles.customTools}>
-            {customTools}
-          </div>
+        <div className={classNames(styles.Toolbar, 'd-print-none')}>
+          <div className={styles.overlayTools}>{primaryTools}</div>
+          <div className={styles.additionalTools}>{secondaryTools}</div>
+          <div className={styles.customTools}>{customTools}</div>
           {sidebarPanels && (
             <div className={styles.sidebarPanels}>
               {sidebarPanels}

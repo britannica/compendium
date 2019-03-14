@@ -1,17 +1,18 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import styles from './Ad.scss';
+import styles from './Ad.module.scss';
 
 function randomString() {
-  return Math.random().toString(36).replace(/[^a-z]+/g, '');
+  return Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, '');
 }
 
 class Ad extends Component {
   shouldComponentUpdate(nextProps) {
     const { previousMediaId } = this.props;
-    const nextMediaId = nextProps.match.params.mediaId;
+    const nextMediaId = nextProps.match.params.assemblyId;
 
     return nextMediaId !== previousMediaId;
   }
@@ -19,7 +20,12 @@ class Ad extends Component {
   render() {
     return (
       <div className={styles.Ad}>
-        <iframe src={`/GPTIframe/ajax/async/NEW_MEDIA_OVERLAY?${randomString()}`} title="advertisement" height="100%" width="100%" />
+        <iframe
+          src={`/GPTIframe/ajax/async/NEW_MEDIA_OVERLAY?${randomString()}`}
+          title="advertisement"
+          height="100%"
+          width="100%"
+        />
       </div>
     );
   }

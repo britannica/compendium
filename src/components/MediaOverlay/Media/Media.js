@@ -1,60 +1,53 @@
-
-import { faSpinnerThird } from '@fortawesome/pro-light-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { MediaType } from '../../../constants';
+import React, { Fragment } from 'react';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Audio from './Audio/Audio';
 import Image from './Image/Image';
 import Interactive from './Interactive/Interactive';
 import VideoContainer from './Video/VideoContainer';
-import './Media.scss';
+import './Media.module.scss';
 
-function renderMediaType(media, videoInfo, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer) {
-  switch (media.type) {
-    case MediaType.INTERACTIVE:
-      return <Interactive {...media} />;
-
-    case MediaType.VIDEO:
-
-        return (
+const Media = () => (
+  <MediaOverlayContext.Consumer>
+    {({
+      overlayState: { assembly, previousMediaId },
+      overlayProps: { cdn, videoPlayerId },
+      hideSidebarAndControls,
+      overlayRef,
+      showSidebarAndControls,
+    }) => (
+      <Fragment>
+        {assembly.audio && <Audio audioSrc={cdn + assembly.audio.filename} />}
+        {assembly.image && <Image {...assembly.image} cdn={cdn} lazyContainer={overlayRef.current} />}
+        {assembly.interactive && <Interactive {...assembly.interactive} />}
+        {assembly.video && (
           <VideoContainer
+            cdn={cdn}
             previousMediaId={previousMediaId}
-            media={media}
-            playerId={videoInfo.playerId}
+            assembly={assembly}
+            playerId={videoPlayerId}
             onPlay={hideSidebarAndControls}
             onPause={showSidebarAndControls}
             onDisplayClick={hideSidebarAndControls}
-            adInfoProvider={videoInfo.adInfoProvider}
           />
-        );
-
-    case MediaType.AUDIO:
-      return <Audio audioSrc={media.audioSrc} />;
-
-    case MediaType.IMAGE:
-      return <Image {...media} lazyContainer={lazyContainer} />;
-
-    default:
-      return <FontAwesomeIcon icon={faSpinnerThird} size="2x" spin />;
-  }
-}
-
-const Media = ({ lazyContainer }) => (
-  <MediaOverlayContext.Consumer>
-    {({ overlayState: { media, previousMediaId }, overlayProps: { videoInfo }, hideSidebarAndControls, showSidebarAndControls }) => (
-      renderMediaType(media, videoInfo, hideSidebarAndControls, showSidebarAndControls, previousMediaId, lazyContainer)
+        )}
+      </Fragment>
     )}
   </MediaOverlayContext.Consumer>
 );
 
 Media.propTypes = {
-  lazyContainer: PropTypes.instanceOf(Element),
+  assemblyId: PropTypes.number,
+  expandable: PropTypes.bool,
+  title: PropTypes.string,
+  caption: PropTypes.string,
 };
 
 Media.defaultProps = {
-  lazyContainer: null,
+  assemblyId: null,
+  expandable: false,
+  title: '',
+  caption: '',
 };
 
 export default Media;

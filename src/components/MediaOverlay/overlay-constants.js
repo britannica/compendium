@@ -1,4 +1,3 @@
-
 export const OverlayMode = {
   GALLERY_VIEW: 'galleryView',
   MEDIA_VIEW: 'mediaView',

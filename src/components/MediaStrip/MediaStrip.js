@@ -1,40 +1,52 @@
-
 import classNames from 'classnames';
 import React from 'react';
 import Carousel from 'nuka-carousel';
 import PropTypes from 'prop-types';
+import AssemblyProp from '../../prop-types/AssemblyProp';
 import Thumbnail from '../Thumbnail/Thumbnail';
 import { MediaStripNextArrow, MediaStripPreviousArrow } from './media-strip-components/media-strip-components';
-import styles from './MediaStrip.scss';
+import styles from './MediaStrip.module.scss';
 
 const DEFAULT_THUMBNAIL_HEIGHT = 75;
 
-const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip, opaque, lazyContainer, slideIndex, slidesToShow, ThumbnailComponent }) => {
-  const hasArrows = mediaStrip.length > slidesToShow;
+const MediaStrip = ({
+  captions,
+  cdn,
+  handleCarouselPagination,
+  assemblies,
+  onCarouselResize,
+  opaque,
+  lazyContainer,
+  slideIndex,
+  slidesToShow,
+  ThumbnailComponent,
+}) => {
+  const hasArrows = assemblies.length > slidesToShow;
 
   return (
-    <div className={classNames(styles.MediaStrip, { [styles.captions]: captions })}>
+    <div className={classNames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none')}>
       <Carousel
         disableKeyboardControls
         slideIndex={slideIndex}
         slidesToShow={slidesToShow}
         slidesToScroll={slidesToShow}
         cellSpacing={5}
-        heightMode="first" // todo: This should be changed to `max` after the following is resolved https://github.com/FormidableLabs/nuka-carousel/issues/417
-        initialSlideHeight={75} // todo: This should be removed after the following is resolved https://github.com/FormidableLabs/nuka-carousel/issues/417
+        heightMode="max"
         renderBottomCenterControls={null}
         renderCenterLeftControls={hasArrows ? MediaStripPreviousArrow : null}
         renderCenterRightControls={hasArrows ? MediaStripNextArrow : null}
         afterSlide={handleCarouselPagination}
+        onResize={onCarouselResize}
       >
-        {mediaStrip.map((thumbnail, i) => (
+        {assemblies.map((assembly, i) => (
           <Thumbnail
-            {...thumbnail}
+            assembly={assembly}
+            cdn={cdn}
+            key={assembly.assemblyId}
             caption={captions}
-            className={classNames({ selected: i === mediaIndex })}
-            lazyContainer={lazyContainer}
+            container={styles.MediaStrip}
             height={DEFAULT_THUMBNAIL_HEIGHT}
-            key={thumbnail.mediaId}
+            lazyContainer={lazyContainer}
             opaque={opaque}
             width={null}
             ThumbnailComponent={ThumbnailComponent}
@@ -47,23 +59,25 @@ const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip
 
 MediaStrip.propTypes = {
   captions: PropTypes.bool,
+  cdn: PropTypes.string.isRequired,
   handleCarouselPagination: PropTypes.func,
+  assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   lazyContainer: PropTypes.instanceOf(Element),
-  mediaIndex: PropTypes.number,
-  mediaStrip: PropTypes.arrayOf(PropTypes.shape(Thumbnail.propTypes)).isRequired,
   opaque: PropTypes.bool,
+  onCarouselResize: PropTypes.func,
   slideIndex: PropTypes.number,
   slidesToShow: PropTypes.number.isRequired,
-  ThumbnailComponent: Thumbnail.propTypes.ThumbnailComponent,
+  ThumbnailComponent: PropTypes.func,
 };
 
 MediaStrip.defaultProps = {
   captions: false,
   handleCarouselPagination: () => {},
-  mediaIndex: 0,
+  lazyContainer: null,
+  onCarouselResize: null,
   opaque: false,
   slideIndex: 0,
-  ThumbnailComponent: Thumbnail.defaultProps.ThumbnailComponent,
+  ThumbnailComponent: () => {},
 };
 
 export default MediaStrip;

@@ -1,19 +1,16 @@
-
 import { ViewportWidth } from '../../../constants';
 import { maxWidth } from './responsive-helpers';
 
 /**
- * Find the index of the given `mediaId` within the `mediaArray`
+ * Find the index of the given `assemblyId` within the `mediaArray`
  *
  * @param {array} mediaArray
- * @param {string} mediaId
+ * @param {string} assemblyId
  * @returns {number}
  */
 
-export const findCurrentMediaIndex = (mediaArray, mediaId) => (
-  mediaArray.findIndex(media => media.mediaId === parseInt(mediaId))
-);
-
+export const findCurrentMediaIndex = (mediaArray, assemblyId) =>
+  mediaArray.findIndex(media => media.assemblyId === parseInt(assemblyId));
 
 /**
  * Carousel "pagination", gets the index of the slide that will show an entire "page"
@@ -23,10 +20,7 @@ export const findCurrentMediaIndex = (mediaArray, mediaId) => (
  * @returns {number}
  */
 
-export const getCarouselIndex = (index, slidesToShow) => (
-  Math.floor(index / slidesToShow) * slidesToShow
-);
-
+export const getCarouselIndex = (index, slidesToShow) => Math.floor(index / slidesToShow) * slidesToShow;
 
 /**
  * Determines the number of slides to show per carousel "page"
@@ -36,19 +30,21 @@ export const getCarouselIndex = (index, slidesToShow) => (
  */
 
 export const determineSlidesToShow = () => {
-  const screenWidth = document.body.clientWidth;
+  const { matchMedia } = window;
+  const XL_MIN = matchMedia(`(min-width: ${ViewportWidth.XL_MIN})`).matches;
+  const LG_MIN = matchMedia(`(min-width: ${ViewportWidth.LG_MIN})`).matches;
+  const LG_MAX = matchMedia(`(max-width: ${ViewportWidth.LG_MAX})`).matches;
 
-  if (screenWidth >= parseInt(ViewportWidth.XL_MIN)) {
+  if (XL_MIN) {
     return 7;
   }
 
-  if (screenWidth >= parseInt(ViewportWidth.LG_MIN) && screenWidth <= parseInt(ViewportWidth.LG_MAX)) {
+  if (LG_MIN && LG_MAX) {
     return 6;
   }
 
   return 5;
 };
-
 
 /**
  * Determine whether the media controls and sidebar can be toggled
@@ -56,6 +52,4 @@ export const determineSlidesToShow = () => {
  * @returns {boolean}
  */
 
-export const areControlsToggleable = () => (
-  window.matchMedia(maxWidth(ViewportWidth.MD_MAX)).matches
-);
+export const areControlsToggleable = () => window.matchMedia(maxWidth(ViewportWidth.MD_MAX)).matches;

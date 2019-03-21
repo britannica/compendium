@@ -34,8 +34,8 @@ $thumbnail-border-width: 2px;
     font-size: 14px;
   }
 
-  &.audio,
-  &.video {
+  &.Audio,
+  &.Video {
     align-items: center;
     display: flex;
     height: 100%;
@@ -45,7 +45,7 @@ $thumbnail-border-width: 2px;
     width: 100%;
   }
 
-  &.audio {
+  &.Audio {
     text-align: center;
 
     &.size-lg .wrapper {
@@ -68,7 +68,7 @@ $thumbnail-border-width: 2px;
     }
   }
 
-  &.video {
+  &.Video {
     @media (hover: hover) {
       &:hover {
         .videoCaption {
@@ -104,8 +104,8 @@ $thumbnail-border-width: 2px;
     }
   }
 
-  &.image,
-  &.interactive {
+  &.Image,
+  &.Interactive {
     .imageCaption {
       background: linear-gradient(transparent, rgba(black, 0.8));
       bottom: 0;
@@ -125,7 +125,7 @@ $thumbnail-border-width: 2px;
     }
   }
 
-  &.interactive {
+  &.Interactive {
   }
 
   .wrapper {

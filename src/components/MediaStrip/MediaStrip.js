@@ -11,12 +11,12 @@ const DEFAULT_THUMBNAIL_HEIGHT = 75;
 
 const MediaStrip = ({
   captions,
-  cdn,
   handleCarouselPagination,
   assemblies,
   onCarouselResize,
   opaque,
   lazyContainer,
+  selectedAssembly,
   slideIndex,
   slidesToShow,
   ThumbnailComponent,
@@ -38,16 +38,16 @@ const MediaStrip = ({
         afterSlide={handleCarouselPagination}
         onResize={onCarouselResize}
       >
-        {assemblies.map((assembly, i) => (
+        {assemblies.map(assembly => (
           <Thumbnail
             assembly={assembly}
-            cdn={cdn}
             key={assembly.assemblyId}
-            caption={captions}
+            hasCaption={captions}
             container={styles.MediaStrip}
             height={DEFAULT_THUMBNAIL_HEIGHT}
             lazyContainer={lazyContainer}
-            opaque={opaque}
+            isOpaque={opaque}
+            isSelected={selectedAssembly?.assemblyId === assembly.assemblyId}
             width={null}
             ThumbnailComponent={ThumbnailComponent}
           />
@@ -59,12 +59,12 @@ const MediaStrip = ({
 
 MediaStrip.propTypes = {
   captions: PropTypes.bool,
-  cdn: PropTypes.string.isRequired,
   handleCarouselPagination: PropTypes.func,
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   lazyContainer: PropTypes.instanceOf(Element),
   opaque: PropTypes.bool,
   onCarouselResize: PropTypes.func,
+  selectedAssembly: PropTypes.shape(),
   slideIndex: PropTypes.number,
   slidesToShow: PropTypes.number.isRequired,
   ThumbnailComponent: PropTypes.func,
@@ -76,6 +76,7 @@ MediaStrip.defaultProps = {
   lazyContainer: null,
   onCarouselResize: null,
   opaque: false,
+  selectedAssembly: null,
   slideIndex: 0,
   ThumbnailComponent: () => {},
 };

@@ -13,7 +13,7 @@ const MediaToolbar = () => (
   <MediaOverlayContext.Consumer>
     {({ overlayState, overlayProps, enableGalleryView, setSidebarPanel }) => {
       const { activeSidebarPanel, localeLabels, assembly, mediaIndex, assemblies, overlayTitle } = overlayState;
-      const { CustomTools, EmailPanel, cdn } = overlayProps;
+      const { CustomTools, EmailPanel } = overlayProps;
 
       return (
         <Toolbar
@@ -40,7 +40,7 @@ const MediaToolbar = () => (
                   {assembly.image.largeFilename && (
                     <a
                       data-analytics="MediaOverlay--fullButton"
-                      href={cdn + assembly.image.largeFilename}
+                      href={assembly.image.largeFilename}
                       className="hidden-xs"
                       target="_blank"
                       rel="noopener noreferrer"

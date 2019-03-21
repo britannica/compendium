@@ -33,9 +33,9 @@ export class GalleryProvider extends Component {
     const photos = assemblies.map(assembly => ({
       ...assembly,
       key: assembly.assemblyId,
-      src: assembly[assembly.type].filename || '',
-      width: assembly[assembly.type].width || 16,
-      height: assembly[assembly.type].height || 9,
+      src: assembly.thumbnailUrl || '',
+      width: assembly[assembly.type.toLowerCase()].width || 16,
+      height: assembly[assembly.type.toLowerCase()].height || 9,
     }));
 
     // Determine the initial set of filters
@@ -69,13 +69,12 @@ export class GalleryProvider extends Component {
   // --- Render
 
   render() {
-    const { cdn, children } = this.props;
+    const { children } = this.props;
 
     return (
       <GalleryContext.Provider
         value={{
           ...this.state,
-          cdn,
           setFilters: this.setFilters,
           setSelectedFilter: this.setSelectedFilter,
         }}
@@ -87,7 +86,6 @@ export class GalleryProvider extends Component {
 }
 
 GalleryProvider.propTypes = {
-  cdn: PropTypes.string.isRequired,
   children: ChildrenProp,
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
 };

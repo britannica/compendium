@@ -22,7 +22,7 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
       hideOverlay,
       onCarouselResize,
       overlayState: { assembly, carouselPageIndex, assemblies, mode, overlayTitle, slidesToShow },
-      overlayProps: { cdn, hasMediaStrip },
+      overlayProps: { hasMediaStrip },
     }) => (
       <div className={styles.MediaOverlay} ref={overlayRef}>
         <div role="button" tabIndex="0" className={styles.background} onClick={hideOverlay} onKeyUp={handleKeyUp} />
@@ -34,7 +34,6 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
               <MediaViewer />
               {hasMediaStrip && (
                 <MediaStrip
-                  cdn={cdn}
                   slideIndex={carouselPageIndex}
                   assemblies={assemblies}
                   slidesToShow={slidesToShow}
@@ -42,13 +41,14 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
                   lazyContainer={overlayRef.current}
                   ThumbnailComponent={MediaLink}
                   onCarouselResize={onCarouselResize}
+                  selectedAssembly={assembly}
                 />
               )}
               <Sidebar />
             </Fragment>
           )}
           {mode === OverlayMode.GALLERY_VIEW && (
-            <GalleryProvider assemblies={assemblies} cdn={cdn}>
+            <GalleryProvider assemblies={assemblies}>
               <GalleryToolbar />
               <Gallery onMediaClick={enableMediaView} lazyContainer={overlayRef.current} />
             </GalleryProvider>

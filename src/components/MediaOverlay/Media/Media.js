@@ -11,18 +11,17 @@ const Media = () => (
   <MediaOverlayContext.Consumer>
     {({
       overlayState: { assembly, previousMediaId },
-      overlayProps: { cdn, videoPlayerId },
+      overlayProps: { videoPlayerId },
       hideSidebarAndControls,
       overlayRef,
       showSidebarAndControls,
     }) => (
       <Fragment>
-        {assembly.audio && <Audio audioSrc={cdn + assembly.audio.filename} />}
-        {assembly.image && <Image {...assembly.image} cdn={cdn} lazyContainer={overlayRef.current} />}
+        {assembly.audio && <Audio audioSrc={assembly.audio.filename} />}
+        {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
         {assembly.interactive && <Interactive {...assembly.interactive} />}
         {assembly.video && (
           <VideoContainer
-            cdn={cdn}
             previousMediaId={previousMediaId}
             assembly={assembly}
             playerId={videoPlayerId}

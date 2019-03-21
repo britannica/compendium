@@ -12,7 +12,6 @@ const Video = ({
       jwplayerClosedCaptionManifestId,
     },
   },
-  cdn,
   onPlay,
   onPause,
   playerId,
@@ -26,7 +25,7 @@ const Video = ({
       playerScript={`https://content.jwplatform.com/libraries/${playerId}.js`}
       playlist={[
         {
-          image: cdn + filename,
+          image: filename,
           sources: [
             {
               default: false,
@@ -54,7 +53,6 @@ const Video = ({
 
 Video.propTypes = {
   assembly: AssemblyProp.isRequired,
-  cdn: PropTypes.string.isRequired,
   playerId: PropTypes.string.isRequired,
   onPlay: PropTypes.func,
   onPause: PropTypes.func,

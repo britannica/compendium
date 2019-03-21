@@ -7,10 +7,10 @@ export const MediaQuery = {
 };
 
 export const MediaType = {
-  IMAGE: 'image',
-  VIDEO: 'video',
-  AUDIO: 'audio',
-  INTERACTIVE: 'interactive',
+  IMAGE: 'Image',
+  VIDEO: 'Video',
+  AUDIO: 'Audio',
+  INTERACTIVE: 'Interactive',
 };
 
 export const ViewportWidth = {

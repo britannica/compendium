@@ -10,6 +10,8 @@ const AssemblyProp = PropTypes.shape({
   urlTitle: PropTypes.string,
   caption: PropTypes.string,
   type: PropTypes.string,
+  thumbnailUrl: PropTypes.string,
+  credit: PropTypes.string,
   audio: AudioProp,
   image: ImageProp,
   interactive: InteractiveProp,

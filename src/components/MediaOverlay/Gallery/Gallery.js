@@ -8,7 +8,7 @@ import MediaLink from '../MediaLink/MediaLink';
 import { withGalleryContext } from './Gallery.context';
 import styles from './Gallery.module.scss';
 
-const Gallery = ({ cdn, filteredPhotos, lazyContainer, onMediaClick }) => {
+const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
   function renderPhotoGallery(columns) {
     return (
       <PhotoGallery
@@ -18,7 +18,6 @@ const Gallery = ({ cdn, filteredPhotos, lazyContainer, onMediaClick }) => {
           <Thumbnail
             ThumbnailComponent={MediaLink}
             assembly={photo}
-            cdn={cdn}
             height={photo.height}
             lazyContainer={lazyContainer}
             width={photo.width}
@@ -41,7 +40,6 @@ const Gallery = ({ cdn, filteredPhotos, lazyContainer, onMediaClick }) => {
 };
 
 Gallery.propTypes = {
-  cdn: PropTypes.string.isRequired,
   lazyContainer: PropTypes.instanceOf(Element),
   onMediaClick: PropTypes.func,
   filteredPhotos: PropTypes.arrayOf(
@@ -49,7 +47,7 @@ Gallery.propTypes = {
       src: PropTypes.string,
       height: PropTypes.number,
       width: PropTypes.number,
-    })
+    }),
   ).isRequired,
 };
 

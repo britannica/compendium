@@ -189,7 +189,9 @@ class MediaOverlayContainer extends Component {
         assembly: assemblies[mediaIndex],
         previousMediaId: assemblyId,
       });
-    } catch (error) {
+    }
+
+    catch (error) {
       // Otherwise we have an error
 
       console.error(error);
@@ -439,7 +441,6 @@ MediaOverlayContainer.propTypes = {
   SidebarTools: PropTypes.func,
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   baseHref: PropTypes.string,
-  cdn: PropTypes.string,
   collapsibleSidebar: PropTypes.bool,
   hasMediaStrip: PropTypes.bool,
   hasAds: PropTypes.bool,
@@ -458,13 +459,11 @@ MediaOverlayContainer.defaultProps = {
   EmailPanel: null,
   SidebarTools: null,
   baseHref: '/',
-  cdn: 'https://cdn.britannica.com',
   hasMediaStrip: false,
   collapsibleSidebar: false,
   hasAds: false,
   locale: Locale['en-us'],
   title: '',
-  type: OverlayType.TOPIC,
   videoPlayerId: '',
 };
 

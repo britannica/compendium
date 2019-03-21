@@ -4,19 +4,18 @@ import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../../../constants';
 import LazyImage from '../../../LazyImage/LazyImage';
 
-const Image = ({ cdn, filename, largeFilename, caption, credit, lazyContainer }) => (
+const Image = ({ filename, largeFilename, caption, credit, lazyContainer }) => (
   <Fragment>
     <MediaQuery maxWidth={ViewportWidth.SM_MAX}>
-      <LazyImage alt={caption || credit} src={cdn + filename} root={lazyContainer} />
+      <LazyImage alt={caption || credit} src={filename} root={lazyContainer} />
     </MediaQuery>
     <MediaQuery minWidth={ViewportWidth.MD_MIN}>
-      <LazyImage alt={caption || credit} src={cdn + (largeFilename || filename)} root={lazyContainer} />
+      <LazyImage alt={caption || credit} src={(largeFilename || filename)} root={lazyContainer} />
     </MediaQuery>
   </Fragment>
 );
 
 Image.propTypes = {
-  cdn: PropTypes.string.isRequired,
   caption: PropTypes.string,
   credit: PropTypes.string,
   filename: PropTypes.string.isRequired,

@@ -110,10 +110,11 @@ class MediaOverlayContainer extends Component {
      * Scroll to the top so IntersectionObserver fires and images load.
      * When MediaOverlayContainer unmounts scroll back to the scrollPosition that was saved.
      *
-     * todo: Once we stop supporting Edge 17  need to remove this workaround.
+     * todo: Once we stop supporting Edge 17 need to remove this workaround.
      */
 
     // capture pageYOffset position and scroll to top.
+
     this.setState({ scrollYPosition: window.pageYOffset }, window.scrollTo(0, 0));
 
     // Fetch media and media strip

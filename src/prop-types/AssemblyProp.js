@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import AudioProp from './AudioProp';
 import ImageProp from './ImageProp';
 import InteractiveProp from './InteractiveProp';
-import VideoProp from './VideoProp';
+import VideoPlaylistProp from './VideoPlaylistProp';
 
 const AssemblyProp = PropTypes.shape({
   assemblyId: PropTypes.number,
@@ -15,7 +15,7 @@ const AssemblyProp = PropTypes.shape({
   audio: AudioProp,
   image: ImageProp,
   interactive: InteractiveProp,
-  video: VideoProp,
+  video: VideoPlaylistProp,
 });
 
 export default AssemblyProp;

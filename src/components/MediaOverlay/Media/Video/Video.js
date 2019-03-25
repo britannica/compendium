@@ -5,13 +5,7 @@ import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './Video.module.scss';
 
 const Video = ({
-  assembly: {
-    video: {
-      videoPoster: { filename },
-      jwplayerManifestId,
-      jwplayerClosedCaptionManifestId,
-    },
-  },
+  assembly: { video },
   onPlay,
   onPause,
   playerId,
@@ -23,30 +17,7 @@ const Video = ({
       onPause={onPause}
       playerId="bmo-video-player"
       playerScript={`https://content.jwplatform.com/libraries/${playerId}.js`}
-      playlist={[
-        {
-          image: filename,
-          sources: [
-            {
-              default: false,
-              file: `https://content.jwplatform.com/manifests/${jwplayerManifestId}.m3u8`,
-              label: '0',
-              preload: 'metadata',
-              type: 'hls',
-            },
-          ],
-          tracks: [
-            {
-              file: jwplayerClosedCaptionManifestId
-                ? `https://content.jwplatform.com/tracks/${jwplayerClosedCaptionManifestId}`
-                : null,
-              label: 'Português',
-              kind: 'captions',
-              default: false,
-            },
-          ],
-        },
-      ]}
+      playlist={video}
     />
   </div>
 );

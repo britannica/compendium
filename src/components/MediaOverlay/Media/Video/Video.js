@@ -17,7 +17,7 @@ const Video = ({
       onPause={onPause}
       playerId="bmo-video-player"
       playerScript={`https://content.jwplatform.com/libraries/${playerId}.js`}
-      playlist={video}
+      playlist={[video]}
     />
   </div>
 );

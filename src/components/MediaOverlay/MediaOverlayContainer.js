@@ -10,7 +10,7 @@ import { withRouter } from 'react-router-dom';
 import { ViewportWidth } from '../../constants';
 import AssemblyProp from '../../prop-types/AssemblyProp';
 import { getLocale, Locale } from './l10n';
-import { OverlayMode, OverlayType, SidebarPanel } from './overlay-constants';
+import { OverlayMode, SidebarPanel } from './overlay-constants';
 import {
   findCurrentMediaIndex,
   getCarouselIndex,

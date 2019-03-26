@@ -6,6 +6,7 @@ import styles from './Video.module.scss';
 
 const Video = ({
   assembly: { video },
+  generatePrerollUrl,
   onPlay,
   onPause,
   playerId,
@@ -15,9 +16,15 @@ const Video = ({
       className="wrapper"
       onPlay={onPlay}
       onPause={onPause}
-      playerId="bmo-video-player"
+      playerId="eb-video-player"
       playerScript={`https://content.jwplatform.com/libraries/${playerId}.js`}
       playlist={[video]}
+      generatePrerollUrl={generatePrerollUrl}
+      customProps={(generatePrerollUrl && {
+        advertising: {
+          client: 'googima',
+        },
+      })}
     />
   </div>
 );
@@ -25,11 +32,13 @@ const Video = ({
 Video.propTypes = {
   assembly: AssemblyProp.isRequired,
   playerId: PropTypes.string.isRequired,
+  generatePrerollUrl: PropTypes.func,
   onPlay: PropTypes.func,
   onPause: PropTypes.func,
 };
 
 Video.defaultProps = {
+  generatePrerollUrl: null,
   onPlay: () => {},
   onPause: () => {},
 };

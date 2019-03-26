@@ -4,14 +4,14 @@ import MediaOverlayContext from '../MediaOverlay.context';
 import Audio from './Audio/Audio';
 import Image from './Image/Image';
 import Interactive from './Interactive/Interactive';
-import VideoContainer from './Video/VideoContainer';
+import Video from './Video/Video';
 import './Media.module.scss';
 
 const Media = () => (
   <MediaOverlayContext.Consumer>
     {({
-      overlayState: { assembly, previousMediaId },
-      overlayProps: { videoPlayerId },
+      overlayState: { assembly },
+      overlayProps: { videoPlayerId, generatePrerollUrl },
       hideSidebarAndControls,
       overlayRef,
       showSidebarAndControls,
@@ -21,13 +21,13 @@ const Media = () => (
         {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
         {assembly.interactive && <Interactive {...assembly.interactive} />}
         {assembly.video && (
-          <VideoContainer
-            previousMediaId={previousMediaId}
+          <Video
             assembly={assembly}
             playerId={videoPlayerId}
             onPlay={hideSidebarAndControls}
             onPause={showSidebarAndControls}
             onDisplayClick={hideSidebarAndControls}
+            generatePrerollUrl={generatePrerollUrl}
           />
         )}
       </Fragment>

@@ -15,6 +15,7 @@ export default [
 
   // Instructions for publishing a beta version:
   // npm version pre<major|minor|patch> --preid=beta (e.g. npm version preminor --preid=beta)
+  // npm version 2.0.0-beta.1
   // npm publish --tag=beta --otp=000000
 
   {

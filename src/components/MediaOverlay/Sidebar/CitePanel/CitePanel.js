@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format } from 'date-fns';
+import { format } from 'date-fns'; // todo: switch to day.js
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './CitePanel.module.scss';
 

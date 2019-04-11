@@ -12,7 +12,7 @@
     "date-fns": "^2.0.0-alpha.27",
     "nuka-carousel": "^4.5.3",
     "path-to-regexp": "^3.0.0",
-    "react-jw-player": "github:ryanwalters/react-jw-player#master",
+    "react-jw-player": "github:ryanwalters/react-jw-player#ad-fix",
     "react-photo-gallery": "^6.3.2",
     "react-responsive": "^6.1.1",
     "shave": "^2.5.2"

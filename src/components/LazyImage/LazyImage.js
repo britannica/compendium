@@ -74,7 +74,7 @@ class LazyImage extends Component {
   // --- Render method
 
   render() {
-    const { alt, src, height, width } = this.props;
+    const { alt, src, height, width, className, ...props } = this.props;
     const { isVisible, isLoaded, isLoading } = this.state;
     const blankImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'/%3E';
 
@@ -85,7 +85,8 @@ class LazyImage extends Component {
         alt={alt}
         height={height}
         width={width}
-        className={classNames([styles.LazyImage, { [styles.isLoaded]: isLoaded }])}
+        className={classNames([styles.LazyImage, { [styles.isLoaded]: isLoaded }, className])}
+        {...props}
       />
     );
   }
@@ -95,11 +96,13 @@ LazyImage.propTypes = {
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   root: PropTypes.instanceOf(Element),
+  className: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
 };
 
 LazyImage.defaultProps = {
+  className: null,
   root: null,
   height: null,
   width: null,

@@ -7,12 +7,12 @@
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
   "dependencies": {
+    "@ryanwalters/react-jw-player": "^1.19.1",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.0.0-alpha.27",
     "nuka-carousel": "^4.5.4",
     "path-to-regexp": "^3.0.0",
-    "react-jw-player": "github:ryanwalters/react-jw-player#ad-fix",
     "react-photo-gallery": "^6.3.4",
     "react-responsive": "^6.1.2",
     "shave": "^2.5.3"

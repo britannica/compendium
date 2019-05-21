@@ -23,24 +23,7 @@ export default [
       postcss({
         modules: true,
       }),
-      babel({
-        exclude: ['node_modules/**'],
-        presets: [
-          '@babel/preset-react',
-          [
-            '@babel/preset-env',
-            {
-              modules: false,
-            },
-          ],
-        ],
-        plugins: [
-          '@babel/plugin-proposal-class-properties',
-          '@babel/plugin-proposal-object-rest-spread',
-          '@babel/plugin-proposal-optional-chaining',
-          '@babel/plugin-syntax-dynamic-import',
-        ],
-      }),
+      babel(),
       resolve(),
       commonjs(),
     ],

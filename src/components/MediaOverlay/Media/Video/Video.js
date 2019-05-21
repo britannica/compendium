@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactJWPlayer from 'react-jw-player';
+import ReactJWPlayer from '@ryanwalters/react-jw-player';
 import PropTypes from 'prop-types';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './Video.module.scss';

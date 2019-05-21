@@ -24,7 +24,6 @@ export default [
       babel(),
       resolve(),
       commonjs(),
-      multiInput(),
     ],
   },
 

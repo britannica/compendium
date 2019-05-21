@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import postcss from 'rollup-plugin-postcss';
+import multiInput from 'rollup-plugin-multi-input';
 import pkg from './package.json';
 
 export default [
@@ -14,11 +15,8 @@ export default [
 
   {
     input: 'src/index.js',
-    external: [
-      ...Object.keys(pkg.dependencies),
-      ...Object.keys(pkg.peerDependencies),
-    ],
-    output: { file: pkg.main, format: 'cjs' },
+    external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
+    output: { dir: pkg.main, format: 'cjs' },
     plugins: [
       postcss({
         modules: true,
@@ -26,6 +24,25 @@ export default [
       babel(),
       resolve(),
       commonjs(),
+      multiInput(),
+    ],
+  },
+
+
+  // ES module (for bundlers) build
+
+  {
+    input: ['src/**/*.js'],
+    external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
+    output: { dir: pkg.module, format: 'es' },
+    plugins: [
+      postcss({
+        modules: true,
+      }),
+      babel(),
+      resolve(),
+      commonjs(),
+      multiInput(),
     ],
   },
 ];

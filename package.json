@@ -1,8 +1,8 @@
 {
   "name": "@britannica/compendium",
   "version": "2.0.0-beta.5",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/es/index.js",
+  "main": "./dist/cjs",
+  "module": "./dist/es",
   "sideEffects": false,
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
@@ -18,7 +18,6 @@
     "shave": "^2.5.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
@@ -43,9 +42,9 @@
     "rollup": "^1.12.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-multi-input": "^0.2.2",
     "rollup-plugin-node-resolve": "^4.2.4",
-    "rollup-plugin-postcss": "^2.0.3",
-    "watch": "^1.0.2"
+    "rollup-plugin-postcss": "^2.0.3"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "1.x",
@@ -60,10 +59,8 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npm run build:esm && npm run build:cjs",
-    "build:cjs": "rollup -c",
-    "build:esm": "babel src --out-dir dist/es --copy-files --ignore src/__tests__/",
-    "dev": "watch 'npm run build' src",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "test": "node test/test.js",
     "pretest": "npm run build",
     "prepublishOnly": "npm run build"

@@ -6,13 +6,7 @@ import pkg from './package.json';
 
 export default [
 
-  // CommonJS (for Node) and ES module (for bundlers) build.
-  // (We could have three entries in the configuration array
-  // instead of two, but it's quicker to generate multiple
-  // builds from a single configuration where possible, using
-  // an array for the `output` option, where we can specify
-  // `file` and `format` for each target)
-
+  // Just for CommonJS (for Node) build.
   // Instructions for publishing a beta version:
   // npm version pre<major|minor|patch> --preid=beta (e.g. npm version preminor --preid=beta)
   // npm version 2.0.0-beta.1
@@ -24,10 +18,7 @@ export default [
       ...Object.keys(pkg.dependencies),
       ...Object.keys(pkg.peerDependencies),
     ],
-    output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' },
-    ],
+    output: { file: pkg.main, format: 'cjs' },
     plugins: [
       postcss({
         modules: true,
@@ -36,14 +27,18 @@ export default [
         exclude: ['node_modules/**'],
         presets: [
           '@babel/preset-react',
-          ['@babel/preset-env', {
-            modules: false,
-          }],
+          [
+            '@babel/preset-env',
+            {
+              modules: false,
+            },
+          ],
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
           '@babel/plugin-proposal-object-rest-spread',
           '@babel/plugin-proposal-optional-chaining',
+          '@babel/plugin-syntax-dynamic-import',
         ],
       }),
       resolve(),

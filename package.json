@@ -1,8 +1,8 @@
 {
   "name": "@britannica/compendium",
   "version": "2.0.0-beta.4",
-  "main": "./dist/compendium.cjs.js",
-  "module": "./dist/compendium.es.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es/index.js",
   "sideEffects": false,
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
@@ -15,9 +15,11 @@
     "path-to-regexp": "^3.0.0",
     "react-photo-gallery": "^6.3.4",
     "react-responsive": "^6.1.2",
+    "rimraf": "^2.6.3",
     "shave": "^2.5.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
@@ -38,13 +40,12 @@
     "eslint-plugin-react": "^7.13.0",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-router-dom": "^4.3.1",
     "rollup": "^1.12.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^4.2.4",
-    "rollup-plugin-postcss": "^2.0.3"
+    "rollup-plugin-postcss": "^2.0.3",
+    "watch": "^1.0.2"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "1.x",
@@ -52,12 +53,17 @@
     "@fortawesome/pro-regular-svg-icons": "5.x",
     "@fortawesome/pro-solid-svg-icons": "5.x",
     "@fortawesome/react-fontawesome": "0.1.x",
-    "react": "^16.3.x",
-    "react-router-dom": "4.x"
+    "react": "^16.8.x",
+    "react-router-dom": "5.x",
+    "redux": "~4.0.1",
+    "react-redux": "^7.1.0-alpha.4"
   },
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "prebuild": "rimraf dist",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:cjs": "rollup -c",
+    "build:esm": "babel src --out-dir dist/es --copy-files --ignore src/__tests__/",
+    "dev": "watch 'npm run build' src",
     "test": "node test/test.js",
     "pretest": "npm run build",
     "prepublish": "npm run build"

@@ -1,4 +1,5 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -42,7 +43,7 @@ const Thumbnail = memo((props) => {
   const { audio, image, interactive, video, caption, title, type } = assembly;
 
   return (
-    <Fragment>
+    <div className={styles.wrapper} style={{ width }}>
       <ThumbnailComponent
         assemblyId={assembly.assemblyId}
         className={classNames(
@@ -112,11 +113,11 @@ const Thumbnail = memo((props) => {
         )}
       </ThumbnailComponent>
       {hasCaption && (
-        <Shave className={styles.caption} maxHeight={50}>
+        <div className={classnames(styles.caption, styles.lineClamp)} style={{ width }}>
           {assembly.caption}
-        </Shave>
+        </div>
       )}
-    </Fragment>
+    </div>
   );
 });
 

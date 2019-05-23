@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format } from 'date-fns'; // todo: switch to day.js
+import dayjs from 'dayjs';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './CitePanel.module.scss';
 
@@ -33,7 +33,7 @@ const CitePanel = ({ assembly, localeLabels, CitePanelAddons }) => (
       </li>
       <li>
         <strong>{localeLabels.CITE_ACCESS_DATE}</strong>
-        {format(new Date(), 'MMMM d, yyyy')}
+        {dayjs(new Date()).format('MMMM D, YYYY')}
       </li>
     </ul>
     {CitePanelAddons && (

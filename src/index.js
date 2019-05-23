@@ -7,6 +7,7 @@ import Taparoo from './components/Taparoo/Taparoo';
 
 export { LazyImage };
 export { MediaOverlay };
+export { default as MediaOverlayLoading } from './components/MediaOverlayLoading/MediaOverlayLoading';
 export { MediaStrip };
 export { Shave };
 export { Taparoo };

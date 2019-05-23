@@ -1,0 +1,49 @@
+@import "../../variables";
+
+.SnapSlider {
+  position: relative;
+
+  @include media-breakpoint-up(lg) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .track {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* autoprefixer: off */
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+
+    > * {
+      display: inline-flex;
+      scroll-snap-align: start;
+      vertical-align: top;
+    }
+  }
+}
+
+.arrow {
+  -webkit-appearance: none;
+  background: unset;
+  border: unset;
+  cursor: pointer;
+  font-size: 16px;
+  outline: unset;
+  padding: unset;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.previous {
+    left: 0;
+  }
+
+  &.next {
+    right: 0;
+  }
+}

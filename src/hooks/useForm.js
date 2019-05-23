@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function useForm(callback, validationSchema) {
+export default function useForm(callback, validationSchema) {
   const [values, setValues] = useState({});
   const [validationError, setValidationError] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -22,7 +22,8 @@ function useForm(callback, validationSchema) {
       validationSchema.validateSync(values, { abortEarly: false });
 
       setValidationError(null);
-    } catch (validationErrors) {
+    }
+    catch (validationErrors) {
       setValidationError(validationErrors);
     }
 
@@ -32,19 +33,18 @@ function useForm(callback, validationSchema) {
   const handleChange = (event) => {
     event.persist();
 
-    setValues(currentValues => ({
+    return setValues(currentValues => ({
       ...currentValues,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value,
     }));
   };
 
   return {
     handleChange,
     handleSubmit,
+    setValues: passedValues => setValues(validationSchema.cast(passedValues)),
     validationError,
     values: validationSchema.cast(values),
     isValid: validationSchema.isValidSync(values),
   };
 }
-
-export default useForm;

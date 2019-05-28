@@ -34,8 +34,8 @@ const MediaStrip = ({
     <div className={classnames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none')}>
       <SnapSlider
         scrollTo={THUMBNAIL_WIDTH * index}
-        thumbnailWidth={THUMBNAIL_WIDTH}
-        selectedIndex={findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId)}
+        /*thumbnailWidth={THUMBNAIL_WIDTH}
+        selectedIndex={findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId)}*/
       >
         {assemblies.map(assembly => (
           <Thumbnail

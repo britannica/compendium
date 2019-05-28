@@ -56,24 +56,28 @@ class MediaOverlayContainer extends Component {
     this.toggleSidebarAndControls = this.toggleSidebarAndControls.bind(this);
 
     const {
-      match: { path },
+      match: { path, params: { assemblyId } },
       assemblies,
       locale,
       title,
     } = this.props;
 
+    // Determine which media the overlay is opening on
+
+    const mediaIndex = findCurrentMediaIndex(assemblies, assemblyId);
+
     // State
 
     this.state = {
       assemblies,
+      mediaIndex,
       path,
       activeSidebarPanel: SidebarPanel.CAPTION,
       controlsHidden: false,
       hasError: false,
       isSidebarVisible: true,
       localeLabels: getLocale(locale),
-      assembly: assemblies[0],
-      mediaIndex: 0,
+      assembly: assemblies[mediaIndex],
       mode: OverlayMode.MEDIA_VIEW,
       overlayTitle: title,
       previousMediaId: null,

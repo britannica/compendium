@@ -1,12 +1,13 @@
-import classNames from 'classnames';
-import React from 'react';
+import classnames from 'classnames';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AssemblyProp from '../../prop-types/AssemblyProp';
+import { findCurrentMediaIndex } from '../MediaOverlay/helpers/helpers';
 import SnapSlider from '../SnapSlider/SnapSlider';
 import Thumbnail from '../Thumbnail/Thumbnail';
 import styles from './MediaStrip.module.scss';
 
-// todo: add list virtualization; react-window
+// todo: consider list virtualization, possibly react-window
 
 const THUMBNAIL_WIDTH = 110;
 const THUMBNAIL_HEIGHT = 75;
@@ -19,10 +20,18 @@ const MediaStrip = ({
   selectedAssembly,
   ThumbnailComponent,
 }) => {
-  const index = selectedAssembly ? assemblies.findIndex(assembly => assembly.assemblyId === selectedAssembly.assemblyId) : 0;
+  const [index, setIndex] = useState(0);
+
+  // Set the scrollTo position of the SnapSlider on mount
+
+  useEffect(() => {
+    if (selectedAssembly) {
+      setIndex(findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId));
+    }
+  }, []);
 
   return (
-    <div className={classNames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none')}>
+    <div className={classnames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none')}>
       <SnapSlider scrollTo={THUMBNAIL_WIDTH * index}>
         {assemblies.map(assembly => (
           <Thumbnail

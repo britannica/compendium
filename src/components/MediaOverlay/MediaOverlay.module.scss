@@ -1,6 +1,5 @@
 @import 'variables';
 
-
 .MediaOverlay {
   font-size: 16px;
   z-index: 100000;
@@ -66,4 +65,22 @@
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+.open {
+  content: inherit;
+
+  @media print {
+    > * {
+      display: none;
+    }
+
+    :global {
+      // MENDEL-5701: this is pretty hacky, it targets a mendel-specific div...
+
+      .media-overlay-container {
+        display: block !important;
+      }
+    }
+  }
 }

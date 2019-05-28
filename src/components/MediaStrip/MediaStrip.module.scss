@@ -3,6 +3,7 @@
 .MediaStrip {
   grid-area: mediaStrip;
   background-color: white;
+  min-width: 0;
 
   @include media-breakpoint-up(lg) {
     margin: 0 $overlay-gap $overlay-gap;

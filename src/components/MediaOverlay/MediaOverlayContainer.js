@@ -13,8 +13,6 @@ import { getLocale, Locale } from './l10n';
 import { OverlayMode, SidebarPanel } from './overlay-constants';
 import {
   findCurrentMediaIndex,
-  getCarouselIndex,
-  determineSlidesToShow,
   areControlsToggleable,
 } from './helpers/helpers';
 import {
@@ -41,7 +39,6 @@ class MediaOverlayContainer extends Component {
     this.enableGalleryView = this.enableGalleryView.bind(this);
     this.enableMediaView = this.enableMediaView.bind(this);
     this.handleMediaChange = this.handleMediaChange.bind(this);
-    this.handleCarouselPagination = this.handleCarouselPagination.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleBreakpoints = this.handleBreakpoints.bind(this);
     this.handleTap = this.handleTap.bind(this);
@@ -59,30 +56,32 @@ class MediaOverlayContainer extends Component {
     this.toggleSidebarAndControls = this.toggleSidebarAndControls.bind(this);
 
     const {
-      match: { path },
+      match: { path, params: { assemblyId } },
       assemblies,
       locale,
       title,
     } = this.props;
 
+    // Determine which media the overlay is opening on
+
+    const mediaIndex = findCurrentMediaIndex(assemblies, assemblyId);
+
     // State
 
     this.state = {
       assemblies,
+      mediaIndex,
       path,
       activeSidebarPanel: SidebarPanel.CAPTION,
-      carouselPageIndex: 0,
       controlsHidden: false,
       hasError: false,
       isSidebarVisible: true,
       localeLabels: getLocale(locale),
-      assembly: assemblies[0],
-      mediaIndex: 0,
+      assembly: assemblies[mediaIndex],
       mode: OverlayMode.MEDIA_VIEW,
       overlayTitle: title,
       previousMediaId: null,
       scrollYPosition: 0,
-      slidesToShow: determineSlidesToShow(),
     };
   }
 
@@ -186,7 +185,6 @@ class MediaOverlayContainer extends Component {
       return this.setState({
         mediaIndex,
         activeSidebarPanel: SidebarPanel.CAPTION,
-        carouselPageIndex: getCarouselIndex(mediaIndex, slidesToShow),
         assembly: assemblies[mediaIndex],
         previousMediaId: assemblyId,
       });
@@ -261,9 +259,6 @@ class MediaOverlayContainer extends Component {
    */
 
   handleBreakpoints(query) {
-    this.setState({
-      slidesToShow: determineSlidesToShow(),
-    });
   }
 
   /**
@@ -317,19 +312,6 @@ class MediaOverlayContainer extends Component {
     });
   }
 
-  // --- Media Strip
-
-  /**
-   * Set the carousel "page" after moving to a new slide
-   *
-   * @param index
-   */
-
-  handleCarouselPagination(index) {
-    this.setState({
-      carouselPageIndex: index,
-    });
-  }
 
   // --- Sidebar
 
@@ -414,8 +396,6 @@ class MediaOverlayContainer extends Component {
           overlayProps: this.props,
           enableGalleryView: this.enableGalleryView,
           enableMediaView: this.enableMediaView,
-          handleCarouselPagination: this.handleCarouselPagination,
-          onCarouselResize: this.handleBreakpoints,
           handleKeyUp: this.handleKeyUp,
           handleTap: this.handleTap,
           hideOverlay: this.hideOverlay,

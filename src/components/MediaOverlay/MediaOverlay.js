@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import React, { forwardRef, Fragment } from 'react';
+import MediaQuery from 'react-responsive';
+import { ViewportWidth } from '../../constants';
 import { OverlayMode } from './overlay-constants';
 import Gallery from './Gallery/Gallery';
 import { GalleryProvider } from './Gallery/Gallery.context';
@@ -17,11 +19,9 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
   <MediaOverlayContext.Consumer>
     {({
       enableMediaView,
-      handleCarouselPagination,
       handleKeyUp,
       hideOverlay,
-      onCarouselResize,
-      overlayState: { assembly, carouselPageIndex, assemblies, mode, overlayTitle, slidesToShow },
+      overlayState: { assembly, assemblies, mode, overlayTitle },
       overlayProps: { hasMediaStrip },
     }) => (
       <div className={styles.MediaOverlay} ref={overlayRef}>
@@ -33,16 +33,14 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
               <OverlayTitle overlayTitle={overlayTitle} />
               <MediaViewer />
               {hasMediaStrip && (
-                <MediaStrip
-                  slideIndex={carouselPageIndex}
-                  assemblies={assemblies}
-                  slidesToShow={slidesToShow}
-                  handleCarouselPagination={handleCarouselPagination}
-                  lazyContainer={overlayRef.current}
-                  ThumbnailComponent={MediaLink}
-                  onCarouselResize={onCarouselResize}
-                  selectedAssembly={assembly}
-                />
+                <MediaQuery minWidth={ViewportWidth.SM_MIN}>
+                  <MediaStrip
+                    assemblies={assemblies}
+                    lazyContainer={overlayRef.current}
+                    ThumbnailComponent={MediaLink}
+                    selectedAssembly={assembly}
+                  />
+                </MediaQuery>
               )}
               <Sidebar />
             </Fragment>

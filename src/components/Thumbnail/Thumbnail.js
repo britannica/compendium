@@ -1,6 +1,6 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faVolume } from '@fortawesome/pro-solid-svg-icons';
 import AssemblyProp from '../../prop-types/AssemblyProp';
@@ -42,10 +42,10 @@ const Thumbnail = memo((props) => {
   const { audio, image, interactive, video, caption, title, type } = assembly;
 
   return (
-    <Fragment>
+    <div className={styles.wrapper} style={{ width }}>
       <ThumbnailComponent
         assemblyId={assembly.assemblyId}
-        className={classNames(
+        className={classnames(
           styles.Thumbnail,
           styles[className],
           styles[type],
@@ -61,7 +61,7 @@ const Thumbnail = memo((props) => {
           <div className={styles.wrapper} style={{ height, width }}>
             <FontAwesomeIcon icon={faVolume} size={size} />
             <Shave
-              className={classNames(styles.audioTitle, 'mt-5 mt-1')}
+              className={classnames(styles.audioTitle, 'mt-5 mt-1')}
               maxHeightPercentage={0.5}
               dangerouslySetInnerHTML={{ __html: caption || title }}
             />
@@ -72,7 +72,7 @@ const Thumbnail = memo((props) => {
             <LazyImage src={assembly.thumbnailUrl} alt={title} height={height} width={width} root={lazyContainer} />
             {hasHoverCaption && (
               <Shave
-                className={classNames(styles.imageCaption, 'pt-40 p-10 pt-4 p-2')}
+                className={classnames(styles.imageCaption, 'pt-40 p-10 pt-4 p-2')}
                 maxHeightPercentage={0.75}
                 dangerouslySetInnerHTML={{ __html: caption || title }}
               />
@@ -84,7 +84,7 @@ const Thumbnail = memo((props) => {
             <LazyImage src={assembly.thumbnailUrl} alt={title} height={height} width={width} root={lazyContainer} />
             {hasHoverCaption && (
               <Shave
-                className={classNames(styles.imageCaption, 'pt-40 p-10 pt-4 p-2')}
+                className={classnames(styles.imageCaption, 'pt-40 p-10 pt-4 p-2')}
                 maxHeightPercentage={0.75}
                 dangerouslySetInnerHTML={{ __html: caption || title }}
               />
@@ -103,7 +103,7 @@ const Thumbnail = memo((props) => {
             <FontAwesomeIcon icon={faPlay} size={size} />
             {hasHoverCaption && (
               <Shave
-                className={classNames(styles.videoCaption, 'p-10 p-2')}
+                className={classnames(styles.videoCaption, 'p-10 p-2')}
                 maxHeightPercentage={0.4}
                 dangerouslySetInnerHTML={{ __html: caption || title }}
               />
@@ -112,11 +112,11 @@ const Thumbnail = memo((props) => {
         )}
       </ThumbnailComponent>
       {hasCaption && (
-        <Shave className={styles.caption} maxHeight={50}>
+        <div className={classnames(styles.caption, styles.lineClamp)} style={{ width }}>
           {assembly.caption}
-        </Shave>
+        </div>
       )}
-    </Fragment>
+    </div>
   );
 });
 
@@ -133,7 +133,6 @@ Thumbnail.propTypes = {
   lazyContainer: PropTypes.instanceOf(Element),
   size: PropTypes.string,
   width: PropTypes.number,
-  match: PropTypes.shape(),
 };
 
 Thumbnail.defaultProps = {
@@ -148,7 +147,6 @@ Thumbnail.defaultProps = {
   onClick: null,
   size: 'lg',
   width: null,
-  match: null,
 };
 
 export default Thumbnail;

@@ -2,11 +2,24 @@
 
 $thumbnail-border-width: 2px;
 
+.wrapper {
+  flex-direction: column;
+}
+
+.lineClamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  max-height: 3.8em; // todo: needed until Firefox 68 (which supports line-clamp with -moz- prefix)
+  overflow: hidden;
+  -webkit-box-orient: vertical; /* autoprefixer: off */
+  white-space: normal;
+}
+
 .Thumbnail {
   background-color: $gray-200;
   border: $thumbnail-border-width solid transparent;
   color: $gray-800;
-  display: block;
+  display: inline-block;
   opacity: 0.7;
   padding: $thumbnail-border-width;
   transition: 0.2s;
@@ -37,7 +50,7 @@ $thumbnail-border-width: 2px;
   &.Audio,
   &.Video {
     align-items: center;
-    display: flex;
+    display: inline-flex;
     height: 100%;
     justify-content: center;
     left: 0;
@@ -152,4 +165,6 @@ $thumbnail-border-width: 2px;
   font-size: 11px;
   font-weight: 400;
   margin-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }

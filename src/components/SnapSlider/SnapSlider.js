@@ -19,7 +19,7 @@ const SnapSlider = ({ children, scrollTo }) => {
   // Scroll to designated `scrollTo` location
 
   useEffect(() => {
-    containerRef.current.scrollBy({
+    containerRef.current.scrollTo({
       left: scrollTo,
     });
   }, [scrollTo]);
@@ -73,11 +73,22 @@ const SnapSlider = ({ children, scrollTo }) => {
 
   return (
     <div className={styles.SnapSlider}>
-      <SnapSliderArrow className={classnames(styles.arrow, styles.previous, 'd-none d-md-block')} onClick={previousSlide} disabled={position <= 0} icon={faAngleLeft} />
-      <div className={styles.track} ref={containerRef}> {/* todo: can we replace this with react-window? animated example https://codesandbox.io/s/k2lpl9m0l3 */}
+      <SnapSliderArrow
+        className={classnames(styles.arrow, styles.previous, 'd-none d-md-block')}
+        onClick={previousSlide}
+        disabled={position <= 0}
+        icon={faAngleLeft}
+      />
+      {/* todo: can we replace the track with react-window? animated example https://codesandbox.io/s/k2lpl9m0l3 */}
+      <div className={styles.track} ref={containerRef}>
         {children}
       </div>
-      <SnapSliderArrow className={classnames(styles.arrow, styles.next, 'd-none d-md-block')} onClick={nextSlide} disabled={position + scrollAmount >= scrollWidth} icon={faAngleRight} />
+      <SnapSliderArrow
+        className={classnames(styles.arrow, styles.next, 'd-none d-md-block')}
+        onClick={nextSlide}
+        disabled={position + scrollAmount >= scrollWidth}
+        icon={faAngleRight}
+      />
     </div>
   );
 };

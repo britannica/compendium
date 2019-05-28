@@ -10,7 +10,7 @@ import SnapSliderArrow from './SnapSliderArrow/SnapSliderArrow';
 
 polyfill(); // todo: remove this after safari supports ScrollToOptions https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy#Browser_Compatibility
 
-const SnapSlider = ({ children, scrollTo }) => {
+const SnapSlider = ({ children, scrollTo, selectedIndex, thumbnailWidth }) => {
   const containerRef = useRef();
   const [scrollAmount, setScrollAmount] = useState(null);
   const [scrollWidth, setScrollWidth] = useState(null);
@@ -23,6 +23,18 @@ const SnapSlider = ({ children, scrollTo }) => {
       left: scrollTo,
     });
   }, [scrollTo]);
+
+  // Automatically trigger a previous/next scroll if the currently selected media is outside of the visible area
+
+  /*useEffect(() => {
+    if (position > selectedIndex * thumbnailWidth) {
+      previousSlide();
+    }
+
+    if (position + scrollAmount > (selectedIndex * thumbnailWidth) - thumbnailWidth) {
+      nextSlide();
+    }
+  }, [position, selectedIndex, thumbnailWidth, scrollWidth]);*/
 
 
   // Add event listeners on mount
@@ -96,11 +108,15 @@ const SnapSlider = ({ children, scrollTo }) => {
 SnapSlider.propTypes = {
   children: ChildrenProp,
   scrollTo: PropTypes.number,
+  selectedIndex: PropTypes.number,
+  thumbnailWidth: PropTypes.number,
 };
 
 SnapSlider.defaultProps = {
   children: null,
   scrollTo: 0,
+  selectedIndex: 0,
+  thumbnailWidth: null,
 };
 
 export default SnapSlider;

@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Interactive.module.scss';
 
-const Interactive = ({ iframeSrc, height, width, titleText }) => (
+const Interactive = ({ filename, height, width, titleText }) => (
   <div className={styles.InteractiveMedia} style={{ paddingBottom: `${(height / width) * 100}%` }}>
-    <iframe src={iframeSrc} title={titleText} />
+    <iframe src={filename} title={titleText} />
   </div>
 );
 
 Interactive.propTypes = {
-  iframeSrc: PropTypes.string.isRequired,
+  filename: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   titleText: PropTypes.string,

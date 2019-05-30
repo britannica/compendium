@@ -1,3 +1,4 @@
+import { MediaType } from '../../constants';
 
 export const Locale = {
   'en-us': {
@@ -11,6 +12,7 @@ export const Locale = {
     CITE_WEBSITE_NAME: 'Website Name',
     CLOSE: 'Close',
     EMAIL_PANEL: 'Email',
+    ERROR: 'Unable to load media.',
     FILTER_ALL: 'All',
     FILTER_AUDIO: 'Audio',
     FILTER_IMAGES: 'Images',
@@ -22,10 +24,45 @@ export const Locale = {
     VIEW_CAROUSEL: 'View Carousel',
     VIEW_FULL_SIZE: 'View Full-Size',
     VIEW_GALLERY: 'View All',
-    ERROR: 'Unable to load media.',
+    MediaType: {
+      [MediaType.AUDIO]: 'audio',
+      [MediaType.IMAGE]: 'image',
+      [MediaType.INTERACTIVE]: 'interactive',
+      [MediaType.VIDEO]: 'video',
+    },
+  },
+  'pt-br': {
+    CAPTION_PANEL: 'Legenda',
+    CITE_ACCESS_DATE: 'Data do acesso',
+    CITE_PANEL: 'Citar',
+    CITE_MEDIA_TITLE: 'Título do recurso',
+    CITE_MEDIA_TYPE: 'Tipo de recurso',
+    CITE_PUBLISHER: 'Editor',
+    CITE_URL: 'Url',
+    CITE_WEBSITE_NAME: 'Nome do site',
+    CLOSE: 'Close',
+    EMAIL_PANEL: 'Enviar',
+    ERROR: 'Ops! Não foi possível carregar o recurso. Tente outra vez.',
+    FAVORITE: 'Favoritos',
+    FILTER_ALL: 'Tudo',
+    FILTER_AUDIO: 'Áudios',
+    FILTER_IMAGES: 'Imagens',
+    FILTER_INTERACTIVES: 'Interactives',
+    FILTER_VIDEOS: 'Vídeos',
+    ITEM_SINGULAR: 'item',
+    ITEM_PLURAL: 'itens',
+    PRINT: 'Imprimir',
+    VIEW_CAROUSEL: 'Ver carrossel',
+    VIEW_FULL_SIZE: 'Ver imagem ampliada',
+    VIEW_GALLERY: 'Ver tudo',
+    MediaType: {
+      [MediaType.AUDIO]: 'áudio',
+      [MediaType.IMAGE]: 'imagem',
+      [MediaType.INTERACTIVE]: 'interactive',
+      [MediaType.VIDEO]: 'vídeo',
+    },
   },
 };
-
 
 /**
  * Return a Locale object from either a string or an object.

@@ -1,0 +1,170 @@
+@import '../../variables';
+
+$thumbnail-border-width: 2px;
+
+.wrapper {
+  flex-direction: column;
+}
+
+.lineClamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  max-height: 3.8em; // todo: needed until Firefox 68 (which supports line-clamp with -moz- prefix)
+  overflow: hidden;
+  -webkit-box-orient: vertical; /* autoprefixer: off */
+  white-space: normal;
+}
+
+.Thumbnail {
+  background-color: $gray-200;
+  border: $thumbnail-border-width solid transparent;
+  color: $gray-800;
+  display: inline-block;
+  opacity: 0.7;
+  padding: $thumbnail-border-width;
+  transition: 0.2s;
+
+  &.selected,
+  &.opaque {
+    opacity: 1;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.selected {
+    border-color: $blue-dark;
+  }
+
+  &.size-lg {
+    font-size: 11px;
+  }
+
+  &.size-2x {
+    font-size: 14px;
+  }
+
+  &.Audio,
+  &.Video {
+    align-items: center;
+    display: inline-flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  &.Audio {
+    text-align: center;
+
+    &.size-lg .wrapper {
+      padding: 2px;
+    }
+
+    &.size-2x .wrapper {
+      padding: 10px;
+    }
+
+    .wrapper {
+      background-color: $black;
+      flex-direction: column;
+      max-height: 100%;
+    }
+
+    &.audioTitle {
+      hyphens: auto;
+      pointer-events: none; // EMF-456: tapping on the title doesn't navigate to the thumbnail
+    }
+  }
+
+  &.Video {
+    @media (hover: hover) {
+      &:hover {
+        .videoCaption {
+          opacity: 1;
+        }
+      }
+    }
+
+    .wrapper {
+      background-color: $black;
+    }
+
+    img {
+      height: 100%;
+      left: 0;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    svg {
+      position: relative;
+    }
+
+    .videoCaption {
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.3s;
+      width: 100%;
+    }
+  }
+
+  &.Image,
+  &.Interactive {
+    .imageCaption {
+      background: linear-gradient(transparent, rgba(black, 0.8));
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.3s;
+      width: 100%;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        .imageCaption {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.Interactive {
+  }
+
+  .wrapper {
+    align-items: center;
+    color: $white;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.hoverCaption {
+}
+
+.caption {
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}

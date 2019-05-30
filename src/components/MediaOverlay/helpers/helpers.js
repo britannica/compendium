@@ -1,54 +1,17 @@
-
 import { ViewportWidth } from '../../../constants';
 import { maxWidth } from './responsive-helpers';
 
 /**
- * Find the index of the given `mediaId` within the `mediaArray`
+ * Find the index of the given `assemblyId` within the `mediaArray`
  *
- * @param {array} mediaArray
- * @param {string} mediaId
+ * @param {array<object>} assemblies
+ * @param {string} assemblyId
  * @returns {number}
  */
 
-export const findCurrentMediaIndex = (mediaArray, mediaId) => (
-  mediaArray.findIndex(media => media.mediaId === parseInt(mediaId))
+export const findCurrentMediaIndex = (assemblies, assemblyId) => (
+  assemblies.findIndex(assembly => assembly.assemblyId === parseInt(assemblyId))
 );
-
-
-/**
- * Carousel "pagination", gets the index of the slide that will show an entire "page"
- *
- * @param index
- * @param slidesToShow
- * @returns {number}
- */
-
-export const getCarouselIndex = (index, slidesToShow) => (
-  Math.floor(index / slidesToShow) * slidesToShow
-);
-
-
-/**
- * Determines the number of slides to show per carousel "page"
- * todo: can we use media queries here somehow?
- *
- * @returns {number}
- */
-
-export const determineSlidesToShow = () => {
-  const screenWidth = document.body.clientWidth;
-
-  if (screenWidth >= parseInt(ViewportWidth.XL_MIN)) {
-    return 7;
-  }
-
-  if (screenWidth >= parseInt(ViewportWidth.LG_MIN) && screenWidth <= parseInt(ViewportWidth.LG_MAX)) {
-    return 6;
-  }
-
-  return 5;
-};
-
 
 /**
  * Determine whether the media controls and sidebar can be toggled
@@ -56,6 +19,4 @@ export const determineSlidesToShow = () => {
  * @returns {boolean}
  */
 
-export const areControlsToggleable = () => (
-  window.matchMedia(maxWidth(ViewportWidth.MD_MAX)).matches
-);
+export const areControlsToggleable = () => window.matchMedia(maxWidth(ViewportWidth.MD_MAX)).matches;

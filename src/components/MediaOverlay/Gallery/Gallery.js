@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import PhotoGallery from 'react-photo-gallery';
@@ -7,7 +6,7 @@ import { ViewportWidth } from '../../../constants';
 import Thumbnail from '../../Thumbnail/Thumbnail';
 import MediaLink from '../MediaLink/MediaLink';
 import { withGalleryContext } from './Gallery.context';
-import styles from './Gallery.scss';
+import styles from './Gallery.module.scss';
 
 const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
   function renderPhotoGallery(columns) {
@@ -15,8 +14,18 @@ const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
       <PhotoGallery
         photos={filteredPhotos}
         columns={columns}
-        ImageComponent={props => (
-          <Thumbnail {...props.photo} onClick={onMediaClick} size="2x" hoverCaption opaque ThumbnailComponent={MediaLink} lazyContainer={lazyContainer} />
+        ImageComponent={({ photo }) => (
+          <Thumbnail
+            ThumbnailComponent={MediaLink}
+            assembly={photo}
+            height={photo.height}
+            lazyContainer={lazyContainer}
+            width={photo.width}
+            onClick={onMediaClick}
+            size="2x"
+            hasHoverCaption
+            isOpaque
+          />
         )}
       />
     );
@@ -24,12 +33,8 @@ const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
 
   return (
     <div className={styles.Gallery}>
-      <MediaQuery minWidth={ViewportWidth.MD_MIN}>
-        {renderPhotoGallery(5)}
-      </MediaQuery>
-      <MediaQuery maxWidth={ViewportWidth.SM_MAX}>
-        {renderPhotoGallery(2)}
-      </MediaQuery>
+      <MediaQuery minWidth={ViewportWidth.MD_MIN}>{renderPhotoGallery(5)}</MediaQuery>
+      <MediaQuery maxWidth={ViewportWidth.SM_MAX}>{renderPhotoGallery(2)}</MediaQuery>
     </div>
   );
 };
@@ -37,11 +42,13 @@ const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
 Gallery.propTypes = {
   lazyContainer: PropTypes.instanceOf(Element),
   onMediaClick: PropTypes.func,
-  filteredPhotos: PropTypes.arrayOf(PropTypes.shape({
-    src: PropTypes.string,
-    height: PropTypes.number,
-    width: PropTypes.number,
-  })).isRequired,
+  filteredPhotos: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string,
+      height: PropTypes.number,
+      width: PropTypes.number,
+    }),
+  ).isRequired,
 };
 
 Gallery.defaultProps = {

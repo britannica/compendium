@@ -1,50 +1,44 @@
-
 import React from 'react';
-import ReactJWPlayer from 'react-jw-player';
+import ReactJWPlayer from '@ryanwalters/react-jw-player';
 import PropTypes from 'prop-types';
-import styles from './Video.scss';
+import AssemblyProp from '../../../../prop-types/AssemblyProp';
+import styles from './Video.module.scss';
 
-const Video = ({ media: { closedCaptionUrl, posterUrl, playlistUrl }, onPlay, onPause, playerId, adInfoProvider }) => (
-    <div className={styles.VideoMedia}>
-      <ReactJWPlayer
+const Video = ({
+  assembly: { video },
+  generatePrerollUrl,
+  onPlay,
+  onPause,
+  playerId,
+}) => (
+  <div className={styles.VideoMedia}>
+    <ReactJWPlayer
       className="wrapper"
       onPlay={onPlay}
       onPause={onPause}
-      playerId="bmo-video-player"
+      playerId="eb-video-player"
       playerScript={`https://content.jwplatform.com/libraries/${playerId}.js`}
-      customProps={adInfoProvider()}
-      playlist={[{
-        image: posterUrl,
-        sources: [{
-          default: false,
-          file: playlistUrl,
-          label: '0',
-          preload: 'metadata',
-          type: 'hls',
-        }],
-        tracks: [{
-          file: closedCaptionUrl,
-          label: 'English',
-        }],
-      }]}
+      playlist={[video]}
+      generatePrerollUrl={generatePrerollUrl}
+      customProps={(generatePrerollUrl && {
+        advertising: {
+          client: 'googima',
+        },
+      })}
     />
   </div>
 );
 
 Video.propTypes = {
+  assembly: AssemblyProp.isRequired,
   playerId: PropTypes.string.isRequired,
-  media: PropTypes.shape({
-    posterUrl: PropTypes.string.isRequired,
-    playlistUrl: PropTypes.string.isRequired,
-  }),
+  generatePrerollUrl: PropTypes.func,
   onPlay: PropTypes.func,
   onPause: PropTypes.func,
-  adInfoProvider: PropTypes.func,
 };
 
 Video.defaultProps = {
-  media: null,
-  adInfoProvider: () => {},
+  generatePrerollUrl: null,
   onPlay: () => {},
   onPause: () => {},
 };

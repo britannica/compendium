@@ -1,0 +1,29 @@
+@import '../../variables';
+
+.VideoMedia {
+  max-height: 100%;
+  width: 100%;
+
+  @include media-breakpoint-up(xl) {
+    :global {
+      .jwplayer {
+        position: inherit !important;
+
+        .jw-media {
+          background-color: black;
+        }
+
+        .jw-aspect {
+          display: none !important;
+        }
+
+        .jw-preview {
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover contain;
+        }
+      }
+    }
+  }
+}

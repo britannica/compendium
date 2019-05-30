@@ -1,7 +1,6 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Audio.scss';
+import styles from './Audio.module.scss';
 
 const Audio = ({ audioSrc }) => (
   <div className={styles.AudioMedia}>

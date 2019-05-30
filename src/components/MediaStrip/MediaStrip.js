@@ -1,69 +1,76 @@
-
-import classNames from 'classnames';
-import React from 'react';
-import Carousel from 'nuka-carousel';
+import classnames from 'classnames';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import AssemblyProp from '../../prop-types/AssemblyProp';
+import { findCurrentMediaIndex } from '../MediaOverlay/helpers/helpers';
+import SnapSlider from '../SnapSlider/SnapSlider';
 import Thumbnail from '../Thumbnail/Thumbnail';
-import { MediaStripNextArrow, MediaStripPreviousArrow } from './media-strip-components/media-strip-components';
-import styles from './MediaStrip.scss';
+import styles from './MediaStrip.module.scss';
 
-const DEFAULT_THUMBNAIL_HEIGHT = 75;
+// todo: consider list virtualization, possibly react-window
 
-const MediaStrip = ({ captions, handleCarouselPagination, mediaIndex, mediaStrip, opaque, lazyContainer, slideIndex, slidesToShow, ThumbnailComponent }) => {
-  const hasArrows = mediaStrip.length > slidesToShow;
+const THUMBNAIL_WIDTH = 110;
+const THUMBNAIL_HEIGHT = 75;
+
+const MediaStrip = ({
+  captions,
+  assemblies,
+  opaque,
+  lazyContainer,
+  selectedAssembly,
+  ThumbnailComponent,
+}) => {
+  const [index, setIndex] = useState(0);
+
+  // Set the scrollTo position of the SnapSlider on mount
+
+  useEffect(() => {
+    if (selectedAssembly) {
+      setIndex(findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId));
+    }
+  }, []);
 
   return (
-    <div className={classNames(styles.MediaStrip, { [styles.captions]: captions })}>
-      <Carousel
-        disableKeyboardControls
-        slideIndex={slideIndex}
-        slidesToShow={slidesToShow}
-        slidesToScroll={slidesToShow}
-        cellSpacing={5}
-        heightMode="first" // todo: This should be changed to `max` after the following is resolved https://github.com/FormidableLabs/nuka-carousel/issues/417
-        initialSlideHeight={75} // todo: This should be removed after the following is resolved https://github.com/FormidableLabs/nuka-carousel/issues/417
-        renderBottomCenterControls={null}
-        renderCenterLeftControls={hasArrows ? MediaStripPreviousArrow : null}
-        renderCenterRightControls={hasArrows ? MediaStripNextArrow : null}
-        afterSlide={handleCarouselPagination}
+    <div className={classnames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none')}>
+      <SnapSlider
+        scrollTo={THUMBNAIL_WIDTH * index}
+        /*thumbnailWidth={THUMBNAIL_WIDTH}
+        selectedIndex={findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId)}*/
       >
-        {mediaStrip.map((thumbnail, i) => (
+        {assemblies.map(assembly => (
           <Thumbnail
-            {...thumbnail}
-            caption={captions}
-            className={classNames({ selected: i === mediaIndex })}
+            assembly={assembly}
+            key={assembly.assemblyId}
+            hasCaption={captions}
+            container={styles.MediaStrip}
+            height={THUMBNAIL_HEIGHT}
             lazyContainer={lazyContainer}
-            height={DEFAULT_THUMBNAIL_HEIGHT}
-            key={thumbnail.mediaId}
-            opaque={opaque}
-            width={null}
+            isOpaque={opaque}
+            isSelected={selectedAssembly?.assemblyId === assembly.assemblyId}
+            width={THUMBNAIL_WIDTH}
             ThumbnailComponent={ThumbnailComponent}
           />
         ))}
-      </Carousel>
+      </SnapSlider>
     </div>
   );
 };
 
 MediaStrip.propTypes = {
   captions: PropTypes.bool,
-  handleCarouselPagination: PropTypes.func,
+  assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   lazyContainer: PropTypes.instanceOf(Element),
-  mediaIndex: PropTypes.number,
-  mediaStrip: PropTypes.arrayOf(PropTypes.shape(Thumbnail.propTypes)).isRequired,
   opaque: PropTypes.bool,
-  slideIndex: PropTypes.number,
-  slidesToShow: PropTypes.number.isRequired,
-  ThumbnailComponent: Thumbnail.propTypes.ThumbnailComponent,
+  selectedAssembly: PropTypes.shape(),
+  ThumbnailComponent: PropTypes.func,
 };
 
 MediaStrip.defaultProps = {
   captions: false,
-  handleCarouselPagination: () => {},
-  mediaIndex: 0,
+  lazyContainer: null,
   opaque: false,
-  slideIndex: 0,
-  ThumbnailComponent: Thumbnail.defaultProps.ThumbnailComponent,
+  selectedAssembly: null,
+  ThumbnailComponent: () => {},
 };
 
 export default MediaStrip;

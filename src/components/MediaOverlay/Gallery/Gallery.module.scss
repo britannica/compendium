@@ -1,0 +1,9 @@
+@import '../variables';
+
+.Gallery {
+  grid-area: gallery;
+  margin: 0 $toolbar-margin;
+  overflow-y: scroll;
+  padding: $toolbar-margin 0;
+  -webkit-overflow-scrolling: touch;
+}

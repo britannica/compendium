@@ -1,6 +1,6 @@
-
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import AssemblyProp from '../../../prop-types/AssemblyProp';
 import ChildrenProp from '../../../prop-types/ChildrenProp';
 
 const DEFAULT_STATE = {
@@ -11,7 +11,6 @@ const DEFAULT_STATE = {
 };
 
 const GalleryContext = React.createContext(DEFAULT_STATE);
-
 
 // --- Provider
 
@@ -24,29 +23,26 @@ export class GalleryProvider extends Component {
 
   state = DEFAULT_STATE;
 
-
   // --- Lifecycle methods
 
   componentDidMount() {
-    // Map `mediaStrip` to a `photos` object which used by react-photo-gallery
+    // Map `assemblies` to a `photos` object which used by react-photo-gallery
 
-    const { mediaStrip } = this.props;
+    const { assemblies } = this.props;
 
-    const photos = mediaStrip.map(media => ({
-      ...media,
-      key: media.mediaId,
-      src: media.thumbnailUrl || '',
-      width: media.width || 16,
-      height: media.height || 9,
+    const photos = assemblies.map(assembly => ({
+      ...assembly,
+      key: assembly.assemblyId,
+      src: assembly.thumbnailUrl || '',
+      width: assembly[assembly.type.toLowerCase()].width || 16,
+      height: assembly[assembly.type.toLowerCase()].height || 9,
     }));
-
 
     // Determine the initial set of filters
 
     const filters = new Set();
 
     photos.forEach(photo => filters.add(photo.type));
-
 
     // Set state
 
@@ -57,22 +53,18 @@ export class GalleryProvider extends Component {
     });
   }
 
-
   // --- Custom methods
 
   setSelectedFilter(filter) {
     const { photos } = this.state;
 
-    const filteredPhotos = photos.filter(photo => (
-      photo.type === filter || filter === null
-    ));
+    const filteredPhotos = photos.filter(photo => photo.type === filter || filter === null);
 
     this.setState({
       filteredPhotos,
       selectedFilter: filter,
     });
   }
-
 
   // --- Render
 
@@ -95,18 +87,15 @@ export class GalleryProvider extends Component {
 
 GalleryProvider.propTypes = {
   children: ChildrenProp,
-  mediaStrip: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
 };
 
 GalleryProvider.defaultProps = {
   children: null,
 };
 
-
 // --- Consumer HOC
 
 export const withGalleryContext = WrappedComponent => props => (
-  <GalleryContext.Consumer>
-    {context => <WrappedComponent {...props} {...context} />}
-  </GalleryContext.Consumer>
+  <GalleryContext.Consumer>{context => <WrappedComponent {...props} {...context} />}</GalleryContext.Consumer>
 );

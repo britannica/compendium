@@ -93,8 +93,8 @@ class LazyImage extends Component {
 }
 
 LazyImage.propTypes = {
-  alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
+  alt: PropTypes.string,
   root: PropTypes.instanceOf(Element),
   className: PropTypes.string,
   height: PropTypes.number,
@@ -102,6 +102,7 @@ LazyImage.propTypes = {
 };
 
 LazyImage.defaultProps = {
+  alt: 'image',
   className: null,
   root: null,
   height: null,

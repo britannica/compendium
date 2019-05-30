@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const AudioProp = PropTypes.shape({
-  duration: PropTypes.number,
+  duration: PropTypes.string,
   filename: PropTypes.string,
 });
 

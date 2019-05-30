@@ -17,7 +17,7 @@ const Media = () => (
       showSidebarAndControls,
     }) => (
       <Fragment>
-        {assembly.audio && <Audio audioSrc={assembly.audio.filename} />}
+        {assembly.audio && <Audio filename={assembly.audio.filename} />}
         {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
         {assembly.interactive && <Interactive {...assembly.interactive} />}
         {assembly.video && (

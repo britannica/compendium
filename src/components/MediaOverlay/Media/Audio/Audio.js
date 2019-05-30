@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Audio.module.scss';
 
-const Audio = ({ audioSrc }) => (
+const Audio = ({ filename }) => (
   <div className={styles.AudioMedia}>
-    <audio controls src={audioSrc} controlsList="nodownload" />
+    <audio controls src={filename} controlsList="nodownload" />
   </div>
 );
 
 Audio.propTypes = {
-  audioSrc: PropTypes.string.isRequired,
+  filename: PropTypes.string.isRequired,
 };
 
 export default Audio;

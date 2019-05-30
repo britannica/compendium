@@ -3,8 +3,8 @@ import React from 'react';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './CaptionPanel.module.scss';
 
-const CaptionPanel = ({ assembly: { title, caption, image, video, audio, interactive } }) => {
-  const { license, credit } = image || video || audio || interactive;
+const CaptionPanel = ({ assembly: { title, caption, credit, image, video, audio, interactive } }) => {
+  const { license } = image || video || audio || interactive;
 
   return (
     <div className={classNames(styles.CaptionPanel, 'd-print-none')}>

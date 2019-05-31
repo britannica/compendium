@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactJWPlayer from '@ryanwalters/react-jw-player';
 import PropTypes from 'prop-types';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
@@ -10,10 +10,18 @@ const Video = ({
   onPlay,
   onPause,
   playerId,
-}) => (
-  <div className={styles.VideoMedia}>
+}) => {
+  // Log any JW Player errors that occur
+
+  useEffect(() => {
+    if (window.jwplayer) {
+      window.jwplayer().on('adError', error => console.log('JW Player error:', error));
+    }
+  }, []);
+
+  return (
     <ReactJWPlayer
-      className="wrapper"
+      className={styles.VideoMedia}
       onPlay={onPlay}
       onPause={onPause}
       playerId="eb-video-player"
@@ -26,8 +34,8 @@ const Video = ({
         },
       })}
     />
-  </div>
-);
+  );
+};
 
 Video.propTypes = {
   assembly: AssemblyProp.isRequired,

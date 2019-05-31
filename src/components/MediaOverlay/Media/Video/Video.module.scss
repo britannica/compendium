@@ -1,8 +1,15 @@
 @import '../../variables';
 
 .VideoMedia {
+  height: 100%;
   max-height: 100%;
   width: 100%;
+
+  :global {
+    #eb-video-player {
+      height: 100% !important;
+    }
+  }
 
   @include media-breakpoint-up(xl) {
     :global {

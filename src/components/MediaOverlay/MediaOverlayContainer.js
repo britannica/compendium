@@ -298,6 +298,8 @@ class MediaOverlayContainer extends Component {
     if (!event.target.closest(`.${mediaViewerStyles.mediaArrow}`)) {
       this.toggleSidebarAndControls();
     }
+
+    console.log(event.target);
   }
 
   enableGalleryView() {

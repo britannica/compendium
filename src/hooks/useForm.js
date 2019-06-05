@@ -39,10 +39,12 @@ export default function useForm(callback, validationSchema) {
     }));
   };
 
+  const setValuesCallback = passedValues => setValues(validationSchema.cast(passedValues));
+
   return {
     handleChange,
     handleSubmit,
-    setValues: passedValues => setValues(validationSchema.cast(passedValues)),
+    setValues: setValuesCallback,
     validationError,
     values: validationSchema.cast(values),
     isValid: validationSchema.isValidSync(values),

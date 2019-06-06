@@ -4,12 +4,13 @@ export default class ContentfulUtils {
   /**
    * Map a set of Contentful fields to an object
    *
-   * @param {object} fields
-   * @param {object} includes
+   * @param {string} id       Contentful's entry id
+   * @param {object} fields   Fields for the current Entry
+   * @param {object} includes The Links/Assets associated with the current Entry
    * @returns {object}
    */
 
-  static mapFieldsToEntry(fields, includes) {
+  static mapFieldsToEntry(id, fields, includes) {
     const entry = {};
 
     Object.entries(fields).forEach(([key, value]) => {
@@ -23,6 +24,7 @@ export default class ContentfulUtils {
 
       else {
         entry[key] = value;
+        entry.id = id;
       }
     });
 
@@ -42,7 +44,7 @@ export default class ContentfulUtils {
   static mapLinkToProperty(includes, { sys: { id, linkType } }) {
     const { fields } = includes[linkType].find(({ sys: { id: linkId } }) => id === linkId);
 
-    return ContentfulUtils.mapFieldsToEntry(fields, includes);
+    return ContentfulUtils.mapFieldsToEntry(id, fields, includes);
   }
 
 
@@ -111,22 +113,23 @@ export default class ContentfulUtils {
   /**
    * Map a Contentful response to a more normalized array of objects
    *
+   * @param {object} sys
    * @param {object} responseFields
    * @param {array<object>} items
    * @param {object} includes
    * @returns {array<object>}
    */
 
-  static mapResponseToEntries({ fields: responseFields, items, includes }) {
+  static mapResponseToEntries({ sys, fields: responseFields, items, includes }) {
     if (Array.isArray(items)) {
       if (items.length === 0) {
         throw new Error('ContentfulUtils: No results found.');
       }
 
-      return items.map(({ fields }) => ContentfulUtils.mapFieldsToEntry(fields, includes));
+      return items.map(({ sys, fields }) => ContentfulUtils.mapFieldsToEntry(sys.id, fields, includes));
     }
 
-    return ContentfulUtils.mapFieldsToEntry(responseFields, includes);
+    return ContentfulUtils.mapFieldsToEntry(sys.id, responseFields, includes);
   }
 
 

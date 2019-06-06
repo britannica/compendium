@@ -48,11 +48,6 @@
     "rollup-plugin-postcss": "^2.0.3"
   },
   "peerDependencies": {
-    "@fortawesome/fontawesome-svg-core": "1.x",
-    "@fortawesome/pro-light-svg-icons": "5.x",
-    "@fortawesome/pro-regular-svg-icons": "5.x",
-    "@fortawesome/pro-solid-svg-icons": "5.x",
-    "@fortawesome/react-fontawesome": "0.1.x",
     "react": "^16.8.x",
     "react-router-dom": "5.x"
   },

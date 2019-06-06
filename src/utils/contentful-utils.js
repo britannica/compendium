@@ -24,9 +24,10 @@ export default class ContentfulUtils {
 
       else {
         entry[key] = value;
-        entry.id = id;
       }
     });
+
+    entry.id = id;
 
     return entry;
   }

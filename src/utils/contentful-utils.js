@@ -4,13 +4,13 @@ export default class ContentfulUtils {
   /**
    * Map a set of Contentful fields to an object
    *
-   * @param {string} id       Contentful's entry id
    * @param {object} fields   Fields for the current Entry
    * @param {object} includes The Links/Assets associated with the current Entry
+   * @param {string} [id]     Contentful's entry id
    * @returns {object}
    */
 
-  static mapFieldsToEntry(id, fields, includes) {
+  static mapFieldsToEntry(fields, includes, id) {
     const entry = {};
 
     Object.entries(fields).forEach(([key, value]) => {
@@ -45,7 +45,7 @@ export default class ContentfulUtils {
   static mapLinkToProperty(includes, { sys: { id, linkType } }) {
     const { fields } = includes[linkType].find(({ sys: { id: linkId } }) => id === linkId);
 
-    return ContentfulUtils.mapFieldsToEntry(id, fields, includes);
+    return ContentfulUtils.mapFieldsToEntry(fields, includes, id);
   }
 
 
@@ -127,10 +127,10 @@ export default class ContentfulUtils {
         throw new Error('ContentfulUtils: No results found.');
       }
 
-      return items.map(({ sys, fields }) => ContentfulUtils.mapFieldsToEntry(sys.id, fields, includes));
+      return items.map(({ sys, fields }) => ContentfulUtils.mapFieldsToEntry(fields, includes, sys.id));
     }
 
-    return ContentfulUtils.mapFieldsToEntry(sys.id, responseFields, includes);
+    return ContentfulUtils.mapFieldsToEntry(responseFields, includes);
   }
 
 

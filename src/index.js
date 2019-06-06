@@ -14,4 +14,6 @@ export { default as useForm } from './hooks/useForm';
 
 // utils
 
-export { mapValidationErrorToFormFields } from './utils/form-utils';
+export { default as FormUtils } from './utils/form-utils';
+export { default as RouteUtils } from './utils/route-utils';
+export { default as ContentfulUtils } from './utils/contentful-utils';

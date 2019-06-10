@@ -1,11 +1,12 @@
 // components
 
-export { default as LazyImage } from './components/LazyImage/LazyImage';
-export { default as MediaOverlay } from './components/MediaOverlay';
+export { default as LazyImage } from './components/LazyImage/LazyImage.lazy';
+export { default as MediaOverlay } from './components/MediaOverlay/MediaOverlay.lazy';
 export { default as MediaOverlayLoading } from './components/MediaOverlayLoading/MediaOverlayLoading';
-export { default as MediaStrip } from './components/MediaStrip/MediaStrip';
-export { default as Shave } from './components/Shave/Shave';
-export { default as Taparoo } from './components/Taparoo/Taparoo';
+export { default as MediaStrip } from './components/MediaStrip/MediaStrip.lazy';
+export { default as Shave } from './components/Shave/Shave.lazy';
+export { default as SnapSlider } from './components/SnapSlider/SnapSlider.lazy';
+export { default as Taparoo } from './components/Taparoo/Taparoo.lazy';
 
 // hooks
 

@@ -13,6 +13,7 @@ const THUMBNAIL_WIDTH = 110;
 const THUMBNAIL_HEIGHT = 75;
 
 const MediaStrip = ({
+  className,
   captions,
   assemblies,
   opaque,
@@ -31,7 +32,7 @@ const MediaStrip = ({
   }, []);
 
   return (
-    <div className={classnames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none')}>
+    <div className={classnames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none', className)}>
       <SnapSlider
         scrollTo={THUMBNAIL_WIDTH * index}
         /*thumbnailWidth={THUMBNAIL_WIDTH}
@@ -57,6 +58,7 @@ const MediaStrip = ({
 };
 
 MediaStrip.propTypes = {
+  className: PropTypes.string,
   captions: PropTypes.bool,
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   lazyContainer: PropTypes.instanceOf(Element),
@@ -66,6 +68,7 @@ MediaStrip.propTypes = {
 };
 
 MediaStrip.defaultProps = {
+  className: null,
   captions: false,
   lazyContainer: null,
   opaque: false,

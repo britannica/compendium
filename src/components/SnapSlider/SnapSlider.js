@@ -10,7 +10,7 @@ import SnapSliderArrow from './SnapSliderArrow/SnapSliderArrow';
 
 polyfill(); // todo: remove this after safari supports ScrollToOptions https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy#Browser_Compatibility
 
-const SnapSlider = ({ children, scrollTo, selectedIndex, thumbnailWidth }) => {
+const SnapSlider = ({ children, className, scrollTo, selectedIndex, thumbnailWidth }) => {
   const containerRef = useRef();
   const [scrollAmount, setScrollAmount] = useState(null);
   const [scrollWidth, setScrollWidth] = useState(null);
@@ -84,7 +84,7 @@ const SnapSlider = ({ children, scrollTo, selectedIndex, thumbnailWidth }) => {
   }
 
   return (
-    <div className={styles.SnapSlider}>
+    <div className={classnames(styles.SnapSlider, className)}>
       <SnapSliderArrow
         className={classnames(styles.arrow, styles.previous, 'd-none d-md-block')}
         onClick={previousSlide}
@@ -107,6 +107,7 @@ const SnapSlider = ({ children, scrollTo, selectedIndex, thumbnailWidth }) => {
 
 SnapSlider.propTypes = {
   children: ChildrenProp,
+  className: PropTypes.string,
   scrollTo: PropTypes.number,
   selectedIndex: PropTypes.number,
   thumbnailWidth: PropTypes.number,
@@ -114,6 +115,7 @@ SnapSlider.propTypes = {
 
 SnapSlider.defaultProps = {
   children: null,
+  className: null,
   scrollTo: 0,
   selectedIndex: 0,
   thumbnailWidth: null,

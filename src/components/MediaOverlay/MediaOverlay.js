@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 import React, { forwardRef, Fragment } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
@@ -21,12 +21,13 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
       enableMediaView,
       handleKeyUp,
       hideOverlay,
+      className,
       overlayState: { assembly, assemblies, mode, overlayTitle },
       overlayProps: { hasMediaStrip },
     }) => (
-      <div className={styles.MediaOverlay} ref={overlayRef}>
+      <div className={classnames(styles.MediaOverlay, className)} ref={overlayRef}>
         <div role="button" tabIndex="0" className={styles.background} onClick={hideOverlay} onKeyUp={handleKeyUp} />
-        <div className={classNames(styles.main, styles[mode])}>
+        <div className={classnames(styles.main, styles[mode])}>
           {mode === OverlayMode.MEDIA_VIEW && (
             <Fragment>
               <MediaToolbar />

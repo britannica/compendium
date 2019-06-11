@@ -57,7 +57,8 @@
     "dev": "rollup -c -w",
     "test": "node test/test.js",
     "pretest": "npm run build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "postpublish": "git push --follow-tags"
   },
   "browserslist": [
     "last 2 chrome versions",

@@ -43,9 +43,13 @@ export default class ContentfulUtils {
    */
 
   static mapLinkToProperty(includes, { sys: { id, linkType } }) {
-    const { fields } = includes[linkType].find(({ sys: { id: linkId } }) => id === linkId);
+    const link = includes[linkType].find(({ sys: { id: linkId } }) => id === linkId);
 
-    return ContentfulUtils.mapFieldsToEntry(fields, includes, id);
+    if (link) {
+      return ContentfulUtils.mapFieldsToEntry(link.fields, includes, id);
+    }
+
+    return {};
   }
 
 
@@ -94,16 +98,13 @@ export default class ContentfulUtils {
 
     errors.forEach(({ sys: { id: errorName }, details: { id } }) => {
       switch (errorName) {
-        case 'notResolvable':
-        default: {
+        case 'notResolvable': {
           items.map(({ fields }) => ContentfulUtils.excludeUnresolvableFields(fields, id));
 
           break;
         }
       }
     });
-
-    delete response.errors;
 
     return {
       ...response,

@@ -1,8 +1,6 @@
-
 import PropTypes from 'prop-types';
 import React, { Component, createRef } from 'react';
 import shave from 'shave';
-import ChildrenProp from '../../prop-types/ChildrenProp';
 
 class Shave extends Component {
   ref = createRef();
@@ -36,7 +34,7 @@ class Shave extends Component {
 }
 
 Shave.propTypes = {
-  children: ChildrenProp,
+  children: PropTypes.node,
   className: PropTypes.string,
   maxHeightPercentage: PropTypes.number,
   maxHeight: PropTypes.number,

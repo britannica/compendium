@@ -3,7 +3,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import { Link } from 'react-router-dom';
-import ChildrenProp from '../../../prop-types/ChildrenProp';
+import PropTypes from 'prop-types';
 import MediaOverlayContext from '../MediaOverlay.context';
 import styles from './Toolbar.module.scss';
 
@@ -38,10 +38,10 @@ const Toolbar = ({ primaryTools, secondaryTools, customTools, sidebarPanels }) =
 );
 
 Toolbar.propTypes = {
-  customTools: ChildrenProp,
-  primaryTools: ChildrenProp,
-  secondaryTools: ChildrenProp,
-  sidebarPanels: ChildrenProp,
+  customTools: PropTypes.node,
+  primaryTools: PropTypes.node,
+  secondaryTools: PropTypes.node,
+  sidebarPanels: PropTypes.node,
 };
 
 Toolbar.defaultProps = {

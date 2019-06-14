@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import AssemblyProp from '../../../prop-types/AssemblyProp';
-import ChildrenProp from '../../../prop-types/ChildrenProp';
 
 const DEFAULT_STATE = {
   filteredPhotos: [],
@@ -86,7 +85,7 @@ export class GalleryProvider extends Component {
 }
 
 GalleryProvider.propTypes = {
-  children: ChildrenProp,
+  children: PropTypes.node,
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
 };
 

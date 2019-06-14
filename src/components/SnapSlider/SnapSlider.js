@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { debounce } from 'lodash-es';
 import { polyfill } from 'smoothscroll-polyfill';
-import ChildrenProp from '../../prop-types/ChildrenProp';
 import styles from './SnapSlider.module.scss';
 import SnapSliderArrow from './SnapSliderArrow/SnapSliderArrow';
 
@@ -106,7 +105,7 @@ const SnapSlider = ({ children, className, scrollTo, selectedIndex, thumbnailWid
 };
 
 SnapSlider.propTypes = {
-  children: ChildrenProp,
+  children: PropTypes.node,
   className: PropTypes.string,
   scrollTo: PropTypes.number,
   selectedIndex: PropTypes.number,

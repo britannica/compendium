@@ -127,18 +127,7 @@ Taparoo.propTypes = {
   onSwipeRight: PropTypes.func,
   onTap: PropTypes.func,
   className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.element,
-        PropTypes.bool,
-      ]),
-    ),
-    PropTypes.element,
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
+  children: PropTypes.node,
 };
 
 const noOp = () => {};

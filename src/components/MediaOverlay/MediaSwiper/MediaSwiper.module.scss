@@ -1,0 +1,21 @@
+.MediaSwiper {
+  height: 100%;
+  width: 100%;
+
+  .swiperTrack {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* autoprefixer: off */
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+  }
+
+  .swiperItem {
+    scroll-snap-align: start;
+    text-align: center;
+  }
+}

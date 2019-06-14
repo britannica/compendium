@@ -406,6 +406,7 @@ class MediaOverlayContainer extends Component {
           showSidebarAndControls: this.showSidebarAndControls,
           navigateNextMedia: this.navigateNextMedia,
           navigatePreviousMedia: this.navigatePreviousMedia,
+          navigateToMedia: this.navigateToMedia,
           setSidebarPanel: this.setSidebarPanel,
           toggleSidebar: this.toggleSidebar,
         }}

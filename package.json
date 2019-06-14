@@ -20,6 +20,7 @@
     "path-to-regexp": "^3.0.0",
     "react-photo-gallery": "^6.3.4",
     "react-responsive": "^6.1.2",
+    "react-window": "^1.8.2",
     "shave": "^2.5.3",
     "smoothscroll-polyfill": "^0.4.4"
   },

@@ -2,10 +2,13 @@ import React, { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import classNames from 'classnames';
+import MediaQuery from 'react-responsive';
+import { ViewportWidth } from '../../../constants';
 import Taparoo from '../../Taparoo/Taparoo';
 import Media from '../Media/Media';
 import MediaLink from '../MediaLink/MediaLink';
 import MediaOverlayContext from '../MediaOverlay.context';
+import MediaSwiper from '../MediaSwiper/MediaSwiper';
 import styles from './MediaViewer.module.scss';
 
 const MediaViewer = () => (
@@ -16,34 +19,42 @@ const MediaViewer = () => (
       navigateNextMedia,
       navigatePreviousMedia,
     }) => (
-      <Taparoo
-        onTap={handleTap}
-        onSwipeLeft={navigateNextMedia}
-        onSwipeRight={navigatePreviousMedia}
-        className={classNames(styles.MediaViewer, { controlsHidden })}
-      >
-        {hasError ? <Fragment>{localeLabels.ERROR}</Fragment> : <Media />}
-        {assemblies.length > 1 && !controlsHidden && (
-          <Fragment>
-            {mediaIndex > 0 && (
-              <MediaLink
-                assemblyId={assemblies[mediaIndex - 1].assemblyId}
-                className={classNames(styles.mediaArrow, styles.prev, 'd-print-none')}
-              >
-                <FontAwesomeIcon icon={faAngleLeft} size="3x" />
-              </MediaLink>
-            )}
-            {mediaIndex < assemblies.length - 1 && (
-              <MediaLink
-                assemblyId={assemblies[mediaIndex + 1].assemblyId}
-                className={classNames(styles.mediaArrow, styles.next, 'd-print-none')}
-              >
-                <FontAwesomeIcon icon={faAngleRight} size="3x" />
-              </MediaLink>
-            )}
-          </Fragment>
+      <MediaQuery minWidth={ViewportWidth.SM_MIN}>
+        {matches => (
+          matches ? (
+            <Taparoo
+              onTap={handleTap}
+              onSwipeLeft={navigateNextMedia}
+              onSwipeRight={navigatePreviousMedia}
+              className={classNames(styles.MediaViewer, { controlsHidden })}
+            >
+              {hasError ? <Fragment>{localeLabels.ERROR}</Fragment> : <Media />}
+              {assemblies.length > 1 && !controlsHidden && (
+                <Fragment>
+                  {mediaIndex > 0 && (
+                    <MediaLink
+                      assemblyId={assemblies[mediaIndex - 1].assemblyId}
+                      className={classNames(styles.mediaArrow, styles.prev, 'd-print-none')}
+                    >
+                      <FontAwesomeIcon icon={faAngleLeft} size="3x" />
+                    </MediaLink>
+                  )}
+                  {mediaIndex < assemblies.length - 1 && (
+                    <MediaLink
+                      assemblyId={assemblies[mediaIndex + 1].assemblyId}
+                      className={classNames(styles.mediaArrow, styles.next, 'd-print-none')}
+                    >
+                      <FontAwesomeIcon icon={faAngleRight} size="3x" />
+                    </MediaLink>
+                  )}
+                </Fragment>
+              )}
+            </Taparoo>
+          ) : (
+            <MediaSwiper className={styles.MediaViewer} assemblies={assemblies} selectedIndex={mediaIndex} />
+          )
         )}
-      </Taparoo>
+      </MediaQuery>
     )}
   </MediaOverlayContext.Consumer>
 );

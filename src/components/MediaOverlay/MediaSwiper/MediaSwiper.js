@@ -14,7 +14,6 @@ import styles from './MediaSwiper.module.scss';
 const MediaSwiper = memo(({ assemblies, selectedIndex, className }) => {
   const { navigateToMedia } = useContext(MediaOverlayContext);
   const swiperRef = useRef(null);
-  const itemRef = useRef(null);
   const [visibleIndex, setVisibleIndex] = useState(0);
   const [clientWidth, setClientWidth] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
@@ -56,7 +55,7 @@ const MediaSwiper = memo(({ assemblies, selectedIndex, className }) => {
             }
 
             return (
-              <div className={styles.swiperItem} style={style} ref={itemRef}>
+              <div className={styles.swiperItem} style={style}>
                 <div style={{ minHeight: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {/*<h1>{index + 1} ({index} + 1)</h1>*/}
                   {assembly.image && (
@@ -73,7 +72,11 @@ const MediaSwiper = memo(({ assemblies, selectedIndex, className }) => {
       )}
     </div>
   );
-});
+}, areEqual);
+
+function areEqual(prevProps, nextProps) {
+  return prevProps.selectedIndex === nextProps.selectedIndex;
+}
 
 MediaSwiper.propTypes = {
   assemblies: PropTypes.arrayOf(AssemblyProp),

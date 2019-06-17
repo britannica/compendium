@@ -14,9 +14,12 @@ import styles from './MediaSwiper.module.scss';
 const MediaSwiper = memo(({ assemblies, selectedIndex, className }) => {
   const { navigateToMedia } = useContext(MediaOverlayContext);
   const swiperRef = useRef(null);
+  const visibleIndexRef = useRef(0);
   const [visibleIndex, setVisibleIndex] = useState(0);
   const [clientWidth, setClientWidth] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
+
+  console.log(visibleIndexRef.current);
 
   // After mounting, calculate the size of the container
 
@@ -26,7 +29,7 @@ const MediaSwiper = memo(({ assemblies, selectedIndex, className }) => {
   }, []);
 
   function onItemsRendered({ visibleStartIndex }) {
-    setVisibleIndex(visibleStartIndex);
+    visibleIndexRef.current = visibleStartIndex;
   }
 
   return (
@@ -50,7 +53,7 @@ const MediaSwiper = memo(({ assemblies, selectedIndex, className }) => {
           {({ index, isScrolling, style }) => {
             const assembly = assemblies[index];
 
-            if (isScrolling === false && index !== selectedIndex && index === visibleIndex) {
+            if (isScrolling === false && index !== selectedIndex && index === visibleIndexRef.current) {
               navigateToMedia(assembly.assemblyId);
             }
 
@@ -72,11 +75,7 @@ const MediaSwiper = memo(({ assemblies, selectedIndex, className }) => {
       )}
     </div>
   );
-}, areEqual);
-
-function areEqual(prevProps, nextProps) {
-  return prevProps.selectedIndex === nextProps.selectedIndex;
-}
+});
 
 MediaSwiper.propTypes = {
   assemblies: PropTypes.arrayOf(AssemblyProp),

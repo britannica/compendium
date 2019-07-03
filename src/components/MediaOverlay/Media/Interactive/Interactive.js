@@ -4,7 +4,7 @@ import styles from './Interactive.module.scss';
 
 const Interactive = ({ filename, height, width, titleText }) => (
   <div className={styles.InteractiveMedia} style={{ paddingBottom: `${(height / width) * 100}%` }}>
-    <iframe src={filename} title={titleText} />
+    <iframe src={filename} title={titleText} scrolling="no" style={{ overflow: 'hidden' }} />
   </div>
 );
 

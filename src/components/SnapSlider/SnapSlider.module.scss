@@ -11,6 +11,7 @@
   .track {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
     scroll-snap-type: x mandatory;
     scrollbar-width: none; /* autoprefixer: off */
     white-space: nowrap;

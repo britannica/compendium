@@ -9,13 +9,11 @@ import SnapSliderArrow from './SnapSliderArrow/SnapSliderArrow';
 
 polyfill(); // todo: remove this after safari supports ScrollToOptions https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy#Browser_Compatibility
 
-const SnapSlider = ({ children, className, scrollTo, initialIndex, selectedIndex, thumbnailWidth }) => {
+const SnapSlider = ({ children, className, scrollTo }) => {
   const containerRef = useRef();
   const [scrollAmount, setScrollAmount] = useState(null);
   const [trackWidth, setTrackWidth] = useState(null);
   const [position, setPosition] = useState(0);
-  /*const [index, setIndex] = useState(initialIndex);*/
-  const [thumbnailsPerSlide, setThumbnailsPerSlide] = useState(null);
 
 
   // Previous and next click action callbacks
@@ -46,37 +44,6 @@ const SnapSlider = ({ children, className, scrollTo, initialIndex, selectedIndex
       left: scrollTo,
     });
   }, [scrollTo]);
-
-
-  // Set the number of thumbnails are visible per slide
-
-  /*useEffect(() => {
-    setThumbnailsPerSlide(Math.floor(scrollAmount / thumbnailWidth));
-  }, [scrollAmount, thumbnailWidth]);*/
-
-
-  // Set the index after the position changes
-
-  /*useEffect(() => {
-    setIndex(position / thumbnailWidth);
-  }, [position, thumbnailWidth]);*/
-
-
-  // Automatically trigger a previous/next scroll if the currently selected media is outside of the visible area
-
-  /*useEffect(() => {
-    if (selectedIndex < index) {
-      console.log('prev', selectedIndex, index);
-
-      previousSlide();
-    }
-
-    else if (selectedIndex >= index + thumbnailsPerSlide) {
-      console.log('next', selectedIndex, index, thumbnailsPerSlide);
-
-      nextSlide();
-    }
-  }, [index, selectedIndex, thumbnailsPerSlide, thumbnailWidth, nextSlide, previousSlide]);*/
 
 
   // Add event listeners on mount
@@ -133,16 +100,12 @@ SnapSlider.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   className: PropTypes.string,
   scrollTo: PropTypes.number,
-  selectedIndex: PropTypes.number,
-  thumbnailWidth: PropTypes.number,
 };
 
 SnapSlider.defaultProps = {
   children: null,
   className: null,
   scrollTo: 0,
-  selectedIndex: 0,
-  thumbnailWidth: null,
 };
 
 export default SnapSlider;

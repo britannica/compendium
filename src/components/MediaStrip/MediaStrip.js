@@ -21,37 +21,37 @@ const MediaStrip = ({
   selectedAssembly,
   ThumbnailComponent,
 }) => {
-  const [index, setIndex] = useState(0);
-
-  // Set the scrollTo position of the SnapSlider on mount
-
-  useEffect(() => {
-    if (selectedAssembly) {
-      setIndex(findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId));
-    }
-  }, []);
+  const [initialIndex, setInitialIndex] = useState(selectedAssembly ? findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId) : 0);
 
   return (
     <div className={classnames(styles.MediaStrip, { [styles.captions]: captions }, 'd-print-none', className)}>
       <SnapSlider
-        scrollTo={THUMBNAIL_WIDTH * index}
-        /*thumbnailWidth={THUMBNAIL_WIDTH}
-        selectedIndex={findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId)}*/
+        scrollTo={THUMBNAIL_WIDTH * initialIndex}
+        /*initialIndex={initialIndex}
+        selectedIndex={findCurrentMediaIndex(assemblies, selectedAssembly.assemblyId)}
+        thumbnailWidth={THUMBNAIL_WIDTH}*/
       >
-        {assemblies.map(assembly => (
-          <Thumbnail
-            assembly={assembly}
-            key={assembly.assemblyId}
-            hasCaption={captions}
-            container={styles.MediaStrip}
-            height={THUMBNAIL_HEIGHT}
-            lazyContainer={lazyContainer}
-            isOpaque={opaque}
-            isSelected={selectedAssembly?.assemblyId === assembly.assemblyId}
-            width={THUMBNAIL_WIDTH}
-            ThumbnailComponent={ThumbnailComponent}
-          />
-        ))}
+        {/* todo: can we replace the track with react-window? animated example https://codesandbox.io/s/k2lpl9m0l3 */}
+        {({ trackWidth, scrollAmount }) => {
+          console.log(trackWidth, scrollAmount);
+
+          return (
+            assemblies.map(assembly => (
+              <Thumbnail
+                assembly={assembly}
+                key={assembly.assemblyId}
+                hasCaption={captions}
+                container={styles.MediaStrip}
+                height={THUMBNAIL_HEIGHT}
+                lazyContainer={lazyContainer}
+                isOpaque={opaque}
+                isSelected={selectedAssembly?.assemblyId === assembly.assemblyId}
+                width={THUMBNAIL_WIDTH}
+                ThumbnailComponent={ThumbnailComponent}
+              />
+            ))
+          );
+        }}
       </SnapSlider>
     </div>
   );

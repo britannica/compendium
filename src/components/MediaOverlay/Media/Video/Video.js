@@ -32,6 +32,7 @@ const Video = ({
         advertising: {
           client: 'googima',
         },
+        ga: {},
       })}
     />
   );

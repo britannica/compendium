@@ -1,96 +1,58 @@
 
-import React, { Component } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import styles from './LazyImage.scss';
 
 // todo: after Edge uses Chromium, see if we can remove the `root` prop. This prop fixes MENDEL-5282 specifically.
 
-class LazyImage extends Component {
-  ref = React.createRef();
-  image = null;
-  observer = null;
+const LazyImage = ({ alt, className, height, root, src, width, ...props }) => {
+  const blankImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'/%3E';
+  const ref = useRef();
+  const observer = useIntersectionObserver(handleIntersection, { ...(root && { root }) });
+  const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  constructor(props) {
-    super(props);
+  useEffect(() => {
+    observer.observe(ref.current);
 
-    this.handleImageLoad = this.handleImageLoad.bind(this);
-    this.handleIntersection = this.handleIntersection.bind(this);
-  }
+    return () => {
+      observer.unobserve(ref.current);
+    };
+  }, []);
 
-  state = {
-    isVisible: false,
-    isLoading: false,
-    isLoaded: false,
-  };
-
-
-  // --- Lifecycle methods
-
-  componentDidMount() {
-    const { root } = this.props;
-
-    this.image = this.ref.current;
-    this.observer = new IntersectionObserver(entries => entries.forEach(this.handleIntersection), {
-      ...(root && { root }),
-    });
-
-    this.observer.observe(this.image);
-  }
-
-  componentWillUnmount() {
-    this.observer.disconnect();
-    this.observer = null;
-
-    this.image.removeEventListener('load', this.handleImageLoad);
-  }
-
-
-  // --- Other methods
-
-  handleIntersection(entry) {
+  function handleIntersection(entry) {
     if (entry.isIntersecting) {
-      this.setState({
-        isVisible: true,
-        isLoading: true,
-      });
+      setIsLoading(true);
+      setIsVisible(true);
 
-      this.image.addEventListener('load', this.handleImageLoad);
+      ref.current.addEventListener('load', handleImageLoad);
 
-      this.observer.disconnect();
+      observer.unobserve(ref.current);
     }
   }
 
-  handleImageLoad() {
-    this.setState({
-      isLoading: false,
-      isLoaded: true,
-    });
+  function handleImageLoad() {
+    setIsLoading(false);
+    setIsLoaded(true);
 
-    this.image.removeEventListener('load', this.handleImageLoad);
+    ref.current.removeEventListener('load', handleImageLoad);
   }
 
-
-  // --- Render method
-
-  render() {
-    const { alt, src, height, width, className, ...props } = this.props;
-    const { isVisible, isLoaded, isLoading } = this.state;
-    const blankImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'/%3E';
-
-    return (
-      <img
-        ref={this.ref}
-        src={isVisible ? src : blankImage}
-        alt={alt}
-        height={height}
-        width={width}
-        className={classNames([styles.LazyImage, { [styles.isLoaded]: isLoaded }, className])}
-        {...props}
-      />
-    );
-  }
-}
+  return (
+    <img
+      ref={ref}
+      src={isVisible ? src : blankImage}
+      alt={alt}
+      height={height}
+      width={width}
+      className={classNames([styles.LazyImage, { [styles.isLoaded]: isLoaded }, className])}
+      {...props}
+    />
+  );
+};
 
 LazyImage.propTypes = {
   src: PropTypes.string.isRequired,

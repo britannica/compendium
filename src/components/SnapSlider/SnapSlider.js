@@ -37,6 +37,14 @@ const SnapSlider = ({ children, className, scrollTo }) => {
   }, [scrollAmount]);
 
 
+  // After mounting, set the amount to scroll and the width of the track
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current.clientWidth);
+    setTrackWidth(containerRef.current.scrollWidth);
+  }, [containerRef]);
+
+
   // Scroll to designated `scrollTo` location
 
   useEffect(() => {
@@ -66,14 +74,6 @@ const SnapSlider = ({ children, className, scrollTo }) => {
       setPosition(containerRef.current.scrollLeft);
     });
   }, []);
-
-
-  // Set the amount to scroll and the width of the container
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current.clientWidth);
-    setTrackWidth(containerRef.current.scrollWidth);
-  }, [containerRef]);
 
   return (
     <div className={classnames(styles.SnapSlider, className)}>

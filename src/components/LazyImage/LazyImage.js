@@ -10,29 +10,28 @@ import styles from './LazyImage.scss';
 const LazyImage = ({ alt, className, height, root, src, width, ...props }) => {
   const blankImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'/%3E';
   const ref = useRef();
-  const observer = useIntersectionObserver(handleIntersection, { ...(root && { root }) });
+  const { entry, observeElement } = useIntersectionObserver({ ...(root && { root }) });
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    observer.observe(ref.current);
+    if (ref.current) {
+      observeElement(ref.current);
+    }
+  }, [observeElement, ref]);
 
-    return () => {
-      observer.unobserve(ref.current);
-    };
-  }, []);
-
-  function handleIntersection(entry) {
+  useEffect(() => {
     if (entry.isIntersecting) {
       setIsLoading(true);
       setIsVisible(true);
 
       ref.current.addEventListener('load', handleImageLoad);
 
-      observer.unobserve(ref.current);
+      //observer.unobserve(ref.current);
     }
-  }
+  }, [entry]);
+
 
   function handleImageLoad() {
     setIsLoading(false);

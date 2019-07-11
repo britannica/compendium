@@ -2,7 +2,19 @@
 
 .VideoMedia {
   max-height: 100%;
+  max-width: 100%;
   width: 100%;
+
+  @include media-breakpoint-down(sm) {
+    height: 210px;
+    width: 375px;
+
+    :global {
+      #eb-video-player {
+        height: 100% !important;
+      }
+    }
+  }
 
   @include media-breakpoint-up(xl) {
     height: 100%;

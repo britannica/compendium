@@ -3,6 +3,7 @@ import React from 'react';
 import PhotoGallery from 'react-photo-gallery';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../../constants';
+import LazyImage from '../../LazyImage/LazyImage';
 import Thumbnail from '../../Thumbnail/Thumbnail';
 import MediaLink from '../MediaLink/MediaLink';
 import { withGalleryContext } from './Gallery.context';
@@ -15,17 +16,10 @@ const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
         photos={filteredPhotos}
         columns={columns}
         ImageComponent={({ photo }) => (
-          <Thumbnail
-            ThumbnailComponent={MediaLink}
-            assembly={photo}
-            height={photo.height}
-            lazyContainer={lazyContainer}
-            width={photo.width}
-            onClick={onMediaClick}
-            size="2x"
-            hasHoverCaption
-            isOpaque
-          />
+          <MediaLink assemblyId={photo.assemblyId} key={photo.assemblyId}>
+            {console.log(photo)}
+            <LazyImage src={photo.thumbnailUrl} alt={photo.altText} height={photo.height} width={photo.width} />
+          </MediaLink>
         )}
       />
     );

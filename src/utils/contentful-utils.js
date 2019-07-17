@@ -14,7 +14,7 @@ export default class ContentfulUtils {
     const entry = {};
 
     Object.entries(fields).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
+      if (Array.isArray(value) && typeof value[0] === 'object') {
         entry[key] = value.map(link => ContentfulUtils.mapLinkToProperty(includes, link));
       }
 

@@ -27,7 +27,7 @@ const CitePanel = ({ assembly, localeLabels, CitePanelAddons, location: { pathna
       </li>
       <li>
         <strong>{localeLabels.CITE_URL}</strong>
-        <a href={`${window.location.href}#${pathname}`}>
+        <a href={`${window.location.href}#${pathname}`} className="mediaoverlay-cite-link">
           {window.location.href}#{pathname}
         </a>
       </li>

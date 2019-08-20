@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './CitePanel.module.scss';
 
-const CitePanel = ({ assembly, localeLabels, CitePanelAddons }) => (
+const CitePanel = ({ assembly, localeLabels, CitePanelAddons, location: { pathname } }) => (
   <div className={styles.CitePanel}>
     <ul>
       {assembly.title && (
@@ -26,8 +27,8 @@ const CitePanel = ({ assembly, localeLabels, CitePanelAddons }) => (
       </li>
       <li>
         <strong>{localeLabels.CITE_URL}</strong>
-        <a href={window.location.href}>
-          {window.location.href}
+        <a href={`${window.location.href}#${pathname}`}>
+          {window.location.href}#{pathname}
         </a>
       </li>
       <li>
@@ -55,4 +56,4 @@ CitePanel.defaultProps = {
   CitePanelAddons: null,
 };
 
-export default CitePanel;
+export default withRouter(CitePanel);

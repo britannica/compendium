@@ -9,6 +9,6 @@
       "devDependencies": true,
       "peerDependencies": true
     }],
-    "import/no-unresolved": false,
+    "import/no-unresolved": 0
   }
 }

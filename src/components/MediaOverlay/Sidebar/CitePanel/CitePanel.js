@@ -27,9 +27,7 @@ const CitePanel = ({ assembly, localeLabels, CitePanelAddons, location: { pathna
       </li>
       <li>
         <strong>{localeLabels.CITE_URL}</strong>
-        <a href={`${window.location.href.split(/\?|#/)[0]}#${pathname}`} className="mediaoverlay-cite-link">
-          {window.location.href.split(/\?|#/)[0]}#{pathname}
-        </a>
+        {window.location.href.split(/\?|#/)[0]}#{pathname}
       </li>
       <li>
         <strong>{localeLabels.CITE_ACCESS_DATE}</strong>

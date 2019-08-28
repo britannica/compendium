@@ -81,7 +81,6 @@ class MediaOverlayContainer extends Component {
       mode: OverlayMode.MEDIA_VIEW,
       overlayTitle: title,
       previousMediaId: null,
-      scrollYPosition: 0,
     };
   }
 
@@ -98,23 +97,6 @@ class MediaOverlayContainer extends Component {
 
     document.body.style.overflow = 'hidden';
     document.body.classList.add(styles.open);
-
-    /**
-     * Bugfix: EMF-457
-     * Lazy loading images using IntersectionObserver with absolute position does't work correctly
-     * on Edge 17 and down (Edge 18 works).
-     *
-     * Solution:
-     * Capture the scroll position and save it in the local state of this component as "scrollPosition".
-     * Scroll to the top so IntersectionObserver fires and images load.
-     * When MediaOverlayContainer unmounts scroll back to the scrollPosition that was saved.
-     *
-     * todo: Once we stop supporting Edge 17 need to remove this workaround.
-     */
-
-    // capture pageYOffset position and scroll to top.
-
-    this.setState({ scrollYPosition: window.pageYOffset }, window.scrollTo(0, 0));
 
     // Fetch media and media strip
 
@@ -158,11 +140,6 @@ class MediaOverlayContainer extends Component {
 
     document.body.style.overflow = '';
     document.body.classList.remove(styles.open);
-
-    // todo: Once we stop supporting Edge 17  need to remove this workaround.
-    const { scrollYPosition } = this.state;
-
-    window.scrollTo(0, scrollYPosition);
   }
 
   // ---------------------- //

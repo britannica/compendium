@@ -394,6 +394,7 @@ class MediaOverlayContainer extends Component {
 // --- Props
 
 MediaOverlayContainer.propTypes = {
+  CaptionPanelAddons: PropTypes.func,
   CustomTools: PropTypes.func,
   EmailPanel: PropTypes.func,
   SidebarTools: PropTypes.func,
@@ -415,6 +416,7 @@ MediaOverlayContainer.propTypes = {
 };
 
 MediaOverlayContainer.defaultProps = {
+  CaptionPanelAddons: null,
   CustomTools: null,
   EmailPanel: null,
   SidebarTools: null,

@@ -48,6 +48,9 @@ CitePanel.propTypes = {
   CitePanelAddons: PropTypes.func,
   assembly: AssemblyProp.isRequired,
   localeLabels: PropTypes.shape().isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
 };
 
 CitePanel.defaultProps = {

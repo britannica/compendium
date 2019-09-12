@@ -9,7 +9,7 @@ import CaptionPanel from './CaptionPanel/CaptionPanel';
 import CitePanel from './CitePanel/CitePanel';
 import styles from './Sidebar.module.scss';
 
-function getSidebarPanel(panel, assembly, localeLabels, CitePanelAddons, EmailPanel) {
+function getSidebarPanel(panel, assembly, localeLabels, CaptionPanelAddons, CitePanelAddons, EmailPanel) {
   switch (panel) {
     case SidebarPanel.CITE:
       return <CitePanel assembly={assembly} localeLabels={localeLabels} CitePanelAddons={CitePanelAddons} />;
@@ -19,7 +19,7 @@ function getSidebarPanel(panel, assembly, localeLabels, CitePanelAddons, EmailPa
 
     case SidebarPanel.CAPTION:
     default:
-      return <CaptionPanel assembly={assembly} />;
+      return <CaptionPanel assembly={assembly} CaptionPanelAddons={CaptionPanelAddons} />;
   }
 }
 
@@ -27,7 +27,7 @@ const Sidebar = () => (
   <MediaOverlayContext.Consumer>
     {({ overlayProps, overlayState }) => {
       const { activeSidebarPanel, isSidebarVisible, localeLabels, assembly, previousMediaId } = overlayState;
-      const { hasAds, CitePanelAddons, EmailPanel, SidebarTools } = overlayProps;
+      const { hasAds, CaptionPanelAddons, CitePanelAddons, EmailPanel, SidebarTools } = overlayProps;
 
       if (!isSidebarVisible) {
         return null;
@@ -41,13 +41,13 @@ const Sidebar = () => (
             {/* Show all panels when in sm-lg */}
 
             <MediaQuery minWidth={ViewportWidth.LG_MIN}>
-              {getSidebarPanel(activeSidebarPanel, assembly, localeLabels, CitePanelAddons, EmailPanel)}
+              {getSidebarPanel(activeSidebarPanel, assembly, localeLabels, CaptionPanelAddons, CitePanelAddons, EmailPanel)}
             </MediaQuery>
 
             {/* Always show the Caption panel when on xs */}
 
             <MediaQuery maxWidth={ViewportWidth.MD_MAX}>
-              <CaptionPanel assembly={assembly} />
+              <CaptionPanel assembly={assembly} CaptionPanelAddons={CaptionPanelAddons} />
             </MediaQuery>
           </div>
 

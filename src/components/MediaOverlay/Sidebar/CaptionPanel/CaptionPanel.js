@@ -1,9 +1,11 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import React from 'react';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './CaptionPanel.module.scss';
 
-const CaptionPanel = ({ assembly: { title, caption, credit, image, video, audio, interactive } }) => {
+const CaptionPanel = ({ assembly, CaptionPanelAddons }) => {
+  const { title, caption, credit, image, video, audio, interactive } = assembly;
   const { license } = image || video || audio || interactive;
 
   return (
@@ -20,12 +22,20 @@ const CaptionPanel = ({ assembly: { title, caption, credit, image, video, audio,
           rel="noopener noreferrer"
         />
       )}
+      {CaptionPanelAddons && (
+        <CaptionPanelAddons assembly={assembly} />
+      )}
     </div>
   );
 };
 
 CaptionPanel.propTypes = {
   assembly: AssemblyProp.isRequired,
+  CaptionPanelAddons: PropTypes.func,
+};
+
+CaptionPanel.defaultProps = {
+  CaptionPanelAddons: null,
 };
 
 export default CaptionPanel;

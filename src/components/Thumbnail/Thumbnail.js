@@ -112,9 +112,7 @@ const Thumbnail = memo((props) => {
         )}
       </ThumbnailComponent>
       {hasCaption && (
-        <div className={classnames(styles.caption, styles.lineClamp)} style={{ width }}>
-          {assembly.caption}
-        </div>
+        <div className={classnames(styles.caption, styles.lineClamp)} style={{ width }} dangerouslySetInnerHTML={{ __html: assembly.caption }} />
       )}
     </div>
   );

@@ -43,7 +43,7 @@ const MediaStrip = ({
         hideArrows={assemblies.length <= thumbnailsPerSlide}
       >
         {/* todo: can we replace the track with react-window? animated example https://codesandbox.io/s/k2lpl9m0l3 */}
-        {assemblies.map(assembly => (
+        {assemblies.map((assembly) => (
           <Thumbnail
             assembly={assembly}
             key={assembly.assemblyId}

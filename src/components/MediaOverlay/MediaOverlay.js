@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { forwardRef, Fragment } from 'react';
+import React, { forwardRef } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
 import { OverlayMode } from './overlay-constants';
@@ -29,7 +29,7 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
         <div role="button" tabIndex="0" className={styles.background} onClick={hideOverlay} onKeyUp={handleKeyUp} />
         <div className={classnames(styles.main, styles[mode])}>
           {mode === OverlayMode.MEDIA_VIEW && (
-            <Fragment>
+            <>
               <MediaToolbar />
               <OverlayTitle overlayTitle={overlayTitle} />
               <MediaViewer />
@@ -44,7 +44,7 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
                 </MediaQuery>
               )}
               <Sidebar />
-            </Fragment>
+            </>
           )}
           {mode === OverlayMode.GALLERY_VIEW && (
             <GalleryProvider assemblies={assemblies}>

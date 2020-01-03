@@ -1,6 +1,7 @@
 // components
 
 export { default as LazyImage } from './components/LazyImage/LazyImage';
+export { default as LineClamp } from './components/LineClamp/LineClamp';
 export { default as MediaOverlay } from './components/MediaOverlay';
 export { default as MediaOverlayLoading } from './components/MediaOverlayLoading/MediaOverlayLoading';
 export { default as MediaStrip } from './components/MediaStrip/MediaStrip';

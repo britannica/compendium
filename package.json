@@ -53,6 +53,7 @@
     "react-router-dom": "5.x"
   },
   "scripts": {
+    "preversion": "git pull --rebase",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "dev": "rollup -c -w",

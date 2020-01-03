@@ -5,16 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faVolume } from '@fortawesome/pro-solid-svg-icons';
 import AssemblyProp from '../../prop-types/AssemblyProp';
 import LazyImage from '../LazyImage/LazyImage';
+import MediaLink from '../MediaOverlay/MediaLink/MediaLink';
 import Shave from '../Shave/Shave';
 import styles from './Thumbnail.module.scss';
 
 // todo: this component is too complex, consider breaking this out into multiple types of thumbnails
-
-// Render the Thumbnail in a div by default
-
-function DefaultThumbnailComponent({ children }) {
-  return <div>{children}</div>;
-}
 
 /**
  * Thumbnail component
@@ -26,7 +21,6 @@ function DefaultThumbnailComponent({ children }) {
 
 const Thumbnail = memo((props) => {
   const {
-    ThumbnailComponent,
     assembly,
     hasCaption,
     className,
@@ -43,7 +37,7 @@ const Thumbnail = memo((props) => {
 
   return (
     <div className={styles.wrapper} style={{ width }}>
-      <ThumbnailComponent
+      <MediaLink
         assemblyId={assembly.assemblyId}
         className={classnames(
           styles.Thumbnail,
@@ -110,7 +104,7 @@ const Thumbnail = memo((props) => {
             )}
           </div>
         )}
-      </ThumbnailComponent>
+      </MediaLink>
       {hasCaption && (
         <div className={classnames(styles.caption, styles.lineClamp)} style={{ width }} dangerouslySetInnerHTML={{ __html: assembly.caption }} />
       )}
@@ -119,7 +113,6 @@ const Thumbnail = memo((props) => {
 });
 
 Thumbnail.propTypes = {
-  ThumbnailComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   assembly: AssemblyProp.isRequired,
   hasCaption: PropTypes.bool,
   hasHoverCaption: PropTypes.bool,
@@ -134,7 +127,6 @@ Thumbnail.propTypes = {
 };
 
 Thumbnail.defaultProps = {
-  ThumbnailComponent: DefaultThumbnailComponent,
   hasCaption: false,
   hasHoverCaption: false,
   className: '',

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import AssemblyProp from '../../prop-types/AssemblyProp';
 import { findCurrentMediaIndex } from '../MediaOverlay/helpers/helpers';
 import SnapSlider from '../SnapSlider/SnapSlider';
-import Thumbnail from '../Thumbnail/Thumbnail';
 import styles from './MediaStrip.module.scss';
 
 const THUMBNAIL_WIDTH = 110;
@@ -44,7 +43,7 @@ const MediaStrip = ({
       >
         {/* todo: can we replace the track with react-window? animated example https://codesandbox.io/s/k2lpl9m0l3 */}
         {assemblies.map((assembly) => (
-          <Thumbnail
+          <ThumbnailComponent
             assembly={assembly}
             key={assembly.assemblyId}
             hasCaption={captions}
@@ -54,7 +53,6 @@ const MediaStrip = ({
             isOpaque={opaque}
             isSelected={selectedAssembly?.assemblyId === assembly.assemblyId}
             width={THUMBNAIL_WIDTH}
-            ThumbnailComponent={ThumbnailComponent}
           />
         ))}
       </SnapSlider>

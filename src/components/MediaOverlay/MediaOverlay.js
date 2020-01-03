@@ -2,11 +2,11 @@ import classnames from 'classnames';
 import React, { forwardRef } from 'react';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../constants';
+import Thumbnail from '../Thumbnail/Thumbnail';
 import { OverlayMode } from './overlay-constants';
 import Gallery from './Gallery/Gallery';
 import { GalleryProvider } from './Gallery/Gallery.context';
 import GalleryToolbar from './GalleryToolbar/GalleryToolbar';
-import MediaLink from './MediaLink/MediaLink';
 import MediaOverlayContext from './MediaOverlay.context';
 import MediaStrip from '../MediaStrip/MediaStrip';
 import MediaToolbar from './MediaToolbar/MediaToolbar';
@@ -38,7 +38,7 @@ const MediaOverlay = forwardRef((props, overlayRef) => (
                   <MediaStrip
                     assemblies={assemblies}
                     lazyContainer={overlayRef.current}
-                    ThumbnailComponent={MediaLink}
+                    ThumbnailComponent={Thumbnail}
                     selectedAssembly={assembly}
                   />
                 </MediaQuery>

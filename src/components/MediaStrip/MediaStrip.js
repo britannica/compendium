@@ -67,7 +67,7 @@ MediaStrip.propTypes = {
   lazyContainer: PropTypes.instanceOf(Element),
   opaque: PropTypes.bool,
   selectedAssembly: PropTypes.shape(),
-  ThumbnailComponent: PropTypes.func,
+  ThumbnailComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 MediaStrip.defaultProps = {

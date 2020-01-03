@@ -1,4 +1,4 @@
-import pathToRegexp from 'path-to-regexp';
+import { compile } from 'path-to-regexp';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
@@ -15,7 +15,7 @@ const MediaLink = (props) => {
 
   return (
     <Link
-      to={pathToRegexp.compile(path)({ ...params, assemblyId })}
+      to={compile(path)({ ...params, assemblyId })}
       className={className}
       onClick={onClick}
       style={style}

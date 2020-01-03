@@ -4,7 +4,7 @@
 // todo: only fetch media strip when it's visible
 
 import React, { Component, createRef } from 'react';
-import pathToRegexp from 'path-to-regexp';
+import { compile } from 'path-to-regexp';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { ViewportWidth } from '../../constants';
@@ -192,7 +192,7 @@ class MediaOverlayContainer extends Component {
     } = this.props;
     const { path } = this.state;
 
-    return pathToRegexp.compile(path)({ ...params, assemblyId });
+    return compile(path)({ ...params, assemblyId });
   }
 
   hideOverlay() {

@@ -27,7 +27,7 @@ const Sidebar = () => (
   <MediaOverlayContext.Consumer>
     {({ overlayProps, overlayState }) => {
       const { activeSidebarPanel, isSidebarVisible, localeLabels, assembly, previousMediaId } = overlayState;
-      const { hasAds, CaptionPanelAddons, CitePanelAddons, EmailPanel, SidebarTools } = overlayProps;
+      const { adUrl, CaptionPanelAddons, CitePanelAddons, EmailPanel, SidebarTools } = overlayProps;
 
       if (!isSidebarVisible) {
         return null;
@@ -59,9 +59,9 @@ const Sidebar = () => (
 
           {/* Show ads if they're enabled, and if we're on md-lg */}
 
-          {hasAds && (
+          {adUrl && (
             <MediaQuery minWidth={ViewportWidth.LG_MIN}>
-              <Ad previousMediaId={previousMediaId} />
+              <Ad previousMediaId={previousMediaId} adUrl={adUrl} />
             </MediaQuery>
           )}
         </div>

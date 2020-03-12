@@ -18,10 +18,12 @@ class Ad extends Component {
   }
 
   render() {
+    const { adUrl } = this.props;
+
     return (
       <div className={styles.Ad}>
         <iframe
-          src={`/GPTIframe/ajax/async/NEW_MEDIA_OVERLAY?${randomString()}`}
+          src={`${adUrl}?${randomString()}`}
           title="advertisement"
           height="100%"
           width="100%"
@@ -32,6 +34,7 @@ class Ad extends Component {
 }
 
 Ad.propTypes = {
+  adUrl: PropTypes.string.isRequired,
   previousMediaId: PropTypes.string,
 
   // withRouter props

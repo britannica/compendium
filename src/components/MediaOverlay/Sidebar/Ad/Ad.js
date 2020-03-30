@@ -27,6 +27,7 @@ class Ad extends Component {
           title="advertisement"
           height="100%"
           width="100%"
+          scrolling="no"
         />
       </div>
     );

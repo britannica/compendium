@@ -40,7 +40,7 @@ const MediaToolbar = () => (
                   {assembly.image.largeFilename && (
                     <a
                       data-analytics="MediaOverlay--fullButton"
-                      href={assembly.image.largeFilename}
+                      href={`/media/view/${assembly.id}`}
                       className="hidden-xs"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -49,15 +49,16 @@ const MediaToolbar = () => (
                       <span className="d-none d-sm-inline-block">{localeLabels.VIEW_FULL_SIZE}</span>
                     </a>
                   )}
-                  <button
-                    className="d-none d-lg-inline-block"
+                  <a
                     data-analytics="MediaOverlay--printButton"
-                    type="button"
-                    onClick={window.print}
+                    href={`/media/print/${assembly.id}`}
+                    className="d-none d-lg-inline-block"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FontAwesomeIcon icon={faPrint} size="lg" />
                     <span className="d-none d-sm-inline-block">{localeLabels.PRINT}</span>
-                  </button>
+                  </a>
                 </Fragment>
               )}
             </Fragment>

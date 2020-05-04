@@ -40,7 +40,7 @@ const MediaToolbar = () => (
                   {assembly.image.largeFilename && (
                     <a
                       data-analytics="MediaOverlay--fullButton"
-                      href={`/media/view/${assembly.id}`}
+                      href={`/media/view/${assembly.assemblyId}`}
                       className="hidden-xs"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -51,7 +51,7 @@ const MediaToolbar = () => (
                   )}
                   <a
                     data-analytics="MediaOverlay--printButton"
-                    href={`/media/print/${assembly.id}`}
+                    href={`/media/print/${assembly.assemblyId}`}
                     className="d-none d-lg-inline-block"
                     target="_blank"
                     rel="noopener noreferrer"

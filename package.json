@@ -33,11 +33,11 @@
     "@babel/preset-react": "^7.9.4",
     "@britannica/eslint-config": "^1.4.3",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^2.5.1",
+    "eslint-plugin-react-hooks": "^4.0.3",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "rimraf": "^3.0.2",
@@ -46,7 +46,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-multi-input": "^1.1.1",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^2.9.0"
+    "rollup-plugin-postcss": "^3.1.1"
   },
   "peerDependencies": {
     "react": "^16.8.x",

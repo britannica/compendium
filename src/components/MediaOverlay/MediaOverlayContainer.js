@@ -154,10 +154,13 @@ class MediaOverlayContainer extends Component {
         match: {
           params: { assemblyId },
         },
+        onMediaChange,
       } = this.props;
       const { assemblies, slidesToShow } = this.state;
 
       const mediaIndex = findCurrentMediaIndex(assemblies, nextMediaId);
+
+      onMediaChange?.(assemblies[mediaIndex]);
 
       return this.setState({
         mediaIndex,
@@ -408,6 +411,7 @@ MediaOverlayContainer.propTypes = {
   locale: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string]),
   title: PropTypes.string,
   videoPlayerId: PropTypes.string,
+  onMediaChange: PropTypes.func,
 
   // withRouter props
 
@@ -429,6 +433,7 @@ MediaOverlayContainer.defaultProps = {
   locale: Locale['en-us'],
   title: '',
   videoPlayerId: '',
+  onMediaChange: null,
 };
 
 export default withRouter(MediaOverlayContainer);

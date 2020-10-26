@@ -1,7 +1,7 @@
 import { faCheckSquare, faEnvelope, faInfoCircle, faPrint, faSearchPlus, faTh } from '@fortawesome/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
-import React, { Fragment } from 'react';
+import React from 'react';
 import MediaQuery from 'react-responsive';
 import { MediaType, ViewportWidth } from '../../../constants';
 import { SidebarPanel } from '../overlay-constants';
@@ -18,8 +18,8 @@ const MediaToolbar = () => (
       return (
         <Toolbar
           title={overlayTitle}
-          primaryTools={
-            <Fragment>
+          primaryTools={(
+            <>
               {assemblies.length > 0 && (
                 <div className={styles.mediaCount}>
                   {mediaIndex + 1} / {assemblies.length}
@@ -31,12 +31,12 @@ const MediaToolbar = () => (
                   <span className="d-none d-sm-inline-block">{localeLabels.VIEW_GALLERY}</span>
                 </button>
               )}
-            </Fragment>
-          }
-          secondaryTools={
-            <Fragment>
+            </>
+          )}
+          secondaryTools={(
+            <>
               {assembly.type === MediaType.IMAGE && (
-                <Fragment>
+                <>
                   {assembly.image.largeFilename && (
                     <a
                       data-analytics="MediaOverlay--fullButton"
@@ -58,12 +58,12 @@ const MediaToolbar = () => (
                     <FontAwesomeIcon icon={faPrint} size="lg" />
                     <span className="d-none d-sm-inline-block">{localeLabels.PRINT}</span>
                   </button>
-                </Fragment>
+                </>
               )}
-            </Fragment>
-          }
+            </>
+          )}
           customTools={CustomTools && <CustomTools {...overlayState} />}
-          sidebarPanels={
+          sidebarPanels={(
             <MediaQuery minWidth={ViewportWidth.LG_MIN}>
               <button
                 type="button"
@@ -98,7 +98,7 @@ const MediaToolbar = () => (
                 </button>
               )}
             </MediaQuery>
-          }
+          )}
         />
       );
     }}

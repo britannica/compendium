@@ -13,7 +13,7 @@ const MediaToolbar = () => (
   <MediaOverlayContext.Consumer>
     {({ overlayState, overlayProps, enableGalleryView, setSidebarPanel }) => {
       const { activeSidebarPanel, localeLabels, assembly, mediaIndex, assemblies, overlayTitle } = overlayState;
-      const { CustomTools, EmailPanel } = overlayProps;
+      const { CustomTools, EmailPanel, cdn } = overlayProps;
 
       return (
         <Toolbar
@@ -40,7 +40,7 @@ const MediaToolbar = () => (
                   {assembly.image.largeFilename && (
                     <a
                       data-analytics="MediaOverlay--fullButton"
-                      href={`/media/view/${assembly.assemblyId}`}
+                      href={cdn + assembly.image.largeFilename}
                       className="hidden-xs"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -49,16 +49,15 @@ const MediaToolbar = () => (
                       <span className="d-none d-sm-inline-block">{localeLabels.VIEW_FULL_SIZE}</span>
                     </a>
                   )}
-                  <a
-                    data-analytics="MediaOverlay--printButton"
-                    href={`/media/print/${assembly.assemblyId}`}
+                  <button
                     className="d-none d-lg-inline-block"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    data-analytics="MediaOverlay--printButton"
+                    type="button"
+                    onClick={window.print}
                   >
                     <FontAwesomeIcon icon={faPrint} size="lg" />
                     <span className="d-none d-sm-inline-block">{localeLabels.PRINT}</span>
-                  </a>
+                  </button>
                 </Fragment>
               )}
             </Fragment>

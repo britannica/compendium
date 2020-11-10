@@ -7,12 +7,6 @@
   "repository": "https://github.com/britannica/compendium",
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-brands-svg-icons": "^5.15.1",
-    "@fortawesome/pro-light-svg-icons": "^5.15.1",
-    "@fortawesome/pro-regular-svg-icons": "^5.15.1",
-    "@fortawesome/pro-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.11",
     "@ryanwalters/react-jw-player": "^1.19.1",
     "bootstrap": "^4.5.2",
     "classnames": "^2.2.6",
@@ -58,7 +52,13 @@
   },
   "peerDependencies": {
     "react": "^16.8.x",
-    "react-router-dom": "5.x"
+    "react-router-dom": "5.x",
+    "@fortawesome/fontawesome-svg-core": "1.x",
+    "@fortawesome/free-brands-svg-icons": "5.x",
+    "@fortawesome/pro-light-svg-icons": "5.x",
+    "@fortawesome/pro-regular-svg-icons": "5.x",
+    "@fortawesome/pro-solid-svg-icons": "5.x",
+    "@fortawesome/react-fontawesome": "0.1.x"
   },
   "scripts": {
     "prebuild": "rimraf dist",

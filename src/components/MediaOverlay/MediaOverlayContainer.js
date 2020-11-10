@@ -397,21 +397,25 @@ class MediaOverlayContainer extends Component {
 // --- Props
 
 MediaOverlayContainer.propTypes = {
-  CaptionPanelAddons: PropTypes.func,
-  CustomTools: PropTypes.func,
-  EmailPanel: PropTypes.func,
-  SidebarTools: PropTypes.func,
+  adUrl: PropTypes.string,
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
+  audioComponent: PropTypes.func,
   baseHref: PropTypes.string,
+  CaptionPanelAddons: PropTypes.func,
   className: PropTypes.string,
   collapsibleSidebar: PropTypes.bool,
+  CustomTools: PropTypes.func,
+  EmailPanel: PropTypes.func,
   generatePrerollUrl: PropTypes.func,
   hasMediaStrip: PropTypes.bool,
-  adUrl: PropTypes.string,
+  imageComponent: PropTypes.func,
+  interactiveComponent: PropTypes.func,
   locale: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string]),
-  title: PropTypes.string,
-  videoPlayerId: PropTypes.string,
   onMediaChange: PropTypes.func,
+  SidebarTools: PropTypes.func,
+  title: PropTypes.string,
+  videoComponent: PropTypes.func,
+  videoPlayerId: PropTypes.string,
 
   // withRouter props
 

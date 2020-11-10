@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import ReactJWPlayer from '@ryanwalters/react-jw-player';
 import PropTypes from 'prop-types';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
-import styles from './Video.module.scss';
+import styles from './DefaultVideo.module.scss';
 
-const Video = ({
+const DefaultVideo = ({
   assembly: { video },
   generatePrerollUrl,
   onPlay,
@@ -38,7 +38,7 @@ const Video = ({
   );
 };
 
-Video.propTypes = {
+DefaultVideo.propTypes = {
   assembly: AssemblyProp.isRequired,
   playerId: PropTypes.string.isRequired,
   generatePrerollUrl: PropTypes.func,
@@ -46,10 +46,10 @@ Video.propTypes = {
   onPause: PropTypes.func,
 };
 
-Video.defaultProps = {
+DefaultVideo.defaultProps = {
   generatePrerollUrl: null,
   onPlay: () => {},
   onPause: () => {},
 };
 
-export default Video;
+export default DefaultVideo;

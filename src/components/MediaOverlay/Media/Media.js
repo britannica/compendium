@@ -1,22 +1,29 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import MediaOverlayContext from '../MediaOverlay.context';
-import Audio from './Audio/Audio';
-import Image from './Image/Image';
-import Interactive from './Interactive/Interactive';
-import Video from './Video/Video';
+import DefaultAudio from './DefaultAudio/DefaultAudio';
+import DefaultImage from './DefaultImage/DefaultImage';
+import DefaultInteractive from './DefaultInteractive/DefaultInteractive';
+import DefaultVideo from './DefaultVideo/DefaultVideo';
 import './Media.module.scss';
 
 const Media = () => (
   <MediaOverlayContext.Consumer>
     {({
       overlayState: { assembly },
-      overlayProps: { videoPlayerId, generatePrerollUrl },
+      overlayProps: {
+        videoPlayerId,
+        generatePrerollUrl,
+        audioComponent: Audio = DefaultAudio,
+        imageComponent: Image = DefaultImage,
+        interactiveComponent: Interactive = DefaultInteractive,
+        videoComponent: Video = DefaultVideo,
+      },
       hideSidebarAndControls,
       overlayRef,
       showSidebarAndControls,
     }) => (
-      <Fragment>
+      <>
         {assembly.audio && <Audio filename={assembly.audio.filename} />}
         {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
         {assembly.interactive && <Interactive {...assembly.interactive} />}
@@ -30,7 +37,7 @@ const Media = () => (
             generatePrerollUrl={generatePrerollUrl}
           />
         )}
-      </Fragment>
+      </>
     )}
   </MediaOverlayContext.Consumer>
 );

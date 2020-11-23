@@ -23,9 +23,9 @@ const MediaViewer = () => {
       onSwipeRight={navigatePreviousMedia}
       className={classNames(styles.MediaViewer, { controlsHidden })}
     >
-      {hasError ? <Fragment>{localeLabels.ERROR}</Fragment> : <Media />}
+      {hasError ? localeLabels.ERROR : <Media />}
       {assemblies.length > 1 && !controlsHidden && (
-        <Fragment>
+        <>
           {mediaIndex > 0 && (
             <MediaLink
               assemblyId={assemblies[mediaIndex - 1].assemblyId}
@@ -42,7 +42,7 @@ const MediaViewer = () => {
               <FontAwesomeIcon icon={faAngleRight} size="3x" />
             </MediaLink>
           )}
-        </Fragment>
+        </>
       )}
     </Taparoo>
   );

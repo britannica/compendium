@@ -1,6 +1,6 @@
 {
   "name": "@britannica/compendium",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "main": "./dist/cjs",
   "module": "./dist/es",
   "sideEffects": false,
@@ -81,7 +81,14 @@
       "@commitlint/config-conventional"
     ],
     "rules": {
-      "scope-case": [2, "always", ["lower-case", "upper-case"]]
+      "scope-case": [
+        2,
+        "always",
+        [
+          "lower-case",
+          "upper-case"
+        ]
+      ]
     }
   },
   "husky": {

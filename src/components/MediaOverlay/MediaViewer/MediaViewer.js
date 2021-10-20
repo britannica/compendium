@@ -1,8 +1,8 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import classNames from 'classnames';
-import Taparoo from '../../Taparoo/Taparoo';
+import { Taparoo } from 'taparoo';
 import Media from '../Media/Media';
 import MediaLink from '../MediaLink/MediaLink';
 import MediaOverlayContext from '../MediaOverlay.context';

@@ -16,7 +16,7 @@
     "react-responsive": "^8.2.0",
     "shave": "^2.5.10",
     "smoothscroll-polyfill": "^0.4.4",
-    "taparoo": "^1.0.5"
+    "taparoo": "^1.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",

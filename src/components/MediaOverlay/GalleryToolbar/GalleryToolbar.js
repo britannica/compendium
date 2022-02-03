@@ -22,7 +22,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
               </div>
             )}
             <button type="button" onClick={enableMediaView}>
-              <ViewArray fontSize="small" />
+              <ViewArray />
               <span className="d-none d-sm-inline-block">{localeLabels.VIEW_CAROUSEL}</span>
             </button>
           </>

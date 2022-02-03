@@ -1,5 +1,4 @@
-import { faCheckSquare, faEnvelope, faInfoCircle, faPrint, faSearchPlus, faTh } from '@fortawesome/pro-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Apps, CheckBox, Info, Mail, Print, ZoomIn } from '@material-ui/icons';
 import classNames from 'classnames';
 import React from 'react';
 import MediaQuery from 'react-responsive';
@@ -27,7 +26,7 @@ const MediaToolbar = () => (
               )}
               {assemblies.length > 7 && (
                 <button type="button" onClick={enableGalleryView}>
-                  <FontAwesomeIcon icon={faTh} size="lg" />
+                  <Apps />
                   <span className="d-none d-sm-inline-block">{localeLabels.VIEW_GALLERY}</span>
                 </button>
               )}
@@ -45,7 +44,7 @@ const MediaToolbar = () => (
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon icon={faSearchPlus} size="lg" />
+                      <ZoomIn />
                       <span className="d-none d-sm-inline-block">{localeLabels.VIEW_FULL_SIZE}</span>
                     </a>
                   )}
@@ -55,7 +54,7 @@ const MediaToolbar = () => (
                     type="button"
                     onClick={window.print}
                   >
-                    <FontAwesomeIcon icon={faPrint} size="lg" />
+                    <Print />
                     <span className="d-none d-sm-inline-block">{localeLabels.PRINT}</span>
                   </button>
                 </>
@@ -72,7 +71,7 @@ const MediaToolbar = () => (
                   [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION,
                 })}
               >
-                <FontAwesomeIcon icon={faInfoCircle} size="lg" />
+                <Info />
                 {localeLabels.CAPTION_PANEL}
               </button>
               <button
@@ -82,7 +81,7 @@ const MediaToolbar = () => (
                   [styles.active]: activeSidebarPanel === SidebarPanel.CITE,
                 })}
               >
-                <FontAwesomeIcon icon={faCheckSquare} size="lg" />
+                <CheckBox />
                 {localeLabels.CITE_PANEL}
               </button>
               {EmailPanel && (
@@ -93,7 +92,7 @@ const MediaToolbar = () => (
                     [styles.active]: activeSidebarPanel === SidebarPanel.EMAIL,
                   })}
                 >
-                  <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                  <Mail />
                   {localeLabels.EMAIL_PANEL}
                 </button>
               )}

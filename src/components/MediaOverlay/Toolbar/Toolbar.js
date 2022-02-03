@@ -1,8 +1,7 @@
+import { Close } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import { Link } from 'react-router-dom';
 import MediaOverlayContext from '../MediaOverlay.context';
 import styles from './Toolbar.module.scss';
@@ -22,13 +21,13 @@ const Toolbar = ({ primaryTools, secondaryTools, customTools, sidebarPanels }) =
             <div className={styles.sidebarPanels}>
               {sidebarPanels}
               <Link to={baseHref} className={styles.close} title={localeLabels.CLOSE}>
-                <FontAwesomeIcon icon={faTimes} size="2x" />
+                <Close />
               </Link>
             </div>
           )}
           {!sidebarPanels && (
             <Link to={baseHref} className={styles.close} title={localeLabels.CLOSE}>
-              <FontAwesomeIcon icon={faTimes} size="2x" />
+              <Close />
             </Link>
           )}
         </div>

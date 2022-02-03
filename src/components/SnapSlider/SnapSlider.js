@@ -1,4 +1,4 @@
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { createRef, useCallback, useEffect, useState } from 'react';
@@ -88,7 +88,7 @@ const SnapSlider = ({ children, className, hideArrows, sliderRef, scrollTo, scro
           className={classnames(styles.arrow, styles.previous, 'd-none d-md-block')}
           onClick={previousSlide}
           disabled={position <= 0}
-          icon={faAngleLeft}
+          icon={KeyboardArrowLeft}
         />
       )}
       <div className={styles.track} ref={sliderRef}>
@@ -99,7 +99,7 @@ const SnapSlider = ({ children, className, hideArrows, sliderRef, scrollTo, scro
           className={classnames(styles.arrow, styles.next, 'd-none d-md-block')}
           onClick={nextSlide}
           disabled={position + scrollAmount >= trackWidth}
-          icon={faAngleRight}
+          icon={KeyboardArrowRight}
         />
       )}
     </div>

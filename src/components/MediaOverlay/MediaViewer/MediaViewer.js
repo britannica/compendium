@@ -1,6 +1,5 @@
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 import React, { useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import classNames from 'classnames';
 import { Taparoo } from 'taparoo';
 import Media from '../Media/Media';
@@ -31,7 +30,7 @@ const MediaViewer = () => {
               assemblyId={assemblies[mediaIndex - 1].assemblyId}
               className={classNames(styles.mediaArrow, styles.prev, 'd-print-none')}
             >
-              <FontAwesomeIcon icon={faAngleLeft} size="3x" />
+              <KeyboardArrowLeft />
             </MediaLink>
           )}
           {mediaIndex < assemblies.length - 1 && (
@@ -39,7 +38,7 @@ const MediaViewer = () => {
               assemblyId={assemblies[mediaIndex + 1].assemblyId}
               className={classNames(styles.mediaArrow, styles.next, 'd-print-none')}
             >
-              <FontAwesomeIcon icon={faAngleRight} size="3x" />
+              <KeyboardArrowRight />
             </MediaLink>
           )}
         </>

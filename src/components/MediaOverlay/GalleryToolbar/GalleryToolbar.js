@@ -1,6 +1,4 @@
-import { faImages, faImage, faPlayCircle, faRectanglePortrait, faVolume } from '@fortawesome/pro-solid-svg-icons';
-import { faBullseyePointer } from '@fortawesome/pro-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { InsertPhoto, PhotoLibrary, PlayCircleFilled, TrackChanges, ViewArray, VolumeUp } from '@material-ui/icons';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -24,11 +22,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
               </div>
             )}
             <button type="button" onClick={enableMediaView} style={{ display: 'inline-flex' }}>
-              <span className="fa-layers fa-fw fa-lg">
-                <FontAwesomeIcon icon={faRectanglePortrait} transform="shrink-7 left-7" />
-                <FontAwesomeIcon icon={faRectanglePortrait} style={{ border: '1px solid #eee', zIndex: 1 }} />
-                <FontAwesomeIcon icon={faRectanglePortrait} transform="shrink-7 right-7" />
-              </span>
+              <ViewArray />
               <span className="d-none d-sm-inline-block">{localeLabels.VIEW_CAROUSEL}</span>
             </button>
           </>
@@ -42,7 +36,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                   className={classNames({ [styles.active]: selectedFilter === null })}
                   onClick={() => setSelectedFilter(null)}
                 >
-                  <FontAwesomeIcon icon={faImages} size="lg" />
+                  <PhotoLibrary />
                   {localeLabels.FILTER_ALL}
                 </button>
                 {filters.includes(MediaType.IMAGE) && (
@@ -51,7 +45,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                     className={classNames({ [styles.active]: selectedFilter === MediaType.IMAGE })}
                     onClick={() => setSelectedFilter(MediaType.IMAGE)}
                   >
-                    <FontAwesomeIcon icon={faImage} size="lg" />
+                    <InsertPhoto />
                     {localeLabels.FILTER_IMAGES}
                   </button>
                 )}
@@ -61,7 +55,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                     className={classNames({ [styles.active]: selectedFilter === MediaType.VIDEO })}
                     onClick={() => setSelectedFilter(MediaType.VIDEO)}
                   >
-                    <FontAwesomeIcon icon={faPlayCircle} size="lg" />
+                    <PlayCircleFilled />
                     {localeLabels.FILTER_VIDEOS}
                   </button>
                 )}
@@ -71,7 +65,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                     className={classNames({ [styles.active]: selectedFilter === MediaType.AUDIO })}
                     onClick={() => setSelectedFilter(MediaType.AUDIO)}
                   >
-                    <FontAwesomeIcon icon={faVolume} size="lg" />
+                    <VolumeUp />
                     {localeLabels.FILTER_AUDIO}
                   </button>
                 )}
@@ -81,7 +75,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                     className={classNames({ [styles.active]: selectedFilter === MediaType.INTERACTIVE })}
                     onClick={() => setSelectedFilter(MediaType.INTERACTIVE)}
                   >
-                    <FontAwesomeIcon icon={faBullseyePointer} size="lg" />
+                    <TrackChanges />
                     {localeLabels.FILTER_INTERACTIVES}
                   </button>
                 )}

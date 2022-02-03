@@ -44,7 +44,7 @@ const MediaToolbar = () => (
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <ZoomIn />
+                      <ZoomIn style={{ marginRight: 0 }} />
                       <span className="d-none d-sm-inline-block">{localeLabels.VIEW_FULL_SIZE}</span>
                     </a>
                   )}

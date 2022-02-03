@@ -30,7 +30,7 @@ const MediaViewer = () => {
               assemblyId={assemblies[mediaIndex - 1].assemblyId}
               className={classNames(styles.mediaArrow, styles.prev, 'd-print-none')}
             >
-              <KeyboardArrowLeft />
+              <KeyboardArrowLeft fontSize="large" />
             </MediaLink>
           )}
           {mediaIndex < assemblies.length - 1 && (
@@ -38,7 +38,7 @@ const MediaViewer = () => {
               assemblyId={assemblies[mediaIndex + 1].assemblyId}
               className={classNames(styles.mediaArrow, styles.next, 'd-print-none')}
             >
-              <KeyboardArrowRight />
+              <KeyboardArrowRight fontSize="large" />
             </MediaLink>
           )}
         </>

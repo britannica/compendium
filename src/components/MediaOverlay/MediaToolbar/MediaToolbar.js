@@ -71,7 +71,7 @@ const MediaToolbar = () => (
                   [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION,
                 })}
               >
-                <Info />
+                <Info fontSize="small" />
                 {localeLabels.CAPTION_PANEL}
               </button>
               <button
@@ -81,7 +81,7 @@ const MediaToolbar = () => (
                   [styles.active]: activeSidebarPanel === SidebarPanel.CITE,
                 })}
               >
-                <CheckBox />
+                <CheckBox fontSize="small" />
                 {localeLabels.CITE_PANEL}
               </button>
               {EmailPanel && (

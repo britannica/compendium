@@ -21,8 +21,8 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                 {filteredPhotos.length === 1 ? localeLabels.ITEM_SINGULAR : localeLabels.ITEM_PLURAL}
               </div>
             )}
-            <button type="button" onClick={enableMediaView} style={{ display: 'inline-flex' }}>
-              <ViewArray />
+            <button type="button" onClick={enableMediaView}>
+              <ViewArray fontSize="small" />
               <span className="d-none d-sm-inline-block">{localeLabels.VIEW_CAROUSEL}</span>
             </button>
           </>
@@ -36,7 +36,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                   className={classNames({ [styles.active]: selectedFilter === null })}
                   onClick={() => setSelectedFilter(null)}
                 >
-                  <PhotoLibrary />
+                  <PhotoLibrary fontSize="small" />
                   {localeLabels.FILTER_ALL}
                 </button>
                 {filters.includes(MediaType.IMAGE) && (
@@ -45,7 +45,7 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                     className={classNames({ [styles.active]: selectedFilter === MediaType.IMAGE })}
                     onClick={() => setSelectedFilter(MediaType.IMAGE)}
                   >
-                    <InsertPhoto />
+                    <InsertPhoto fontSize="small" />
                     {localeLabels.FILTER_IMAGES}
                   </button>
                 )}

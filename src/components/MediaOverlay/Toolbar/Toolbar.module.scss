@@ -20,13 +20,16 @@
 
   button,
   a {
+    align-items: center;
     appearance: none;
     background: none;
     border: none;
     color: $gray-600;
     cursor: pointer;
+    display: inline-flex;
     font-family: inherit;
     font-size: 12px;
+    justify-content: center;
     outline: none;
     padding: 5px 10px;
     text-decoration: none;

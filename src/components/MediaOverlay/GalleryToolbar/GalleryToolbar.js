@@ -3,7 +3,7 @@ import { faBullseyePointer } from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import MediaQuery from 'react-responsive';
 import { MediaType, ViewportWidth } from '../../../constants';
 import { withGalleryContext } from '../Gallery/Gallery.context';
@@ -15,8 +15,8 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
   <MediaOverlayContext.Consumer>
     {({ enableMediaView, overlayState: { localeLabels } }) => (
       <Toolbar
-        primaryTools={
-          <Fragment>
+        primaryTools={(
+          <>
             {filteredPhotos.length > 0 && (
               <div className={styles.mediaCount}>
                 {filteredPhotos.length}{' '}
@@ -31,12 +31,12 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
               </span>
               <span className="d-none d-sm-inline-block">{localeLabels.VIEW_CAROUSEL}</span>
             </button>
-          </Fragment>
-        }
-        secondaryTools={
+          </>
+        )}
+        secondaryTools={(
           <MediaQuery minWidth={ViewportWidth.MD_MIN}>
             {filters.length > 1 && (
-              <Fragment>
+              <>
                 <button
                   type="button"
                   className={classNames({ [styles.active]: selectedFilter === null })}
@@ -85,10 +85,10 @@ const GalleryToolbar = ({ filteredPhotos, filters, selectedFilter, setSelectedFi
                     {localeLabels.FILTER_INTERACTIVES}
                   </button>
                 )}
-              </Fragment>
+              </>
             )}
           </MediaQuery>
-        }
+        )}
       />
     )}
   </MediaOverlayContext.Consumer>

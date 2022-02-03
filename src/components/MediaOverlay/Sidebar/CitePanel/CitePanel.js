@@ -6,7 +6,7 @@ import styles from './CitePanel.module.scss';
 
 const CitePanel = ({ assembly, localeLabels, CitePanelAddons, location: { pathname } }) => (
   <div className={styles.CitePanel}>
-    <ul>
+    <ul className="list-unstyled">
       {assembly.title && (
         <li>
           <strong>{localeLabels.CITE_MEDIA_TITLE}</strong>

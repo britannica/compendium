@@ -199,15 +199,15 @@ class MediaOverlayContainer extends Component {
   }
 
   hideOverlay() {
-    const { history, baseHref } = this.props;
+    const { navigate, baseHref } = this.props;
 
-    history.push(baseHref);
+    navigate(baseHref);
   }
 
   navigateToMedia(assemblyId) {
-    const { history } = this.props;
+    const { navigate } = this.props;
 
-    history.push(this.toPath(assemblyId));
+    navigate(this.toPath(assemblyId));
   }
 
   navigateNextMedia() {
@@ -420,7 +420,7 @@ MediaOverlayContainer.propTypes = {
   // withRouter props
 
   match: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  navigate: PropTypes.shape().isRequired,
 };
 
 MediaOverlayContainer.defaultProps = {

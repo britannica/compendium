@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../../../hocs/withRouter';
 import styles from './Ad.module.scss';
 
 function randomString() {

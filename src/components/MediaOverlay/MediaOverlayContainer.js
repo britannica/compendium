@@ -6,8 +6,8 @@
 import React, { Component, createRef } from 'react';
 import { compile } from 'path-to-regexp';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { ViewportWidth } from '../../constants';
+import withRouter from '../../hocs/withRouter';
 import AssemblyProp from '../../prop-types/AssemblyProp';
 import { getLocale, Locale } from './l10n';
 import { OverlayMode, SidebarPanel } from './overlay-constants';

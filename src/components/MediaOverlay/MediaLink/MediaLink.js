@@ -1,7 +1,8 @@
 import { compile } from 'path-to-regexp';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import withRouter from '../../../hocs/withRouter';
 
 const MediaLink = (props) => {
   const {

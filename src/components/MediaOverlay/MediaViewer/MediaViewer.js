@@ -10,6 +10,7 @@ import styles from './MediaViewer.module.scss';
 const MediaViewer = () => {
   const {
     overlayState: { controlsHidden, hasError, localeLabels, mediaIndex, assemblies },
+    overlayProps: { basePath },
     handleTap,
     navigateNextMedia,
     navigatePreviousMedia,
@@ -28,6 +29,7 @@ const MediaViewer = () => {
           {mediaIndex > 0 && (
             <MediaLink
               assemblyId={assemblies[mediaIndex - 1].assemblyId}
+              basePath={basePath}
               className={classNames(styles.mediaArrow, styles.prev, 'd-print-none')}
             >
               <KeyboardArrowLeft fontSize="large" />
@@ -36,6 +38,7 @@ const MediaViewer = () => {
           {mediaIndex < assemblies.length - 1 && (
             <MediaLink
               assemblyId={assemblies[mediaIndex + 1].assemblyId}
+              basePath={basePath}
               className={classNames(styles.mediaArrow, styles.next, 'd-print-none')}
             >
               <KeyboardArrowRight fontSize="large" />

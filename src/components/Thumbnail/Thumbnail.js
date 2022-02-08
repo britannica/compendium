@@ -1,10 +1,11 @@
 import { PlayArrow, VolumeUp } from '@material-ui/icons';
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import AssemblyProp from '../../prop-types/AssemblyProp';
 import LazyImage from '../LazyImage/LazyImage';
 import MediaLink from '../MediaOverlay/MediaLink/MediaLink';
+import MediaOverlayContext from '../MediaOverlay/MediaOverlay.context';
 import Shave from '../Shave/Shave';
 import styles from './Thumbnail.module.scss';
 
@@ -19,6 +20,7 @@ import styles from './Thumbnail.module.scss';
  */
 
 const Thumbnail = memo((props) => {
+  const { overlayProps: { basePath } } = useContext(MediaOverlayContext);
   const {
     assembly,
     hasCaption,
@@ -38,6 +40,7 @@ const Thumbnail = memo((props) => {
     <div className={styles.wrapper} style={{ width }}>
       <MediaLink
         assemblyId={assembly.assemblyId}
+        basePath={basePath}
         className={classnames(
           styles.Thumbnail,
           styles[className],

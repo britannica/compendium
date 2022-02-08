@@ -414,7 +414,7 @@ MediaOverlayContainer.propTypes = {
   // withRouter props
 
   params: PropTypes.shape().isRequired,
-  navigate: PropTypes.shape().isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
 MediaOverlayContainer.defaultProps = {

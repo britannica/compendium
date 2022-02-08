@@ -40,7 +40,7 @@ Ad.propTypes = {
 
   // withRouter props
 
-  params: PropTypes.shap().isRequired,
+  params: PropTypes.shape().isRequired,
 };
 
 Ad.defaultProps = {

@@ -12,7 +12,7 @@ function randomString() {
 class Ad extends Component {
   shouldComponentUpdate(nextProps) {
     const { previousMediaId } = this.props;
-    const nextMediaId = nextProps.match.params.assemblyId;
+    const nextMediaId = nextProps.params.assemblyId;
 
     return nextMediaId !== previousMediaId;
   }
@@ -40,7 +40,7 @@ Ad.propTypes = {
 
   // withRouter props
 
-  match: PropTypes.shape().isRequired,
+  params: PropTypes.shap().isRequired,
 };
 
 Ad.defaultProps = {

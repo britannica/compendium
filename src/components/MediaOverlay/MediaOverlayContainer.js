@@ -56,7 +56,7 @@ class MediaOverlayContainer extends Component {
     this.toggleSidebarAndControls = this.toggleSidebarAndControls.bind(this);
 
     const {
-      match: { path, params: { assemblyId } },
+      params: { assemblyId },
       assemblies,
       locale,
       title,
@@ -71,7 +71,6 @@ class MediaOverlayContainer extends Component {
     this.state = {
       assemblies,
       mediaIndex,
-      path,
       activeSidebarPanel: SidebarPanel.CAPTION,
       controlsHidden: false,
       hasError: false,
@@ -101,9 +100,7 @@ class MediaOverlayContainer extends Component {
     // Fetch media and media strip
 
     const {
-      match: {
-        params: { assemblyId },
-      },
+      params: { assemblyId },
     } = this.props;
 
     this.handleMediaChange(assemblyId);
@@ -117,11 +114,9 @@ class MediaOverlayContainer extends Component {
    */
 
   componentDidUpdate(prevProps) {
-    const prevMediaId = prevProps.match.params.assemblyId;
+    const prevMediaId = prevProps.params.assemblyId;
     const {
-      match: {
-        params: { assemblyId },
-      },
+      params: { assemblyId },
     } = this.props;
 
     if (prevMediaId === assemblyId) {
@@ -151,9 +146,7 @@ class MediaOverlayContainer extends Component {
   handleMediaChange(nextMediaId) {
     try {
       const {
-        match: {
-          params: { assemblyId },
-        },
+        params: { assemblyId },
         onMediaChange,
       } = this.props;
       const { assemblies, slidesToShow } = this.state;
@@ -191,11 +184,11 @@ class MediaOverlayContainer extends Component {
 
   toPath(assemblyId) {
     const {
-      match: { params },
+      basePath,
+      params,
     } = this.props;
-    const { path } = this.state;
 
-    return compile(path)({ ...params, assemblyId });
+    return compile(basePath)({ ...params, assemblyId });
   }
 
   hideOverlay() {
@@ -401,6 +394,7 @@ MediaOverlayContainer.propTypes = {
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   audioComponent: PropTypes.func,
   baseHref: PropTypes.string,
+  basePath: PropTypes.string.isRequired,
   CaptionPanelAddons: PropTypes.func,
   className: PropTypes.string,
   collapsibleSidebar: PropTypes.bool,
@@ -419,7 +413,7 @@ MediaOverlayContainer.propTypes = {
 
   // withRouter props
 
-  match: PropTypes.shape().isRequired,
+  params: PropTypes.shape().isRequired,
   navigate: PropTypes.shape().isRequired,
 };
 

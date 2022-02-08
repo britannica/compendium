@@ -7,7 +7,8 @@ import withRouter from '../../../hocs/withRouter';
 const MediaLink = (props) => {
   const {
     assemblyId,
-    match: { path, params },
+    basePath,
+    params,
     children,
     className,
     onClick,
@@ -16,7 +17,7 @@ const MediaLink = (props) => {
 
   return (
     <Link
-      to={compile(path)({ ...params, assemblyId })}
+      to={compile(basePath)({ ...params, assemblyId })}
       className={className}
       onClick={onClick}
       style={style}
@@ -31,14 +32,16 @@ MediaLink.propTypes = {
 
   // Pass-through props
 
+  basePath: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element, PropTypes.string]),
   className: PropTypes.string,
   onClick: PropTypes.func,
   style: PropTypes.shape(),
 
   // From react-router-dom
+
   location: PropTypes.shape().isRequired,
-  match: PropTypes.shape().isRequired,
+  params: PropTypes.shape().isRequired,
 };
 
 MediaLink.defaultProps = {

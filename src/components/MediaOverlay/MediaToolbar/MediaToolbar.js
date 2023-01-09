@@ -1,4 +1,4 @@
-import { Apps, CheckBox, Info, Mail, Print, ZoomIn } from '@material-ui/icons';
+import { Apps, CheckBox, Info, Mail, Print } from '@material-ui/icons';
 import classNames from 'classnames';
 import React from 'react';
 import MediaQuery from 'react-responsive';
@@ -7,6 +7,7 @@ import { SidebarPanel } from '../overlay-constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Toolbar from '../Toolbar/Toolbar';
 import styles from '../Toolbar/Toolbar.module.scss';
+import FullSizeButton from './FullSizeButton/FullSizeButton';
 
 const MediaToolbar = () => (
   <MediaOverlayContext.Consumer>
@@ -34,19 +35,13 @@ const MediaToolbar = () => (
           )}
           secondaryTools={(
             <>
+              {assembly.type === MediaType.INTERACTIVE && (
+                <FullSizeButton url={assembly.interactive.filename} />
+              )}
               {assembly.type === MediaType.IMAGE && (
                 <>
                   {assembly.image.largeFilename && (
-                    <a
-                      data-analytics="MediaOverlay--fullButton"
-                      href={assembly.image.largeFilename}
-                      className="hidden-xs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ZoomIn style={{ marginRight: 0 }} />
-                      <span className="d-none d-sm-inline-block">{localeLabels.VIEW_FULL_SIZE}</span>
-                    </a>
+                    <FullSizeButton url={assembly.image.largeFilename} />
                   )}
                   <button
                     className="d-none d-lg-inline-block"

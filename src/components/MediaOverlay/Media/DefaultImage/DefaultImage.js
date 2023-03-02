@@ -1,18 +1,18 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import MediaQuery from 'react-responsive';
 import { ViewportWidth } from '../../../../constants';
 import LazyImage from '../../../LazyImage/LazyImage';
 
 const DefaultImage = ({ filename, largeFilename, caption, credit, lazyContainer }) => (
-  <Fragment>
+  <>
     <MediaQuery maxWidth={ViewportWidth.SM_MAX}>
       <LazyImage alt={caption || credit} src={filename} root={lazyContainer} />
     </MediaQuery>
     <MediaQuery minWidth={ViewportWidth.MD_MIN}>
       <LazyImage alt={caption || credit} src={(largeFilename || filename)} root={lazyContainer} />
     </MediaQuery>
-  </Fragment>
+  </>
 );
 
 DefaultImage.propTypes = {

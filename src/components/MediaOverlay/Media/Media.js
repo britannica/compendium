@@ -28,6 +28,7 @@ const Media = () => {
       {assembly.audio && <Audio filename={assembly.audio.filename} />}
       {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
       {assembly.interactive && <Interactive {...assembly.interactive} />}
+      {assembly.infographic && <></>}
       {assembly.video && (
         <Video
           assembly={assembly}

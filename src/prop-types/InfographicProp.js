@@ -4,4 +4,4 @@ const InfographicProp = PropTypes.shape({
   filename: PropTypes.string,
 });
 
-export default InfographicProp();
+export default InfographicProp;

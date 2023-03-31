@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import MediaOverlayContext from '../MediaOverlay.context';
 import DefaultAudio from './DefaultAudio/DefaultAudio';
 import DefaultImage from './DefaultImage/DefaultImage';
+import DefaultInfographic from './DefaultInfographic/DefaultInfographic';
 import DefaultInteractive from './DefaultInteractive/DefaultInteractive';
 import DefaultVideo from './DefaultVideo/DefaultVideo';
 import './Media.module.scss';
@@ -15,6 +16,7 @@ const Media = () => {
       generatePrerollUrl,
       audioComponent: Audio = DefaultAudio,
       imageComponent: Image = DefaultImage,
+      infographicComponent: Infographic = DefaultInfographic,
       interactiveComponent: Interactive = DefaultInteractive,
       videoComponent: Video = DefaultVideo,
     },
@@ -28,7 +30,7 @@ const Media = () => {
       {assembly.audio && <Audio filename={assembly.audio.filename} />}
       {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
       {assembly.interactive && <Interactive {...assembly.interactive} />}
-      {assembly.infographic && <></>}
+      {assembly.infographic && <Infographic {...assembly.infographic} />}
       {assembly.video && (
         <Video
           assembly={assembly}

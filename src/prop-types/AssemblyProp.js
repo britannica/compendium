@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import AudioProp from './AudioProp';
 import ImageProp from './ImageProp';
-import InfographicProp from './InfographicProp';
+import InfogramProp from './InfogramProp';
 import InteractiveProp from './InteractiveProp';
 import VideoPlaylistProp from './VideoPlaylistProp';
 
@@ -15,7 +15,7 @@ const AssemblyProp = PropTypes.shape({
   credit: PropTypes.string,
   audio: AudioProp,
   image: ImageProp,
-  infographic: InfographicProp,
+  infogram: InfogramProp,
   interactive: InteractiveProp,
   video: VideoPlaylistProp,
 });

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import styles from './DefaultInfogram.module.scss';
 
 const DefaultInfogram = ({ filename, title }) => {
   const ref = useRef();
@@ -25,7 +26,7 @@ const DefaultInfogram = ({ filename, title }) => {
   }, [filename, ref, title]);
 
   return (
-    <div ref={ref} />
+    <div ref={ref} className={styles.DefaultInfogram} />
   );
 };
 

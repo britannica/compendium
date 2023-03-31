@@ -6,11 +6,14 @@ const DefaultInfogram = ({ filename, title }) => {
   const ref = useRef();
 
   useEffect(() => {
+    console.log('infogram mount', filename, title);
+
     const infographicContainer = ref.current;
 
     let script;
 
     if (infographicContainer) {
+      console.log('infogram if condition', filename, title);
       script = document.createElement('script');
 
       script.setAttribute('id', filename);
@@ -21,12 +24,13 @@ const DefaultInfogram = ({ filename, title }) => {
     }
 
     return () => {
+      console.log('infogram unmount', filename, title);
       infographicContainer?.removeChild(script);
     };
   }, [filename, ref, title]);
 
   return (
-    <div ref={ref} className={styles.DefaultInfogram} />
+    <div data-title={title} ref={ref} className={styles.DefaultInfogram} />
   );
 };
 

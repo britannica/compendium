@@ -34,7 +34,7 @@ const Thumbnail = memo((props) => {
     isSelected,
     width,
   } = props;
-  const { audio, image, interactive, video, caption, title, type } = assembly;
+  const { audio, image, infogram, interactive, video, caption, title, type } = assembly;
 
   return (
     <div className={styles.wrapper} style={{ width }}>
@@ -73,6 +73,11 @@ const Thumbnail = memo((props) => {
                 dangerouslySetInnerHTML={{ __html: caption || title }}
               />
             )}
+          </div>
+        )}
+        {infogram && (
+          <div className={styles.wrapper}>
+            <LazyImage src={assembly.thumbnailUrl} alt={title} height={height} width={width} root={lazyContainer} />
           </div>
         )}
         {interactive && (

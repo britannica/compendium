@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-const DefaultInfographic = ({ filename, title }) => {
+const DefaultInfogram = ({ filename, title }) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -29,11 +29,11 @@ const DefaultInfographic = ({ filename, title }) => {
   );
 };
 
-DefaultInfographic.propTypes = {
+DefaultInfogram.propTypes = {
   filename: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-DefaultInfographic.defaultProps = {};
+DefaultInfogram.defaultProps = {};
 
-export default DefaultInfographic;
+export default DefaultInfogram;

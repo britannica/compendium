@@ -18,9 +18,9 @@ const Gallery = ({ filteredPhotos, lazyContainer, onMediaClick }) => {
           <Thumbnail
             ThumbnailComponent={MediaLink}
             assembly={photo}
-            height={photo?.height ?? 300}
+            height={photo.height}
             lazyContainer={lazyContainer}
-            width={photo?.width ?? 300}
+            width={photo.width}
             onClick={onMediaClick}
             size="2x"
             hasHoverCaption

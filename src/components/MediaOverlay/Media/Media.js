@@ -29,14 +29,14 @@ const Media = () => {
       {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
       {assembly.interactive && <Interactive {...assembly.interactive} />}
       {assembly.video && (
-      <Video
-        assembly={assembly}
-        playerId={videoPlayerId}
-        onPlay={hideSidebarAndControls}
-        onPause={showSidebarAndControls}
-        onDisplayClick={hideSidebarAndControls}
-        generatePrerollUrl={generatePrerollUrl}
-      />
+        <Video
+          assembly={assembly}
+          playerId={videoPlayerId}
+          onPlay={hideSidebarAndControls}
+          onPause={showSidebarAndControls}
+          onDisplayClick={hideSidebarAndControls}
+          generatePrerollUrl={generatePrerollUrl}
+        />
       )}
     </>
   );

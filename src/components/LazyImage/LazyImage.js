@@ -16,10 +16,12 @@ const LazyImage = ({ alt, className, height, root, src, width, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    observer.observe(ref.current);
+    const $image = ref.current;
+
+    observer.observe($image);
 
     return () => {
-      observer.unobserve(ref.current);
+      observer.unobserve($image);
     };
   }, []);
 

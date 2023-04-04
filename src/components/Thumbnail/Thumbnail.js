@@ -1,11 +1,11 @@
-import React, { memo } from 'react';
+import { PlayArrow, VolumeUp } from '@material-ui/icons';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faVolume } from '@fortawesome/pro-solid-svg-icons';
 import AssemblyProp from '../../prop-types/AssemblyProp';
 import LazyImage from '../LazyImage/LazyImage';
 import MediaLink from '../MediaOverlay/MediaLink/MediaLink';
+import MediaOverlayContext from '../MediaOverlay/MediaOverlay.context';
 import Shave from '../Shave/Shave';
 import styles from './Thumbnail.module.scss';
 
@@ -20,6 +20,7 @@ import styles from './Thumbnail.module.scss';
  */
 
 const Thumbnail = memo((props) => {
+  const { overlayProps: { basePath } } = useContext(MediaOverlayContext);
   const {
     assembly,
     hasCaption,
@@ -33,12 +34,13 @@ const Thumbnail = memo((props) => {
     isSelected,
     width,
   } = props;
-  const { audio, image, interactive, video, caption, title, type } = assembly;
+  const { audio, image, infogram, interactive, video, caption, title, type } = assembly;
 
   return (
     <div className={styles.wrapper} style={{ width }}>
       <MediaLink
         assemblyId={assembly.assemblyId}
+        basePath={basePath}
         className={classnames(
           styles.Thumbnail,
           styles[className],
@@ -53,7 +55,7 @@ const Thumbnail = memo((props) => {
       >
         {audio && (
           <div className={styles.wrapper} style={{ height, width }}>
-            <FontAwesomeIcon icon={faVolume} size={size} />
+            <VolumeUp />
             <Shave
               className={classnames(styles.audioTitle, 'mt-5 mt-1')}
               maxHeightPercentage={0.5}
@@ -71,6 +73,11 @@ const Thumbnail = memo((props) => {
                 dangerouslySetInnerHTML={{ __html: caption || title }}
               />
             )}
+          </div>
+        )}
+        {infogram && (
+          <div className={styles.wrapper}>
+            <LazyImage src={assembly.thumbnailUrl} alt={title} height={height} width={width} root={lazyContainer} />
           </div>
         )}
         {interactive && (
@@ -94,7 +101,7 @@ const Thumbnail = memo((props) => {
               width={width}
               root={lazyContainer}
             />
-            <FontAwesomeIcon icon={faPlay} size={size} />
+            <PlayArrow />
             {hasHoverCaption && (
               <Shave
                 className={classnames(styles.videoCaption, 'p-10 p-2')}

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../../../hocs/withRouter';
 import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './CitePanel.module.scss';
 
 const CitePanel = ({ assembly, localeLabels, CitePanelAddons, location: { pathname } }) => (
   <div className={styles.CitePanel}>
-    <ul>
+    <ul className="list-unstyled">
       {assembly.title && (
         <li>
           <strong>{localeLabels.CITE_MEDIA_TITLE}</strong>

@@ -5,8 +5,8 @@ import AssemblyProp from '../../../../prop-types/AssemblyProp';
 import styles from './CaptionPanel.module.scss';
 
 const CaptionPanel = ({ assembly, CaptionPanelAddons }) => {
-  const { title, caption, credit, image, video, audio, interactive } = assembly;
-  const { license } = image || video || audio || interactive;
+  const { title, caption, credit, image, video, audio, interactive, infogram } = assembly;
+  const { license } = image || video || audio || interactive || infogram;
 
   return (
     <div className={classNames(styles.CaptionPanel, 'd-print-none')}>

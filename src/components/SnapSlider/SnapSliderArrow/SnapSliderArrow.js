@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SnapSliderArrow = ({ className, onClick, disabled, icon }) => (
+const SnapSliderArrow = ({ className, onClick, disabled, icon: Icon }) => (
   <button type="button" className={className} onClick={onClick} disabled={disabled}>
-    <FontAwesomeIcon icon={icon} size="2x" />
+    <Icon />
   </button>
 );
 

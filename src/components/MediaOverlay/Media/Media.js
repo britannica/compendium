@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import MediaOverlayContext from '../MediaOverlay.context';
 import DefaultAudio from './DefaultAudio/DefaultAudio';
 import DefaultImage from './DefaultImage/DefaultImage';
+import DefaultInfogram from './DefaultInfogram/DefaultInfogram';
 import DefaultInteractive from './DefaultInteractive/DefaultInteractive';
 import DefaultVideo from './DefaultVideo/DefaultVideo';
 import './Media.module.scss';
@@ -15,6 +16,7 @@ const Media = () => {
       generatePrerollUrl,
       audioComponent: Audio = DefaultAudio,
       imageComponent: Image = DefaultImage,
+      infogramComponent: Infogram = DefaultInfogram,
       interactiveComponent: Interactive = DefaultInteractive,
       videoComponent: Video = DefaultVideo,
     },
@@ -28,15 +30,16 @@ const Media = () => {
       {assembly.audio && <Audio filename={assembly.audio.filename} />}
       {assembly.image && <Image {...assembly.image} lazyContainer={overlayRef.current} />}
       {assembly.interactive && <Interactive {...assembly.interactive} />}
+      {assembly.infogram && <Infogram {...assembly.infogram} title={assembly.title} />}
       {assembly.video && (
-      <Video
-        assembly={assembly}
-        playerId={videoPlayerId}
-        onPlay={hideSidebarAndControls}
-        onPause={showSidebarAndControls}
-        onDisplayClick={hideSidebarAndControls}
-        generatePrerollUrl={generatePrerollUrl}
-      />
+        <Video
+          assembly={assembly}
+          playerId={videoPlayerId}
+          onPlay={hideSidebarAndControls}
+          onPause={showSidebarAndControls}
+          onDisplayClick={hideSidebarAndControls}
+          generatePrerollUrl={generatePrerollUrl}
+        />
       )}
     </>
   );

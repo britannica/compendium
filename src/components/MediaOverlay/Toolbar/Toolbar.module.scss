@@ -7,7 +7,7 @@
   align-items: center;
   display: flex;
   margin: $toolbar-margin $toolbar-margin 0;
-  min-height: 56px;
+  min-height: 60px;
   padding-left: 15px;
 
   @include media-breakpoint-down(md) {
@@ -20,13 +20,16 @@
 
   button,
   a {
+    align-items: center;
     appearance: none;
     background: none;
     border: none;
     color: $gray-600;
     cursor: pointer;
+    display: inline-flex;
     font-family: inherit;
     font-size: 12px;
+    justify-content: center;
     outline: none;
     padding: 5px 10px;
     text-decoration: none;
@@ -55,8 +58,7 @@
   }
 
   :global {
-    svg,
-    .fa-layers {
+    svg {
       margin-right: 8px;
     }
   }

@@ -1,6 +1,5 @@
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 import React, { useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons';
 import classNames from 'classnames';
 import { Taparoo } from 'taparoo';
 import Media from '../Media/Media';
@@ -11,6 +10,7 @@ import styles from './MediaViewer.module.scss';
 const MediaViewer = () => {
   const {
     overlayState: { controlsHidden, hasError, localeLabels, mediaIndex, assemblies },
+    overlayProps: { basePath },
     handleTap,
     navigateNextMedia,
     navigatePreviousMedia,
@@ -29,17 +29,19 @@ const MediaViewer = () => {
           {mediaIndex > 0 && (
             <MediaLink
               assemblyId={assemblies[mediaIndex - 1].assemblyId}
+              basePath={basePath}
               className={classNames(styles.mediaArrow, styles.prev, 'd-print-none')}
             >
-              <FontAwesomeIcon icon={faAngleLeft} size="3x" />
+              <KeyboardArrowLeft fontSize="large" />
             </MediaLink>
           )}
           {mediaIndex < assemblies.length - 1 && (
             <MediaLink
               assemblyId={assemblies[mediaIndex + 1].assemblyId}
+              basePath={basePath}
               className={classNames(styles.mediaArrow, styles.next, 'd-print-none')}
             >
-              <FontAwesomeIcon icon={faAngleRight} size="3x" />
+              <KeyboardArrowRight fontSize="large" />
             </MediaLink>
           )}
         </>

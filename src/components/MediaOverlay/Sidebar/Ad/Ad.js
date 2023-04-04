@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../../../hocs/withRouter';
 import styles from './Ad.module.scss';
 
 function randomString() {
@@ -12,7 +12,7 @@ function randomString() {
 class Ad extends Component {
   shouldComponentUpdate(nextProps) {
     const { previousMediaId } = this.props;
-    const nextMediaId = nextProps.match.params.assemblyId;
+    const nextMediaId = nextProps.params.assemblyId;
 
     return nextMediaId !== previousMediaId;
   }
@@ -40,7 +40,7 @@ Ad.propTypes = {
 
   // withRouter props
 
-  match: PropTypes.shape().isRequired,
+  params: PropTypes.shape().isRequired,
 };
 
 Ad.defaultProps = {

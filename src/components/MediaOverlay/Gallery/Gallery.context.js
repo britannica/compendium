@@ -30,19 +30,19 @@ export class GalleryProvider extends Component {
 
     const { assemblies } = this.props;
 
-    const photos = assemblies.map(assembly => ({
+    const photos = assemblies.map((assembly) => ({
       ...assembly,
       key: assembly.assemblyId,
       src: assembly.thumbnailUrl || '',
-      width: assembly[assembly.type.toLowerCase()].width || 16,
-      height: assembly[assembly.type.toLowerCase()].height || 9,
+      width: assembly[assembly.type.toLowerCase()]?.width || 16,
+      height: assembly[assembly.type.toLowerCase()]?.height || 9,
     }));
 
     // Determine the initial set of filters
 
     const filters = new Set();
 
-    photos.forEach(photo => filters.add(photo.type));
+    photos.forEach((photo) => filters.add(photo.type));
 
     // Set state
 
@@ -58,7 +58,7 @@ export class GalleryProvider extends Component {
   setSelectedFilter(filter) {
     const { photos } = this.state;
 
-    const filteredPhotos = photos.filter(photo => photo.type === filter || filter === null);
+    const filteredPhotos = photos.filter((photo) => photo.type === filter || filter === null);
 
     this.setState({
       filteredPhotos,
@@ -96,6 +96,6 @@ GalleryProvider.defaultProps = {
 
 // --- Consumer HOC
 
-export const withGalleryContext = WrappedComponent => props => (
-  <GalleryContext.Consumer>{context => <WrappedComponent {...props} {...context} />}</GalleryContext.Consumer>
+export const withGalleryContext = (WrappedComponent) => (props) => (
+  <GalleryContext.Consumer>{(context) => <WrappedComponent {...props} {...context} />}</GalleryContext.Consumer>
 );

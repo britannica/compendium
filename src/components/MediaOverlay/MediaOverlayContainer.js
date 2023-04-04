@@ -6,8 +6,8 @@
 import React, { Component, createRef } from 'react';
 import { compile } from 'path-to-regexp';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { ViewportWidth } from '../../constants';
+import withRouter from '../../hocs/withRouter';
 import AssemblyProp from '../../prop-types/AssemblyProp';
 import { getLocale, Locale } from './l10n';
 import { OverlayMode, SidebarPanel } from './overlay-constants';
@@ -56,7 +56,7 @@ class MediaOverlayContainer extends Component {
     this.toggleSidebarAndControls = this.toggleSidebarAndControls.bind(this);
 
     const {
-      match: { path, params: { assemblyId } },
+      params: { assemblyId },
       assemblies,
       locale,
       title,
@@ -71,7 +71,6 @@ class MediaOverlayContainer extends Component {
     this.state = {
       assemblies,
       mediaIndex,
-      path,
       activeSidebarPanel: SidebarPanel.CAPTION,
       controlsHidden: false,
       hasError: false,
@@ -101,9 +100,7 @@ class MediaOverlayContainer extends Component {
     // Fetch media and media strip
 
     const {
-      match: {
-        params: { assemblyId },
-      },
+      params: { assemblyId },
     } = this.props;
 
     this.handleMediaChange(assemblyId);
@@ -117,11 +114,9 @@ class MediaOverlayContainer extends Component {
    */
 
   componentDidUpdate(prevProps) {
-    const prevMediaId = prevProps.match.params.assemblyId;
+    const prevMediaId = prevProps.params.assemblyId;
     const {
-      match: {
-        params: { assemblyId },
-      },
+      params: { assemblyId },
     } = this.props;
 
     if (prevMediaId === assemblyId) {
@@ -151,9 +146,7 @@ class MediaOverlayContainer extends Component {
   handleMediaChange(nextMediaId) {
     try {
       const {
-        match: {
-          params: { assemblyId },
-        },
+        params: { assemblyId },
         onMediaChange,
       } = this.props;
       const { assemblies, slidesToShow } = this.state;
@@ -191,23 +184,23 @@ class MediaOverlayContainer extends Component {
 
   toPath(assemblyId) {
     const {
-      match: { params },
+      basePath,
+      params,
     } = this.props;
-    const { path } = this.state;
 
-    return compile(path)({ ...params, assemblyId });
+    return compile(basePath)({ ...params, assemblyId });
   }
 
   hideOverlay() {
-    const { history, baseHref } = this.props;
+    const { navigate, baseHref } = this.props;
 
-    history.push(baseHref);
+    navigate(baseHref);
   }
 
   navigateToMedia(assemblyId) {
-    const { history } = this.props;
+    const { navigate } = this.props;
 
-    history.push(this.toPath(assemblyId));
+    navigate(this.toPath(assemblyId));
   }
 
   navigateNextMedia() {
@@ -401,6 +394,7 @@ MediaOverlayContainer.propTypes = {
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   audioComponent: PropTypes.func,
   baseHref: PropTypes.string,
+  basePath: PropTypes.string.isRequired,
   CaptionPanelAddons: PropTypes.func,
   className: PropTypes.string,
   collapsibleSidebar: PropTypes.bool,
@@ -419,8 +413,8 @@ MediaOverlayContainer.propTypes = {
 
   // withRouter props
 
-  match: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  params: PropTypes.shape().isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
 MediaOverlayContainer.defaultProps = {

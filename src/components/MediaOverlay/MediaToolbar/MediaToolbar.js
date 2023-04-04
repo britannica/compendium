@@ -1,5 +1,4 @@
-import { faCheckSquare, faEnvelope, faInfoCircle, faPrint, faSearchPlus, faTh } from '@fortawesome/pro-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Apps, CheckBox, Info, Mail, Print } from '@material-ui/icons';
 import classNames from 'classnames';
 import React from 'react';
 import MediaQuery from 'react-responsive';
@@ -8,6 +7,7 @@ import { SidebarPanel } from '../overlay-constants';
 import MediaOverlayContext from '../MediaOverlay.context';
 import Toolbar from '../Toolbar/Toolbar';
 import styles from '../Toolbar/Toolbar.module.scss';
+import FullSizeButton from './FullSizeButton/FullSizeButton';
 
 const MediaToolbar = () => (
   <MediaOverlayContext.Consumer>
@@ -27,7 +27,7 @@ const MediaToolbar = () => (
               )}
               {assemblies.length > 7 && (
                 <button type="button" onClick={enableGalleryView}>
-                  <FontAwesomeIcon icon={faTh} size="lg" />
+                  <Apps />
                   <span className="d-none d-sm-inline-block">{localeLabels.VIEW_GALLERY}</span>
                 </button>
               )}
@@ -35,19 +35,13 @@ const MediaToolbar = () => (
           )}
           secondaryTools={(
             <>
+              {assembly.type === MediaType.INTERACTIVE && (
+                <FullSizeButton url={assembly.interactive.filename} />
+              )}
               {assembly.type === MediaType.IMAGE && (
                 <>
                   {assembly.image.largeFilename && (
-                    <a
-                      data-analytics="MediaOverlay--fullButton"
-                      href={assembly.image.largeFilename}
-                      className="hidden-xs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FontAwesomeIcon icon={faSearchPlus} size="lg" />
-                      <span className="d-none d-sm-inline-block">{localeLabels.VIEW_FULL_SIZE}</span>
-                    </a>
+                    <FullSizeButton url={assembly.image.largeFilename} />
                   )}
                   <button
                     className="d-none d-lg-inline-block"
@@ -55,7 +49,7 @@ const MediaToolbar = () => (
                     type="button"
                     onClick={window.print}
                   >
-                    <FontAwesomeIcon icon={faPrint} size="lg" />
+                    <Print />
                     <span className="d-none d-sm-inline-block">{localeLabels.PRINT}</span>
                   </button>
                 </>
@@ -72,7 +66,7 @@ const MediaToolbar = () => (
                   [styles.active]: activeSidebarPanel === SidebarPanel.CAPTION,
                 })}
               >
-                <FontAwesomeIcon icon={faInfoCircle} size="lg" />
+                <Info fontSize="small" />
                 {localeLabels.CAPTION_PANEL}
               </button>
               <button
@@ -82,7 +76,7 @@ const MediaToolbar = () => (
                   [styles.active]: activeSidebarPanel === SidebarPanel.CITE,
                 })}
               >
-                <FontAwesomeIcon icon={faCheckSquare} size="lg" />
+                <CheckBox fontSize="small" />
                 {localeLabels.CITE_PANEL}
               </button>
               {EmailPanel && (
@@ -93,7 +87,7 @@ const MediaToolbar = () => (
                     [styles.active]: activeSidebarPanel === SidebarPanel.EMAIL,
                   })}
                 >
-                  <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                  <Mail />
                   {localeLabels.EMAIL_PANEL}
                 </button>
               )}

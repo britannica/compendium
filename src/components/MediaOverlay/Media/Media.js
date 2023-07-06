@@ -5,7 +5,7 @@ import DefaultAudio from './DefaultAudio/DefaultAudio';
 import DefaultImage from './DefaultImage/DefaultImage';
 import DefaultInfogram from './DefaultInfogram/DefaultInfogram';
 import DefaultInteractive from './DefaultInteractive/DefaultInteractive';
-import DefaultVideo from './DefaultVideo/DefaultVideo';
+import IFrameVideo from './IFrameVideo/IFrameVideo';
 import './Media.module.scss';
 
 const Media = () => {
@@ -18,7 +18,7 @@ const Media = () => {
       imageComponent: Image = DefaultImage,
       infogramComponent: Infogram = DefaultInfogram,
       interactiveComponent: Interactive = DefaultInteractive,
-      videoComponent: Video = DefaultVideo,
+      videoComponent: Video = IFrameVideo,
     },
     hideSidebarAndControls,
     overlayRef,

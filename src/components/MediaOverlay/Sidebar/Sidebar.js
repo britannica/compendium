@@ -60,7 +60,7 @@ const Sidebar = () => (
           {/* Show ads if they're enabled, and if we're on md-lg */}
 
           <MediaQuery minWidth={ViewportWidth.MD_MIN}>
-            <Ad />
+            <Ad assemblyId={assembly.assemblyId} />
           </MediaQuery>
         </div>
       );

@@ -16,7 +16,6 @@ MediaOverlay.propTypes = {
 
   hasMediaStrip: PropTypes.bool,
   collapsibleSidebar: PropTypes.bool,
-  adUrl: PropTypes.string,
 
   // An object with all the labels, or a string specifying the language and region. Accepts: 'en-us', 'pt-br'
   locale: PropTypes.oneOfType([PropTypes.shape(), PropTypes.string]),

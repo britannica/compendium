@@ -285,18 +285,17 @@ class MediaOverlayContainer extends Component {
     });
   }
 
-
   // --- Sidebar
 
   toggleSidebar() {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isSidebarVisible: !prevState.isSidebarVisible,
     }));
   }
 
   toggleSidebarAndControls() {
     if (areControlsToggleable()) {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         controlsHidden: !prevState.controlsHidden,
         isSidebarVisible: !prevState.isSidebarVisible,
       }));
@@ -345,7 +344,7 @@ class MediaOverlayContainer extends Component {
         betweenWidths(ViewportWidth.LG_MIN, ViewportWidth.LG_MAX),
         betweenWidths(ViewportWidth.MD_MIN, ViewportWidth.MD_MAX),
       ],
-      this.handleBreakpoints
+      this.handleBreakpoints,
     );
 
     onMinWidth(ViewportWidth.LG_MIN, () => this.showSidebarAndControls(true));
@@ -390,7 +389,6 @@ class MediaOverlayContainer extends Component {
 // --- Props
 
 MediaOverlayContainer.propTypes = {
-  adUrl: PropTypes.string,
   assemblies: PropTypes.arrayOf(AssemblyProp).isRequired,
   audioComponent: PropTypes.func,
   baseHref: PropTypes.string,
@@ -427,7 +425,6 @@ MediaOverlayContainer.defaultProps = {
   className: null,
   collapsibleSidebar: false,
   generatePrerollUrl: null,
-  adUrl: null,
   locale: Locale['en-us'],
   title: '',
   videoPlayerId: '',

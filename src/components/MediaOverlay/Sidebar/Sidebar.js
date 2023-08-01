@@ -26,8 +26,8 @@ function getSidebarPanel(panel, assembly, localeLabels, CaptionPanelAddons, Cite
 const Sidebar = () => (
   <MediaOverlayContext.Consumer>
     {({ overlayProps, overlayState }) => {
-      const { activeSidebarPanel, isSidebarVisible, localeLabels, assembly, previousMediaId } = overlayState;
-      const { adUrl, CaptionPanelAddons, CitePanelAddons, EmailPanel, SidebarTools } = overlayProps;
+      const { activeSidebarPanel, isSidebarVisible, localeLabels, assembly } = overlayState;
+      const { CaptionPanelAddons, CitePanelAddons, EmailPanel, SidebarTools } = overlayProps;
 
       if (!isSidebarVisible) {
         return null;
@@ -59,11 +59,9 @@ const Sidebar = () => (
 
           {/* Show ads if they're enabled, and if we're on md-lg */}
 
-          {adUrl && (
-            <MediaQuery minWidth={ViewportWidth.LG_MIN}>
-              <Ad previousMediaId={previousMediaId} adUrl={adUrl} />
-            </MediaQuery>
-          )}
+          <MediaQuery minWidth={ViewportWidth.MD_MIN}>
+            <Ad />
+          </MediaQuery>
         </div>
       );
     }}
